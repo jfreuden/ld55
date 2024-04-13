@@ -29,6 +29,8 @@ y_sort_enabled = true
 color = Color(1, 0.337255, 1, 1)
 polygon = PackedVector2Array(9, 15, -11, 16, -13, -15, 14, -13)
 
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+
 [node name="FloorLayer" type="StaticBody2D" parent="."]
 z_index = -1
 
@@ -38,6 +40,10 @@ polygon = PackedVector2Array(-421, 154, -403, 207, -285, 232, -71, 257, 73, 247,
 [node name="Polygon2D" type="Polygon2D" parent="FloorLayer"]
 color = Color(0.32549, 0.32549, 0.32549, 1)
 polygon = PackedVector2Array(-420, 153, -373, 169, -140, 193, 16, 155, 220, 165, 268, -25, -230, -46, -409, -28)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="FloorLayer"]
+build_mode = 1
+polygon = PackedVector2Array(-117, 156, -203, 138, -216, 13, 16, -115, 171, -13, 45, 108)
 
 [node name="WallLayer" type="Node2D" parent="."]
 
