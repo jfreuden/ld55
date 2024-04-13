@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=5 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.cs" id="1_w6ins"]
+[ext_resource type="Texture2D" uid="uid://bxxbes2ntng7y" path="res://greathall_floor.png" id="2_tk1gx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt5pn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bt3iy"]
+radius = 64.0
 
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+z_index = 1
 y_sort_enabled = true
 motion_mode = 1
 platform_on_leave = 2
@@ -33,11 +38,19 @@ polygon = PackedVector2Array(9, 15, -11, 16, -13, -15, 14, -13)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 
+[node name="InteractionCircle" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionCircle"]
+shape = SubResource("CircleShape2D_bt3iy")
+
 [node name="FloorLayer" type="StaticBody2D" parent="."]
 z_index = -1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloorLayer"]
+position = Vector2(416, -271)
+build_mode = 1
 polygon = PackedVector2Array(-421, 154, -403, 207, -285, 232, -71, 257, 73, 247, 255, 206, 224, 165, 16, 155, -137, 193, -375, 169)
+one_way_collision = true
 
 [node name="Polygon2D" type="Polygon2D" parent="FloorLayer"]
 color = Color(0.32549, 0.32549, 0.32549, 1)
@@ -46,6 +59,7 @@ polygon = PackedVector2Array(-420, 153, -373, 169, -140, 193, 16, 155, 220, 165,
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="FloorLayer"]
 build_mode = 1
 polygon = PackedVector2Array(-117, 156, -203, 138, -216, 13, 16, -115, 171, -13, 45, 108)
+one_way_collision = true
 
 [node name="WallLayer" type="Node2D" parent="."]
 
@@ -54,3 +68,20 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="GreatHall" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GreatHall"]
+
+[node name="Sprite2D" type="Sprite2D" parent="GreatHall/StaticBody2D"]
+texture_filter = 1
+texture = ExtResource("2_tk1gx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreatHall/StaticBody2D"]
+polygon = PackedVector2Array(-872, -609, -988, -607, -988, 607, 229, 607, 229, 376, 230.6, 376, 234.6, 364, 236.3, 364, 253.3, 350, 258, 350, 988, 349, 988, 166.1, 1053, 164, 1053, 398, 1043, 412, 1040.5, 412, 1028.5, 418, 298, 418, 298, 647.4, 291.3, 663, 289.7, 663, 279.1, 672, -1039.4, 672, -1041, 671.2, -1041, 669.9, -1053, 657, -1053, -656, -1043, -670, -1040.5, -670, -1037.2, -672, -872, -672)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="GreatHall/StaticBody2D"]
+polygon = PackedVector2Array(292, -662, 292, -659.5, 298, -647.5, 298, -570, 295, -570, 231, -568, 231, -571, 229.1, -607, -595.8, -607, -599, -610.2, -599, -672, 278, -672)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="GreatHall/StaticBody2D"]
+polygon = PackedVector2Array(296, -438, 297.9, -409, 1028.2, -409, 1034, -407.6, 1034, -406.4, 1044, -402.4, 1044, -400.7, 1053, -390.1, 1053, -175, 990, -175, 988, -340, 257.6, -340, 244, -345.7, 244, -347.3, 230, -364.3, 230, -369, 231, -438, 231, -441, 296, -441)
