@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cloqedpwjuuck"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.cs" id="1_w6ins"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xt5pn"]
+
+[node name="Root" type="Node2D"]
+y_sort_enabled = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_w6ins")
+Speed = 300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_xt5pn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="CharacterBody2D"]
+y_sort_enabled = true
+color = Color(1, 0.337255, 1, 1)
+polygon = PackedVector2Array(9, 15, -11, 16, -13, -15, 14, -13)
+
+[node name="FloorLayer" type="StaticBody2D" parent="."]
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloorLayer"]
+polygon = PackedVector2Array(-421, 154, -403, 207, -285, 232, -71, 257, 73, 247, 255, 206, 224, 165, 16, 155, -137, 193, -375, 169)
+
+[node name="Polygon2D" type="Polygon2D" parent="FloorLayer"]
+color = Color(0.32549, 0.32549, 0.32549, 1)
+polygon = PackedVector2Array(-420, 153, -373, 169, -140, 193, 16, 155, 220, 165, 268, -25, -230, -46, -409, -28)
+
+[node name="WallLayer" type="Node2D" parent="."]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
