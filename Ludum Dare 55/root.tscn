@@ -31,6 +31,10 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
+[node name="HUD" type="Control" parent="CharacterBody2D/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+
 [node name="Polygon2D" type="Polygon2D" parent="CharacterBody2D"]
 y_sort_enabled = true
 color = Color(1, 0.337255, 1, 1)
@@ -62,12 +66,6 @@ polygon = PackedVector2Array(-117, 156, -203, 138, -216, 13, 16, -115, 171, -13,
 one_way_collision = true
 
 [node name="WallLayer" type="Node2D" parent="."]
-
-[node name="HUD" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="GreatHall" type="Node2D" parent="."]
 

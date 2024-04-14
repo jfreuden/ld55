@@ -55,6 +55,7 @@ focus_previous = NodePath("../Quit")
 text = "Enter the Manor"
 
 [node name="Settings" type="Button" parent="NinePatchRect/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Quit")
