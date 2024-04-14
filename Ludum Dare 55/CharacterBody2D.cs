@@ -15,11 +15,23 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
         Vector2 joyVector2 = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
         
         Velocity = Velocity.MoveToward(Speed * joyVector2, (float)(Momentum / delta));
         MoveAndSlide();
+        
+        
+    }
+
+    public void OnAreaEntered(Area2D area)
+    {
+        GD.Print(area);
+    }
+
+    public void OnAreaExited(Area2D area)
+    {
+        GD.Print(area);
     }
 }

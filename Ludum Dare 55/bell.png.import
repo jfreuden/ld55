@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxxbes2ntng7y"
-path="res://.godot/imported/greathall_floor.png-379fd21f99241113f24d7b3ab5126580.ctex"
+uid="uid://c8kpcciqdx0ln"
+path="res://.godot/imported/bell.png-8793b97fee93867b357a83d9d75627d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://greathall_floor.png"
-dest_files=["res://.godot/imported/greathall_floor.png-379fd21f99241113f24d7b3ab5126580.ctex"]
+source_file="res://bell.png"
+dest_files=["res://.godot/imported/bell.png-8793b97fee93867b357a83d9d75627d4.ctex"]
 
 [params]
 
