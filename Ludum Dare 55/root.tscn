@@ -1,16 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=8 format=3 uid="uid://cloqedpwjuuck"]
 
-[ext_resource type="Script" path="res://CharacterBody2D.cs" id="1_w6ins"]
+[ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://great_hall.tscn" id="2_8pfmp"]
 [ext_resource type="Script" path="res://QuestStart.cs" id="5_vnpnr"]
 [ext_resource type="Texture2D" uid="uid://c8kpcciqdx0ln" path="res://bell.png" id="6_iayre"]
 [ext_resource type="Script" path="res://QuestItem.cs" id="6_ki38s"]
 [ext_resource type="Script" path="res://QuestTracker.cs" id="7_4escj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xt5pn"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bt3iy"]
-radius = 200.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ep4fe"]
 radius = 100.0
@@ -18,17 +13,8 @@ radius = 100.0
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("1_mhivb")]
 unique_name_in_owner = true
-z_index = 1
-y_sort_enabled = true
-motion_mode = 1
-platform_on_leave = 2
-script = ExtResource("1_w6ins")
-Speed = 300.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_xt5pn")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_smoothed = true
@@ -37,24 +23,34 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Player"]
-y_sort_enabled = true
-color = Color(1, 0.337255, 1, 1)
-polygon = PackedVector2Array(9, 15, -11, 16, -13, -15, 14, -13)
-
-[node name="InteractionCircle" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/InteractionCircle"]
-shape = SubResource("CircleShape2D_bt3iy")
-
-[node name="PlayerHand" type="Node2D" parent="Player"]
-unique_name_in_owner = true
-
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1
 
-[node name="UIOnCamera" type="CanvasLayer" parent="."]
+[node name="GreatHallItems" type="Node2D" parent="GreatHall"]
+
+[node name="MooseHead" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-211, -834)
+
+[node name="TestItem2" type="Polygon2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(72, -831)
+offset = Vector2(404, -87)
+polygon = PackedVector2Array(-438, 85, -406, 102, -376, 102, -370, 80, -386, 67, -433, 71)
+script = ExtResource("6_ki38s")
+QuestTaskType = 1
+
+[node name="Area2D" type="Area2D" parent="GreatHall/GreatHallItems/TestItem2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreatHall/GreatHallItems/TestItem2/Area2D"]
+shape = SubResource("CircleShape2D_ep4fe")
+
+[node name="TomatoOnPainting" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 visible = false
+position = Vector2(78, -832)
+
+[node name="SplatQuestItem" type="Node2D" parent="GreatHall/GreatHallItems/TomatoOnPainting"]
+script = ExtResource("6_ki38s")
+
+[node name="UIOnCamera" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" type="Control" parent="UIOnCamera"]
 process_mode = 2
@@ -100,37 +96,9 @@ anchors_preset = 0
 
 [node name="UIOnWorld" type="CanvasLayer" parent="."]
 
-[node name="MooseHead" type="Node2D" parent="."]
-position = Vector2(-211, -834)
-
-[node name="TestItem2" type="Polygon2D" parent="."]
-position = Vector2(72, -831)
-offset = Vector2(404, -87)
-polygon = PackedVector2Array(-438, 85, -406, 102, -376, 102, -370, 80, -386, 67, -433, 71)
-script = ExtResource("6_ki38s")
-QuestTaskType = 1
-
-[node name="Area2D" type="Area2D" parent="TestItem2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestItem2/Area2D"]
-shape = SubResource("CircleShape2D_ep4fe")
-
 [node name="Bell" type="Sprite2D" parent="."]
 position = Vector2(1254, -215)
 texture = ExtResource("6_iayre")
-
-[node name="Bell2" type="Sprite2D" parent="."]
-position = Vector2(1587, -150)
-texture = ExtResource("6_iayre")
-
-[node name="Node2D2" type="Node2D" parent="Bell2"]
-
-[node name="TomatoOnPainting" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(78, -832)
-
-[node name="SplatQuestItem" type="Node2D" parent="TomatoOnPainting"]
-script = ExtResource("6_ki38s")
 
 [node name="QuestTracker" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -139,6 +107,3 @@ script = ExtResource("7_4escj")
 [node name="QuestItem" type="Node2D" parent="QuestTracker"]
 position = Vector2(1587, -150)
 script = ExtResource("5_vnpnr")
-
-[connection signal="area_entered" from="Player/InteractionCircle" to="Player" method="OnAreaEntered"]
-[connection signal="area_exited" from="Player/InteractionCircle" to="Player" method="OnAreaExited"]
