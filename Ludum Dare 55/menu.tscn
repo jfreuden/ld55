@@ -71,5 +71,28 @@ focus_next = NodePath("../Play")
 focus_previous = NodePath("../Settings")
 text = "Quit to Desktop"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -247.0
+offset_right = 176.0
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 12
+text = "Credits: Team Jakajo
+
+Game Design Lead: kraftbart
+Game Design: rainybyte
+Programming Lead: rainybyte
+Level Design: kallico
+Level Design: kraftbart
+Art: kraftbart
+Art: kallico
+Animation: kraftbart
+Music: rainybyte
+SFX: kraftbart
+SFX: rainybyte"
+
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Play" to="." method="PlayGame"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Quit" to="." method="QuitGame"]

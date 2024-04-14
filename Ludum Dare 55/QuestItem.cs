@@ -151,7 +151,7 @@ public partial class QuestItem : Node2D
         }
         else
         {
-            // The Lord needs to attempt to murder you
+            // The Lord needs to attempt to murder you here
         }
     }
     
