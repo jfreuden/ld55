@@ -15,7 +15,7 @@ public partial class QuestItem : Node2D
     }
     
     [Export] public string QuestString { get; private set; } = "Describe the task";
-    [Export] public TaskType QuestTaskType { get; private set; }
+    [Export] public TaskType QuestTaskType { get; private protected set; }
     [Export] public QuestItem NextTaskItem { get; private set; }
     
     private Area2D InteractionCircle { get; set; }
@@ -58,7 +58,7 @@ public partial class QuestItem : Node2D
     /// </summary>
     public void NextTask()
     {
-        
+        // Need to call the NextTask on the QuestTracker
     }
     
     public bool Interact()

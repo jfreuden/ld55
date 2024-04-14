@@ -25,6 +25,23 @@ public partial class QuestTracker : Node2D
     public override void _Process(double delta)
     {
     }
-    
+
+    /// <summary>
+    /// Calling this should basically pick from the bucket
+    /// Choose a random child node (that is a QuestItem)
+    /// Add a reference to the node to the `ActiveTasks`
+    /// Call `Interact()` on that node.
+    /// </summary>
+    public void RingBell()
+    {
+        
+    }
+
+    public void NextTask(QuestItem finishedTask)
+    {
+        // this should do the logic of proceeding the quest chain
+        
+        // TODO: Handle the edge case of removing the associated child node if this QuestItem is a child that Isn't repeatable
+    }
     
 }
