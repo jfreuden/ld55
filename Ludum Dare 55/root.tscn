@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=7 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://great_hall.tscn" id="2_8pfmp"]
-[ext_resource type="Script" path="res://QuestStart.cs" id="5_vnpnr"]
+[ext_resource type="PackedScene" uid="uid://bpmyoo2dlicjq" path="res://quest_marker.tscn" id="4_d27h0"]
 [ext_resource type="Texture2D" uid="uid://c8kpcciqdx0ln" path="res://bell.png" id="6_iayre"]
-[ext_resource type="Script" path="res://QuestItem.cs" id="6_ki38s"]
+[ext_resource type="PackedScene" uid="uid://dioaep4bdyd8c" path="res://quest_start.tscn" id="6_sdruh"]
 [ext_resource type="Script" path="res://QuestTracker.cs" id="7_4escj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ep4fe"]
-radius = 100.0
 
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
@@ -35,26 +32,44 @@ position = Vector2(-211, -834)
 position = Vector2(72, -831)
 offset = Vector2(404, -87)
 polygon = PackedVector2Array(-438, 85, -406, 102, -376, 102, -370, 80, -386, 67, -433, 71)
-script = ExtResource("6_ki38s")
-QuestTaskType = 1
-
-[node name="Area2D" type="Area2D" parent="GreatHall/GreatHallItems/TestItem2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GreatHall/GreatHallItems/TestItem2/Area2D"]
-shape = SubResource("CircleShape2D_ep4fe")
 
 [node name="TomatoOnPainting" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 visible = false
 position = Vector2(78, -832)
 
-[node name="SplatQuestItem" type="Node2D" parent="GreatHall/GreatHallItems/TomatoOnPainting"]
-script = ExtResource("6_ki38s")
-
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
+
+[node name="QuestTracker" type="Node2D" parent="UIOnCamera"]
+unique_name_in_owner = true
+script = ExtResource("7_4escj")
+
+[node name="QuestStart" parent="UIOnCamera/QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../../Bell/QuestMarker")
+
+[node name="Control" type="Control" parent="UIOnCamera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Ring Bell"
 
 [node name="PauseMenu" type="Control" parent="UIOnCamera"]
 process_mode = 2
-visible = false
 top_level = true
 layout_mode = 3
 anchors_preset = 8
@@ -66,6 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIOnCamera/PauseMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -101,10 +117,6 @@ anchors_preset = 0
 position = Vector2(1254, -215)
 texture = ExtResource("6_iayre")
 
-[node name="QuestTracker" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("7_4escj")
+[node name="QuestMarker" parent="Bell" instance=ExtResource("4_d27h0")]
 
-[node name="QuestItem" type="Node2D" parent="QuestTracker"]
-position = Vector2(1587, -150)
-script = ExtResource("5_vnpnr")
+[connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="UIOnCamera/QuestTracker" method="RingBell"]

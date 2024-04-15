@@ -28,6 +28,7 @@ polygon = PackedVector2Array(28, 28, -28, 27, -52, -129, 50, -128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionCircle"]
 shape = SubResource("CircleShape2D_bt3iy")
+debug_color = Color(0, 0.65098, 0.0509804, 0.419608)
 
 [node name="PlayerHand" type="Node2D" parent="."]
 unique_name_in_owner = true

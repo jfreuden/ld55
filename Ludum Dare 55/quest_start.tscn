@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dioaep4bdyd8c"]
+
+[ext_resource type="PackedScene" uid="uid://bpmyoo2dlicjq" path="res://quest_marker.tscn" id="1_m35s4"]
+[ext_resource type="Script" path="res://QuestStart.cs" id="2_oiwgu"]
+
+[node name="QuestStart" instance=ExtResource("1_m35s4")]
+visible = false
+script = ExtResource("2_oiwgu")
+Repeatable = false

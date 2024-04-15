@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class QuestItem : Node2D
+public partial class QuestMarker : Node2D
 {
     public enum TaskType
     {
@@ -13,22 +13,61 @@ public partial class QuestItem : Node2D
         Wait,
         Bell
     }
-    
+
     [Export] public string QuestString { get; private set; } = "Describe the task";
     [Export] public TaskType QuestTaskType { get; private protected set; }
-    [Export] public QuestItem NextTaskItem { get; private set; }
-    
-    private Area2D InteractionCircle { get; set; }
+    [Export] public QuestMarker NextTaskMarker { get; private set; }
+    [Export] public float QuestTime { get; private set; } = 30.0f;
+    [Export] public float InteractionRadius { get; private set; } = 100.0f;
 
-    private void GenerateChildren()
+
+    private Timer TaskClock { get; set; }
+    private Area2D InteractionArea { get; set; }
+    private CollisionShape2D InteractionCollisionShape { get; set; }
+    private CircleShape2D InteractionCircle { get; set; }
+    private Label InteractionLabel { get; set; }
+    private bool InteractionEnabled { get; set; } = false;
+
+    private void EnableChildren()
     {
-        if (InteractionCircle is not null) return;
+        // TODO: Some of this should be conditional on the Task type
+        TaskClock.WaitTime = QuestTime;
+        InteractionCircle.Radius = InteractionRadius;
 
-        InteractionCircle = new Area2D();
+        TaskClock.Start();
+        InteractionArea.Monitorable = true;
+        InteractionArea.Monitoring = true;
+        InteractionCollisionShape.Disabled = false;
+        InteractionEnabled = true;
+        InteractionLabel.Show();
+        Show();
     }
-    
+
+    private void BindChildren()
+    {
+        // Bind refs
+        TaskClock = GetNode<Timer>("TaskClock");
+        InteractionArea = GetNode<Area2D>("InteractionArea");
+        Godot.Collections.Array nodeAndShape = GetNodeAndResource("InteractionArea/InteractionCollisionShape:shape");
+        InteractionCollisionShape = (CollisionShape2D)nodeAndShape[0];
+        InteractionCircle = (CircleShape2D)nodeAndShape[1];
+        InteractionLabel = GetNode<Label>("InteractionLabel");
+        // Todo: bind to particle emitter
+    }
+
+    private void DisableChildren()
+    {
+        TaskClock.Stop();
+        InteractionArea.Monitorable = false;
+        InteractionArea.Monitoring = false;
+        InteractionCollisionShape.Disabled = true;
+        InteractionEnabled = false;
+        InteractionLabel.Hide();
+        Hide();
+    }
+
     /*
-     * Bell (no desc) (no mode) -> 
+     * Bell (no desc) (no mode) ->
      * Shake out coat (modify on letter)
        Take red letter (take on letter)
        Deliver to Lord (Deliver on lord)
@@ -36,41 +75,33 @@ public partial class QuestItem : Node2D
        Take Tomato (modify on tomato)
        Throw at Painting (modify on tomato mess)
      */
-    
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        // Create the Area2D that will be used for the Interaction
+        BindChildren();
+        DisableChildren();
     }
 
     public void EnableInteraction()
     {
-        
+        EnableChildren();
     }
 
     public void DisableInteraction()
     {
-        
+        DisableChildren();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if (InteractionCircle is not null)
+        if (InteractionEnabled)
         {
             // Display a prompt in the world, also check for the interaction button press
         }
     }
 
-    /// <summary>
-    /// This needs to execute the steps that find the current quest chain in the list,
-    /// disables this item and then proceeds to the next task.
-    /// </summary>
-    public void NextTask()
-    {
-        // Need to call the NextTask on the QuestTracker
-    }
-    
     public bool Interact()
     {
         // Make sure to get the inbound quest chain reference from the HUD or wherever
@@ -98,31 +129,37 @@ public partial class QuestItem : Node2D
                 break;
         }
 
-        if (success && QuestTaskType != TaskType.Wait)
+        if (success)
         {
-            // Stop the timer and proceed to the next task, unless it was a wait
-            NextTask();
+            // Stop the timer and proceed to the next task, unless it failed
+            GetNode<QuestTracker>("%QuestTracker").NextTask(this);
         }
-        
+        else
+        {
+            GD.Print("Task Interaction Attempt Failed");
+        }
+
         return success;
     }
 
     /// <summary>
     /// Basically a simple no-op with no discernible differences
     /// </summary>
-    /// <returns></returns>
+    /// <returns>true</returns>
     public bool InteractBasic()
     {
-        return false;
+        return true;
     }
 
     /// <summary>
     /// By default, this should toggle the visibility of the parent object, but may inherit
     /// </summary>
-    /// <returns></returns>
+    /// <returns>true</returns>
     public bool InteractModify()
     {
-        return false;
+        var parent = (CanvasItem)GetParent();
+        parent.Visible = !parent.Visible;
+        return true;
     }
 
     /// <summary>
@@ -131,7 +168,23 @@ public partial class QuestItem : Node2D
     /// <returns></returns>
     public bool InteractTake()
     {
-        return false;
+        var parent = (CanvasItem)GetParent();
+        Node2D hand = GetNodeOrNull<Node2D>("%PlayerHand");
+
+        if (hand is null)
+        {
+            GD.PrintErr("We seem to have lost our PlayerHand");
+            return false;
+        }
+
+        if (hand.GetChildCount() > 0)
+        {
+            GD.Print("Something already in the hand");
+            return false;
+        }
+
+        parent.Reparent(hand);
+        return true;
     }
 
     /// <summary>
@@ -157,33 +210,21 @@ public partial class QuestItem : Node2D
         if (QuestTaskType == TaskType.Wait)
         {
             InteractWait();
-            NextTask();
         }
         else
         {
             // The Lord needs to attempt to murder you here
         }
     }
-    
+
     /// <summary>
-    /// Due to the nature of this, a wait needs to always call a simple `InteractBasic` at the end of the timer.
+    /// Due to the nature of this, a wait is just a no-op at the end of the timer.
     /// Otherwise, we would have to find some way of checking if an interaction is valid FIRST. Technically two tasks
     /// (one Deliver and one Wait, for example) does the same thing.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>true</returns>
     public bool InteractWait()
     {
-        Timer t = new Timer();
-
-        void TimeoutFunction()
-        {
-            InteractBasic();
-            t.CallDeferred("Dispose");
-        }
-
-        t.Timeout += TimeoutFunction;
-        t.Start(10);
-        
         return true;
     }
 }

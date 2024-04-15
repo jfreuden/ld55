@@ -21,9 +21,8 @@ public partial class menu : Control
 
     public void Settings()
     {
-        
     }
-    
+
     public void QuitGame()
     {
         GetTree().Quit();
