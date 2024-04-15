@@ -83,6 +83,8 @@ public partial class QuestTracker : Node2D
             }
         }
 
+        GetNode<Bell>("%Bell").Ring();
+
         DisabledStarts.Add(pickedStart);
         ActiveTasks.Add(pickedStart);
         bool success = pickedStart.Interact();

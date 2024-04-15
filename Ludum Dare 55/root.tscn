@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=15 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -7,6 +7,71 @@
 [ext_resource type="Texture2D" uid="uid://c8kpcciqdx0ln" path="res://assets/bell.png" id="6_iayre"]
 [ext_resource type="PackedScene" uid="uid://dioaep4bdyd8c" path="res://quest_start.tscn" id="6_sdruh"]
 [ext_resource type="Script" path="res://scripts/QuestTracker.cs" id="7_4escj"]
+[ext_resource type="Script" path="res://Bell.cs" id="7_y4v7a"]
+[ext_resource type="AudioStream" uid="uid://chetk8cgeknwh" path="res://audio/items/angry bell.mp3" id="8_0m0x8"]
+[ext_resource type="AudioStream" uid="uid://vlsa0s7miclw" path="res://audio/items/light bell.mp3" id="9_g53vt"]
+[ext_resource type="AudioStream" uid="uid://bfmxdo6xpi8m" path="res://audio/items/medium bell.mp3" id="10_jmjk3"]
+
+[sub_resource type="Animation" id="Animation_gag2d"]
+resource_name = "ring_the_bell"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2000, 0), Vector2(-2000, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.3, 1.5, 1.7, 1.9, 2.3, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.565487, 1.69821, 0.226893, -0.45204, 0.0, -0.783653, -2.05425, -1.02713, 0.0, -0.338594, 0.905826, -1.9251, 0.565487, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qsqa8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o1u8i"]
+_data = {
+"RESET": SubResource("Animation_qsqa8"),
+"ring_the_bell": SubResource("Animation_gag2d")
+}
 
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
@@ -78,10 +143,27 @@ QuestTaskType = 4
 unique_name_in_owner = true
 script = ExtResource("7_4escj")
 
-[node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
-QuestString = "Let's debug!"
-QuestTaskType = 6
-NextTaskMarker = NodePath("../../Bell/SimpleInteraction")
+[node name="QuestStart" parent="QuestTracker" instance=ExtResource("6_sdruh")]
+
+[node name="Bell" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-1000, 0)
+rotation = -1.21737
+texture = ExtResource("6_iayre")
+script = ExtResource("7_y4v7a")
+streams = [ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")]
+
+[node name="SimpleInteraction" parent="Bell" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Touch the offscreen Bell"
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bell"]
+libraries = {
+"": SubResource("AnimationLibrary_o1u8i")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bell"]
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
@@ -168,13 +250,5 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="UIOnWorld" type="CanvasLayer" parent="."]
-
-[node name="Bell" type="Sprite2D" parent="."]
-position = Vector2(1254, -215)
-texture = ExtResource("6_iayre")
-
-[node name="SimpleInteraction" parent="Bell" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Touch the offscreen Bell"
-NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
 
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
