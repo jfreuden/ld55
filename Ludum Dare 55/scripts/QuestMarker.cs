@@ -44,7 +44,7 @@ public partial class QuestMarker : Node2D
             InteractionEnabled = true;
             InteractionLabel.Show();
             Show();
-            GlobalPosition = GetNode<Node2D>("/root/Root/%Lord").GlobalPosition;
+            if (QuestTaskType == TaskType.Bell) GlobalPosition = GetNode<Node2D>("/root/Root/%Lord").GlobalPosition;
         }
         
     }

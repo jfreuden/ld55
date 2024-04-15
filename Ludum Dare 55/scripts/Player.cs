@@ -3,7 +3,7 @@ using System;
 
 public partial class Player : Godot.CharacterBody2D
 {
-    [Export] public float Speed { get; private set; } = 50;
+    [Export] public float Speed { get; private set; } = 400;
 
     [Export] public float Momentum { get; private set; } = 0.25f;
 

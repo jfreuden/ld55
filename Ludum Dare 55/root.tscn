@@ -162,7 +162,7 @@ delayHigh = 20.0
 
 [node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
 Repeatable = true
-NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/SplatBrother/ModifyTest")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1
@@ -193,15 +193,18 @@ QuestTime = 3.0
 [node name="TakeTest" parent="GreatHall/GreatHallItems/WhiteCloth" index="0" node_paths=PackedStringArray("NextTaskMarker")]
 NextTaskMarker = NodePath("../../MooseHead/PlaceCloth")
 
+[node name="SplatBrother" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(78, -832)
+
+[node name="ModifyTest" parent="GreatHall/GreatHallItems/SplatBrother" instance=ExtResource("4_d27h0")]
+QuestString = "Throw a tomato at the painting"
+QuestTaskType = 1
+
 [node name="TomatoOnPainting" type="Polygon2D" parent="GreatHall/GreatHallItems"]
 visible = false
 position = Vector2(78, -832)
 color = Color(1, 0, 0.113725, 1)
 polygon = PackedVector2Array(-21, 26, -69, 23, -70, -4, -59, -26, 15, -35, 44, -27, 42, -1, 42, 18, -7, 25)
-
-[node name="ModifyTest" parent="GreatHall/GreatHallItems/TomatoOnPainting" instance=ExtResource("4_d27h0")]
-QuestString = "Throw a tomato at the painting"
-QuestTaskType = 1
 
 [node name="Sword" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-1019, -829)
@@ -526,6 +529,7 @@ texture = ExtResource("12_bi74q")
 visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 draw_order = 2
 
+[connection signal="hidden" from="GreatHall/GreatHallItems/SplatBrother" to="GreatHall/GreatHallItems/TomatoOnPainting" method="show"]
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
 
 [editable path="GreatHall/GreatHallItems/WhiteCloth"]
