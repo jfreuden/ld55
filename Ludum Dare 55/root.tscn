@@ -72,6 +72,7 @@
 [ext_resource type="Texture2D" uid="uid://bobjssv17586h" path="res://assets/items/Polish3.png" id="45_acdrc"]
 [ext_resource type="Texture2D" uid="uid://cdff0dlv5bpch" path="res://assets/items/fur_coat.png" id="45_g0jnp"]
 [ext_resource type="Texture2D" uid="uid://drm270k3ffjh2" path="res://assets/items/Chamber_Pot.png" id="46_sewul"]
+[ext_resource type="PackedScene" uid="uid://dfhqfp3a3k2x0" path="res://lord.tscn" id="53_005yn"]
 
 [sub_resource type="Animation" id="Animation_qsqa8"]
 length = 0.001
@@ -203,9 +204,10 @@ QuestProgressBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResou
 QuestCompleteBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")]
 delayHigh = 20.0
 
-[node name="QuestStart" parent="QuestTracker" instance=ExtResource("6_sdruh")]
-y_sort_enabled = true
-Repeatable = true
+[node name="Bedtime" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+QuestString = "Get me some honey'd milk"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = 2
@@ -324,9 +326,14 @@ texture = ExtResource("22_a182i")
 
 [node name="Honeycomb" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
-position = Vector2(2653, 15)
+position = Vector2(-535, -395)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("15_7437r")
+
+[node name="Honeycomb" parent="GreatHall/GreatHallItems/Honeycomb" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Take the honey comb"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../../MilkJug/Milkjug")
 
 [node name="IvoryComb" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -348,9 +355,13 @@ texture = ExtResource("26_tmmvl")
 
 [node name="MilkJug" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
-position = Vector2(2187, -416)
+position = Vector2(-454, -399)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("17_16q1j")
+
+[node name="Milkjug" parent="GreatHall/GreatHallItems/MilkJug" instance=ExtResource("4_d27h0")]
+QuestString = "Mix into the milk jug"
+QuestTaskType = 4
 
 [node name="Parchment" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -598,6 +609,16 @@ polygon = PackedVector2Array(-147, 56, -145, 3, 140, 3, 140, 56)
 
 [node name="Lord" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-809, 0)
+
+[node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
+scale = Vector2(0.556, 0.556)
+
+[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
+scale = Vector2(1, 1)
+
+[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
@@ -702,3 +723,4 @@ draw_order = 2
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
 
 [editable path="GreatHall/GreatHallItems/WhiteCloth"]
+[editable path="Lord/Character"]
