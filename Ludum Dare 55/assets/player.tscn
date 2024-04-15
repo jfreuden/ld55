@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3kfj8bhi0wu8"]
+[gd_scene load_steps=5 format=3 uid="uid://d3kfj8bhi0wu8"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_h1ss1"]
+[ext_resource type="PackedScene" uid="uid://dnsc8cfm31p5u" path="res://assets/servant.tscn" id="2_2wm77"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt5pn"]
 radius = 40.0
@@ -19,7 +20,20 @@ Speed = 200.0
 [node name="FeetCollisionCircle" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xt5pn")
 
+[node name="Character" parent="." instance=ExtResource("2_2wm77")]
+position = Vector2(-7, -109.505)
+scale = Vector2(0.57, 0.57)
+
+[node name="PlayerHand" type="Node2D" parent="Character/Skeleton/hip/belly/shoulder front/arm front" index="0"]
+unique_name_in_owner = true
+z_index = 200
+position = Vector2(73.94, 37.913)
+rotation = -1.23714
+scale = Vector2(1.9533, 1.73373)
+skew = -0.295234
+
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 y_sort_enabled = true
 color = Color(1, 0.337255, 1, 1)
 polygon = PackedVector2Array(28, 28, -28, 27, -52, -129, 50, -128)
@@ -30,8 +44,7 @@ polygon = PackedVector2Array(28, 28, -28, 27, -52, -129, 50, -128)
 shape = SubResource("CircleShape2D_bt3iy")
 debug_color = Color(0, 0.65098, 0.0509804, 0.419608)
 
-[node name="PlayerHand" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [connection signal="area_entered" from="InteractionCircle" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="InteractionCircle" to="." method="OnAreaExited"]
+
+[editable path="Character"]

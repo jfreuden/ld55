@@ -91,6 +91,7 @@ y_sort_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_mhivb")]
 unique_name_in_owner = true
 z_index = 0
+position = Vector2(91.265, -586.235)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_smoothed = true
@@ -98,6 +99,24 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+
+[node name="Bell" type="Sprite2D" parent="Player/Camera2D"]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_iayre")
+script = ExtResource("7_y4v7a")
+streams = [ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")]
+
+[node name="SimpleInteraction" parent="Player/Camera2D/Bell" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Touch the offscreen Bell"
+NextTaskMarker = NodePath("../../../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera2D/Bell"]
+libraries = {
+"": SubResource("AnimationLibrary_o1u8i")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Camera2D/Bell"]
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1
@@ -155,27 +174,8 @@ QuestTaskType = 4
 unique_name_in_owner = true
 script = ExtResource("7_4escj")
 
-[node name="QuestStart" parent="QuestTracker" instance=ExtResource("6_sdruh")]
-
-[node name="Bell" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-1000, 0)
-rotation = -1.21737
-texture = ExtResource("6_iayre")
-script = ExtResource("7_y4v7a")
-streams = [ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")]
-
-[node name="SimpleInteraction" parent="Bell" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Touch the offscreen Bell"
-NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bell"]
-libraries = {
-"": SubResource("AnimationLibrary_o1u8i")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bell"]
+[node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/WhiteCloth/TakeTest")
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
