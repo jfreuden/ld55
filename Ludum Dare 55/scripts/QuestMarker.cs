@@ -33,7 +33,7 @@ public partial class QuestMarker : Node2D
         // TODO: Some of this should be conditional on the Task type
         TaskClock.WaitTime = QuestTime;
         InteractionCircle.Radius = InteractionRadius;
-
+        GlobalScale = new Vector2(1.0f, 1.0f);
         TaskClock.Start();
 
         if (QuestTaskType != TaskType.Wait)

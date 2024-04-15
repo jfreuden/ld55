@@ -421,7 +421,8 @@ scale = Vector2(0.104174, 0.104174)
 texture = ExtResource("45_g0jnp")
 
 [node name="RoyalTable" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(-694, 348)
+position = Vector2(-357, 28)
+scale = Vector2(2.35529, 2.35529)
 metadata/_edit_group_ = true
 
 [node name="RoyalTable" type="Sprite2D" parent="GreatHall/GreatHallItems/RoyalTable"]
@@ -433,7 +434,8 @@ texture = ExtResource("18_srgq5")
 polygon = PackedVector2Array(-147, 56, -145, 3, 140, 3, 140, 56)
 
 [node name="BeerBarrel" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(-463, 343)
+position = Vector2(1031, -354)
+scale = Vector2(2.37125, 2.37125)
 metadata/_edit_group_ = true
 
 [node name="BeerBarrel" type="Sprite2D" parent="GreatHall/GreatHallItems/BeerBarrel"]
@@ -527,6 +529,19 @@ polygon = PackedVector2Array(-18, 16, 20, 16, 20, 7, 2, 7, 2, -130, 10, -130, 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreatHall/GreatHallItems/CoatStand"]
 shape = SubResource("CircleShape2D_meh4j")
+
+[node name="RoyalTable2" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(703, 438)
+scale = Vector2(2.35529, 2.35529)
+metadata/_edit_group_ = true
+
+[node name="RoyalTable" type="Sprite2D" parent="GreatHall/GreatHallItems/RoyalTable2"]
+texture_filter = 4
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("18_srgq5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreatHall/GreatHallItems/RoyalTable2"]
+polygon = PackedVector2Array(-147, 56, -145, 3, 140, 3, 140, 56)
 
 [node name="Lord" type="Node2D" parent="."]
 unique_name_in_owner = true
