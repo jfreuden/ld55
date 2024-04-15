@@ -93,15 +93,6 @@ public partial class QuestMarker : Node2D
         DisableChildren();
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-        if (InteractionEnabled)
-        {
-            // Display a prompt in the world, also check for the interaction button press
-        }
-    }
-
     public bool Interact()
     {
         // Make sure to get the inbound quest chain reference from the HUD or wherever
@@ -165,7 +156,7 @@ public partial class QuestMarker : Node2D
     /// <summary>
     /// Takes the Parent and puts it into the PlayerHand
     /// </summary>
-    /// <returns></returns>
+    /// <returns>true if we successfully picked up something, false otherwise</returns>
     public bool InteractTake()
     {
         var parent = (CanvasItem)GetParent();
@@ -184,16 +175,42 @@ public partial class QuestMarker : Node2D
         }
 
         parent.Reparent(hand);
+        parent.Show();
         return true;
     }
 
     /// <summary>
     /// Takes the item from the PlayerHand and puts it as a sibling of this "QuestItem" 
     /// </summary>
-    /// <returns></returns>
+    /// <returns>true if we successfully placed something, false otherwise</returns>
     public bool InteractPlace(bool visible = true)
     {
-        return false;
+        var parent = (CanvasItem)GetParent();
+        Node2D hand = GetNodeOrNull<Node2D>("%PlayerHand");
+        
+        if (hand is null)
+        {
+            GD.PrintErr("We seem to have lost our PlayerHand");
+            return false;
+        }
+
+        if (hand.GetChildCount() <= 0)
+        {
+            GD.Print("Nothing in our hand");
+            return false;
+        }
+
+        if (hand.GetChildCount() > 1)
+        {
+            GD.PrintErr("We have too many things in our hand. How did this happen?");
+            return false;
+        }
+
+        CanvasItem child = (CanvasItem)hand.GetChild(0);
+        child.Reparent(parent);
+        child.Visible = visible;
+        
+        return true;
     }
 
     /// <summary>
@@ -214,6 +231,7 @@ public partial class QuestMarker : Node2D
         else
         {
             // The Lord needs to attempt to murder you here
+            GD.PrintErr("Murder Attempt not yet implemented");
         }
     }
 

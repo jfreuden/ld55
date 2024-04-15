@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=8 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://great_hall.tscn" id="2_8pfmp"]
 [ext_resource type="PackedScene" uid="uid://bpmyoo2dlicjq" path="res://quest_marker.tscn" id="4_d27h0"]
+[ext_resource type="Script" path="res://TaskList.cs" id="5_31w6c"]
 [ext_resource type="Texture2D" uid="uid://c8kpcciqdx0ln" path="res://bell.png" id="6_iayre"]
 [ext_resource type="PackedScene" uid="uid://dioaep4bdyd8c" path="res://quest_start.tscn" id="6_sdruh"]
 [ext_resource type="Script" path="res://QuestTracker.cs" id="7_4escj"]
@@ -68,10 +69,10 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Ring Bell"
 
-[node name="PauseMenu" type="Control" parent="UIOnCamera"]
+[node name="PauseMenu" type="Control" parent="UIOnCamera/Control"]
 process_mode = 2
 top_level = true
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -80,7 +81,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UIOnCamera/PauseMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UIOnCamera/Control/PauseMenu"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -95,17 +96,35 @@ offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Continue" type="Button" parent="UIOnCamera/PauseMenu/VBoxContainer"]
+[node name="Continue" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
 layout_mode = 2
 text = "Return to Game"
 
-[node name="Menu" type="Button" parent="UIOnCamera/PauseMenu/VBoxContainer"]
+[node name="Menu" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
 layout_mode = 2
 text = "Quit to Menu"
 
-[node name="Quit" type="Button" parent="UIOnCamera/PauseMenu/VBoxContainer"]
+[node name="Quit" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
 layout_mode = 2
 text = "Quit to Desktop"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIOnCamera/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+horizontal_scroll_mode = 0
+
+[node name="TaskList" type="VBoxContainer" parent="UIOnCamera/Control/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("5_31w6c")
+
+[node name="Label" type="Label" parent="UIOnCamera/Control/ScrollContainer/TaskList"]
+layout_mode = 2
+horizontal_alignment = 2
 
 [node name="HUD" type="Control" parent="UIOnCamera"]
 layout_mode = 3

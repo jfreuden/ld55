@@ -10,18 +10,31 @@ public partial class QuestTracker : Node2D
     /// <summary>
     /// These are the tasks currently in progress
     /// </summary>
-    private Godot.Collections.Array<QuestMarker> ActiveTasks = new Array<QuestMarker>();
+    public Godot.Collections.Array<QuestMarker> ActiveTasks = new Array<QuestMarker>();
 
     /// <summary>
     /// These quest chains have begun, and are repeatable
     /// </summary>
     private Godot.Collections.Array<QuestMarker> DisabledStarts = new Array<QuestMarker>();
 
+    [Export] private float delayLow { get; set; } = 15.0f;
+    [Export] private float delayHigh { get; set; } = 60.0f;
+    
+    private Timer bellTimer = new();
+    
     // All the QuestItem Children on this QuestTracker are all Bell Start quests
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        bellTimer.Timeout += RingBell;
+        bellTimer.OneShot = true;
+        
+    }
+
+    public void ResetBellTimer()
+    {
+        //bellTimer.Start(GD.RandRange(delayLow, delayHigh));
     }
     
     public override void _ExitTree()
@@ -32,14 +45,10 @@ public partial class QuestTracker : Node2D
             node.Free();
         }
         DisabledStarts.Clear();
+        
         base._ExitTree();
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-        QueueRedraw();
-    }
 
     /// <summary>
     /// Calling this should basically pick from the bucket
@@ -96,5 +105,6 @@ public partial class QuestTracker : Node2D
 
         ActiveTasks.Add(nextTask);
         nextTask.EnableInteraction();
+        ResetBellTimer();
     }
 }
