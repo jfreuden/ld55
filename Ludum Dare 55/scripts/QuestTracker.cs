@@ -30,7 +30,7 @@ public partial class QuestTracker : Node2D
         bellTimer.Timeout += RingBell;
         bellTimer.OneShot = true;
         AddChild(bellTimer);
-        ResetBellTimer();
+        bellTimer.Start(4.5);
         
     }
 
