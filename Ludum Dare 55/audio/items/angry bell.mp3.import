@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chetk8cgeknwh"
+path="res://.godot/imported/angry bell.mp3-6a1df6bc9199aefaaa1d17ec1ec14422.mp3str"
+
+[deps]
+
+source_file="res://audio/items/angry bell.mp3"
+dest_files=["res://.godot/imported/angry bell.mp3-6a1df6bc9199aefaaa1d17ec1ec14422.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

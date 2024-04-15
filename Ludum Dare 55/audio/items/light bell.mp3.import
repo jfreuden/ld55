@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vlsa0s7miclw"
+path="res://.godot/imported/light bell.mp3-90e341775517ba8991c2be34dff6bcd0.mp3str"
+
+[deps]
+
+source_file="res://audio/items/light bell.mp3"
+dest_files=["res://.godot/imported/light bell.mp3-90e341775517ba8991c2be34dff6bcd0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

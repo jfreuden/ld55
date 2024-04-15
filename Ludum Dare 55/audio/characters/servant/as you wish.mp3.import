@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bme0pe8kb8ycb"
+path="res://.godot/imported/as you wish.mp3-29e936e855f1aad1983f5cb0cbdd2ce5.mp3str"
+
+[deps]
+
+source_file="res://audio/characters/servant/as you wish.mp3"
+dest_files=["res://.godot/imported/as you wish.mp3-29e936e855f1aad1983f5cb0cbdd2ce5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

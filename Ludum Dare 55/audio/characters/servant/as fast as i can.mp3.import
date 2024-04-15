@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtkr74y4ehek0"
+path="res://.godot/imported/as fast as i can.mp3-0f2e82a0147297407521723f7716dd6b.mp3str"
+
+[deps]
+
+source_file="res://audio/characters/servant/as fast as i can.mp3"
+dest_files=["res://.godot/imported/as fast as i can.mp3-0f2e82a0147297407521723f7716dd6b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
