@@ -29,12 +29,14 @@ public partial class QuestTracker : Node2D
     {
         bellTimer.Timeout += RingBell;
         bellTimer.OneShot = true;
+        AddChild(bellTimer);
+        ResetBellTimer();
         
     }
 
     public void ResetBellTimer()
     {
-        //bellTimer.Start(GD.RandRange(delayLow, delayHigh));
+        bellTimer.Start(GD.RandRange(delayLow, delayHigh));
     }
     
     public override void _ExitTree()
@@ -59,7 +61,6 @@ public partial class QuestTracker : Node2D
     /// </summary>
     public void RingBell()
     {
-        // TODO: Make sure that the children actually are QuestStarts
         QuestStart? pickedStart = null;
 
         int attempts = 0;
@@ -70,17 +71,15 @@ public partial class QuestTracker : Node2D
             var childCount = GetChildCount();
             var children = GetChildren();
             int selection = (int)(GD.Randi() % childCount);
-            pickedStart = (QuestStart)children[selection];
+            pickedStart = children[selection] as QuestStart;
 
             if (attempts > 100)
             {
                 GD.Print("No Valid Bell Tasks");
                 return;
             }
-            else
-            {
-                attempts++;
-            }
+
+            attempts++;
         }
 
         GetNode<Bell>("%Bell").Ring();
@@ -89,6 +88,7 @@ public partial class QuestTracker : Node2D
         ActiveTasks.Add(pickedStart);
         bool success = pickedStart.Interact();
         if (success) GD.Print("Says it worked");
+        ResetBellTimer();
 
     }
 
@@ -104,10 +104,36 @@ public partial class QuestTracker : Node2D
             RemoveChild(finishedTask);
         }
 
-        if (nextTask is null) return;
+        // Warning: Cursed.
+        // When we hit the end of a quest chain, let's check our disabled starts to see if it's a repeatable chain, that also leads to this one.
+        if (nextTask is null)
+        {
+            foreach (var start in DisabledStarts)
+            {
+                var ptr = start;
+
+                while (ptr is not null)
+                {
+                    // If we reach this, then this `start` was the origin of this current end task
+                    if (ptr == finishedTask)
+                    {
+                        // If it's repeatable, then move this start out of `DisabledStarts` and reclaim it as a child
+                        if (start is QuestStart qs && qs.Repeatable)
+                        {
+                            DisabledStarts.Remove(start);
+                            start.Reparent(this);
+                        } 
+                        return;
+                    }
+                    ptr = ptr.NextTaskMarker;
+                }
+            }
+            
+            return;
+        }
 
         ActiveTasks.Add(nextTask);
         nextTask.EnableInteraction();
-        ResetBellTimer();
+
     }
 }

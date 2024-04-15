@@ -10,9 +10,6 @@ public partial class QuestStart : QuestMarker
     public override void _Ready()
     {
         QuestTaskType = TaskType.Bell;
-        
-        if (Repeatable) GD.PrintErr("Repeatable Tasks are not yet Implemented");
-        
         base._Ready();
     }
 }

@@ -145,9 +145,8 @@ texture = ExtResource("6_iayre")
 script = ExtResource("7_y4v7a")
 streams = [ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")]
 
-[node name="SimpleInteraction" parent="Player/Camera2D/Bell" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+[node name="SimpleInteraction" parent="Player/Camera2D/Bell" instance=ExtResource("4_d27h0")]
 QuestString = "Touch the offscreen Bell"
-NextTaskMarker = NodePath("../../../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera2D/Bell"]
 libraries = {
@@ -155,6 +154,15 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Camera2D/Bell"]
+
+[node name="QuestTracker" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_4escj")
+delayHigh = 20.0
+
+[node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+Repeatable = true
+NextTaskMarker = NodePath("../../Player/Camera2D/Bell/SimpleInteraction")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1
@@ -419,13 +427,6 @@ texture = ExtResource("28_i070w")
 position = Vector2(3082, -121)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("45_g0jnp")
-
-[node name="QuestTracker" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("7_4escj")
-
-[node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
-NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/WhiteCloth/TakeTest")
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 

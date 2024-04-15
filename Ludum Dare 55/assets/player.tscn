@@ -24,6 +24,15 @@ shape = SubResource("CircleShape2D_xt5pn")
 position = Vector2(-7, -109.505)
 scale = Vector2(0.57, 0.57)
 
+[node name="arm back" parent="Character/Skeleton/hip/belly/shoulder back" index="0"]
+scale = Vector2(1, 1)
+
+[node name="shoulder front" parent="Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
+
+[node name="arm front" parent="Character/Skeleton/hip/belly/shoulder front" index="0"]
+scale = Vector2(0.999998, 0.999998)
+
 [node name="PlayerHand" type="Node2D" parent="Character/Skeleton/hip/belly/shoulder front/arm front" index="0"]
 unique_name_in_owner = true
 z_index = 200
