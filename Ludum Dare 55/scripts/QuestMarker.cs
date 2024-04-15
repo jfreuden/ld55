@@ -86,8 +86,17 @@ public partial class QuestMarker : Node2D
     {
         BindChildren();
         DisableChildren();
+        HackVisibility();
     }
 
+    /// <summary>
+    /// This is a hack around the fact that our own node won't be visible if the parent isn't
+    /// </summary>
+    public void HackVisibility()
+    {
+        // TODO: Hack around the visibility thing
+    }
+    
     public void EnableInteraction()
     {
         EnableChildren();
@@ -165,7 +174,7 @@ public partial class QuestMarker : Node2D
     public bool InteractTake()
     {
         var parent = (Node2D)GetParent();
-        Node2D hand = GetNodeOrNull<Node2D>("%Player/%PlayerHand");
+        Node2D hand = GetNodeOrNull<Node2D>("/root/Root/%Player/%PlayerHand");
 
         if (hand is null)
         {
@@ -192,7 +201,7 @@ public partial class QuestMarker : Node2D
     public bool InteractPlace(bool visible = true)
     {
         var parent = (CanvasItem)GetParent();
-        Node2D hand = GetNodeOrNull<Node2D>("%Player/%PlayerHand");
+        Node2D hand = GetNodeOrNull<Node2D>("/root/Root/%Player/%PlayerHand");
         
         if (hand is null)
         {
