@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=60 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -48,7 +48,11 @@
 [ext_resource type="Texture2D" uid="uid://cdcrh4ed3k5if" path="res://assets/items/Sconce.png" id="34_ua05v"]
 [ext_resource type="Texture2D" uid="uid://dhccgafds2vnk" path="res://assets/items/Signet Ring.png" id="35_hmpox"]
 [ext_resource type="Texture2D" uid="uid://djs6mjspqll03" path="res://assets/items/Skull.png" id="36_ws2x4"]
+[ext_resource type="Texture2D" uid="uid://b8b5s3ipfm75t" path="res://assets/items/Polish1.png" id="43_3fgov"]
+[ext_resource type="Texture2D" uid="uid://th4gvbs1cus8" path="res://assets/items/Polish2.png" id="44_348rt"]
+[ext_resource type="Texture2D" uid="uid://bobjssv17586h" path="res://assets/items/Polish3.png" id="45_acdrc"]
 [ext_resource type="Texture2D" uid="uid://cdff0dlv5bpch" path="res://assets/items/fur_coat.png" id="45_g0jnp"]
+[ext_resource type="Texture2D" uid="uid://drm270k3ffjh2" path="res://assets/items/Chamber_Pot.png" id="46_sewul"]
 
 [sub_resource type="Animation" id="Animation_qsqa8"]
 length = 0.001
@@ -237,188 +241,208 @@ position = Vector2(696, -552)
 [node name="AppleCore" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2018, -60)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("29_vulab")
 
 [node name="Apple" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2134, -60)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("30_is227")
 
 [node name="BeerKeg" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1887, 73)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("32_hg6xr")
 
 [node name="BoardGame" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2050, -214)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("14_bc0mh")
 
 [node name="Bowl" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2371, -109)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("10_xvdqk")
 
 [node name="Cheese" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
-position = Vector2(1490, 148)
-scale = Vector2(0.355, 0.355)
+position = Vector2(2336, 176)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("11_53qhx")
 
 [node name="Fish" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2142, 83)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("12_wrlxa")
 
 [node name="Fork" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2755, -195)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("13_jnaj6")
 
 [node name="Grape" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1799, 284)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("14_d4jrx")
 
 [node name="HandMirror" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2765, 354)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("22_a182i")
 
 [node name="Honeycomb" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2653, 15)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("15_7437r")
 
 [node name="IvoryComb" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1755, -61)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("24_vanv3")
 
 [node name="Knife" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2690, -200)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("16_kf1vi")
 
 [node name="LoveLetter" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
-position = Vector2(3316, -144)
-scale = Vector2(0.355, 0.355)
+position = Vector2(2985, -121)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("26_tmmvl")
 
 [node name="MilkJug" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2187, -416)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("17_16q1j")
 
 [node name="Parchment" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(3003, 295)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("28_37cyh")
 
 [node name="PenAndInk" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1731, 118)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("29_xusqm")
 
 [node name="RulingForDunces" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1924, 236)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("31_5qmv5")
 
 [node name="Salad" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1736, -187)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("19_jtsx1")
 
 [node name="Sausage" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2577, 235)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("20_j5rbb")
 
 [node name="SignetRing" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2377, -278)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("35_hmpox")
 
 [node name="Skull" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2251, -160)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("36_ws2x4")
 
 [node name="Soup" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2481, -161)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("21_qdsug")
 
 [node name="Spoon" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2634, -202)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("22_v6waf")
 
 [node name="Strawberries" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2210, -323)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("23_jn3ge")
 
 [node name="Tart" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2489, -27)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("24_c0rly")
 
 [node name="Teaset" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2613, -478)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("25_ovsgh")
 
 [node name="TomatoSplat" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1842, -378)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("26_sek7u")
 
 [node name="Tomato" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2002, -363)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("27_nscma")
 
 [node name="WineGobblet" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(2818, 94)
-scale = Vector2(0.355, 0.355)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("28_i070w")
 
 [node name="FurCoat" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 z_index = 1
 position = Vector2(78, 578)
-scale = Vector2(0.104174, 0.104174)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("45_g0jnp")
+
+[node name="Polish1" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(3365.04, -262.272)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("43_3fgov")
+
+[node name="Polish2" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(3365.04, -262.272)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("44_348rt")
+
+[node name="Polish3" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(3365.04, -262.272)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("45_acdrc")
+
+[node name="ChamberPot" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(2162, 302)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("46_sewul")
 
 [node name="RoyalTable" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-357, 28)
@@ -448,7 +472,7 @@ scale = Vector2(0.355, 0.355)
 polygon = PackedVector2Array(-73.2394, 205.634, -73.2394, 28.169, 61.9718, 30.9859, 61.9718, 205.634)
 
 [node name="Sconce" type="Node2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(2315, 387)
+position = Vector2(2409, 730)
 metadata/_edit_group_ = true
 
 [node name="Sconce" type="Sprite2D" parent="GreatHall/GreatHallItems/Sconce"]
@@ -466,6 +490,7 @@ visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 draw_order = 2
 
 [node name="Candle" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(180, 551)
 metadata/_edit_group_ = true
 
 [node name="Candle" type="Sprite2D" parent="GreatHall/GreatHallItems/Candle"]
@@ -484,6 +509,7 @@ visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 draw_order = 2
 
 [node name="Candelabra" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(30, 345)
 metadata/_edit_group_ = true
 
 [node name="Candelabra" type="Sprite2D" parent="GreatHall/GreatHallItems/Candelabra"]
