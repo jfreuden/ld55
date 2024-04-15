@@ -86,13 +86,13 @@ Game Design Lead: kraftbart
 Game Design: rainybyte
 Programming Lead: rainybyte
 Level Design: kallico
+Level Design: rainybyte
 Level Design: kraftbart
 Art: kraftbart
 Art: kallico
 Animation: kraftbart
-Music: rainybyte
 SFX: kraftbart
-SFX: rainybyte"
+VFX: rainybyte"
 
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Play" to="." method="PlayGame"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Quit" to="." method="QuitGame"]
