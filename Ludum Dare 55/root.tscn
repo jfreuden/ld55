@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=55 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -122,6 +122,20 @@ flatness = 0.011
 initial_velocity_max = 100.0
 gravity = Vector3(0, -100, 0)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b1vjl"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+angle_min = -10.0
+angle_max = 10.0
+direction = Vector3(0, -1, 0)
+spread = 36.91
+flatness = 0.011
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, -100, 0)
+scale_min = 0.2
+scale_max = 0.4
+
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
 
@@ -228,12 +242,6 @@ position = Vector2(2134, -60)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("30_is227")
 
-[node name="BeerBarrel" type="Sprite2D" parent="GreatHall/GreatHallItems"]
-texture_filter = 4
-position = Vector2(2508, 388)
-scale = Vector2(0.355, 0.355)
-texture = ExtResource("31_d07d0")
-
 [node name="BeerKeg" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1887, 73)
@@ -251,18 +259,6 @@ texture_filter = 4
 position = Vector2(2371, -109)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("10_xvdqk")
-
-[node name="Candelabra" type="Sprite2D" parent="GreatHall/GreatHallItems"]
-texture_filter = 4
-position = Vector2(1936, 458)
-scale = Vector2(0.355, 0.355)
-texture = ExtResource("16_u5eay")
-
-[node name="Candle" type="Sprite2D" parent="GreatHall/GreatHallItems"]
-texture_filter = 4
-position = Vector2(2051, 284)
-scale = Vector2(0.355, 0.355)
-texture = ExtResource("17_0eewh")
 
 [node name="Cheese" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -336,12 +332,6 @@ position = Vector2(1731, 118)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("29_xusqm")
 
-[node name="RoyalTable" type="Sprite2D" parent="GreatHall/GreatHallItems"]
-texture_filter = 4
-position = Vector2(2286, 356)
-scale = Vector2(0.355, 0.355)
-texture = ExtResource("18_srgq5")
-
 [node name="RulingForDunces" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(1924, 236)
@@ -359,12 +349,6 @@ texture_filter = 4
 position = Vector2(2577, 235)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("20_j5rbb")
-
-[node name="Sconce" type="Sprite2D" parent="GreatHall/GreatHallItems"]
-texture_filter = 4
-position = Vector2(2321, 83)
-scale = Vector2(0.355, 0.355)
-texture = ExtResource("34_ua05v")
 
 [node name="SignetRing" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -430,6 +414,103 @@ texture = ExtResource("28_i070w")
 position = Vector2(3082, -121)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("45_g0jnp")
+
+[node name="RoyalTable" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-1875, 31)
+metadata/_edit_group_ = true
+
+[node name="RoyalTable" type="Sprite2D" parent="GreatHall/GreatHallItems/RoyalTable"]
+texture_filter = 4
+position = Vector2(2286, 356)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("18_srgq5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreatHall/GreatHallItems/RoyalTable"]
+polygon = PackedVector2Array(2138, 413, 2436, 413, 2435, 359, 2136, 359)
+
+[node name="BeerBarrel" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
+metadata/_edit_group_ = true
+
+[node name="BeerBarrel" type="Sprite2D" parent="GreatHall/GreatHallItems/BeerBarrel"]
+texture_filter = 4
+position = Vector2(2508, 388)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("31_d07d0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreatHall/GreatHallItems/BeerBarrel"]
+polygon = PackedVector2Array(2478, 461, 2478, 386, 2532, 386, 2533, 461)
+
+[node name="Sconce" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(18, 70)
+metadata/_edit_group_ = true
+
+[node name="Sconce" type="Sprite2D" parent="GreatHall/GreatHallItems/Sconce"]
+texture_filter = 4
+position = Vector2(2321, 83)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("34_ua05v")
+
+[node name="CandleFlame" type="GPUParticles2D" parent="GreatHall/GreatHallItems/Sconce"]
+texture_filter = 4
+position = Vector2(2333, -20)
+process_material = SubResource("ParticleProcessMaterial_1gfnb")
+texture = ExtResource("12_bi74q")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+draw_order = 2
+
+[node name="Candle" type="Node2D" parent="GreatHall/GreatHallItems"]
+metadata/_edit_group_ = true
+
+[node name="Candle" type="Sprite2D" parent="GreatHall/GreatHallItems/Candle"]
+texture_filter = 4
+position = Vector2(2051, 284)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("17_0eewh")
+
+[node name="CandleFlame" type="GPUParticles2D" parent="GreatHall/GreatHallItems/Candle"]
+texture_filter = 4
+position = Vector2(2044, 237)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_b1vjl")
+texture = ExtResource("12_bi74q")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+draw_order = 2
+
+[node name="Candelabra" type="Node2D" parent="GreatHall/GreatHallItems"]
+metadata/_edit_group_ = true
+
+[node name="Candelabra" type="Sprite2D" parent="GreatHall/GreatHallItems/Candelabra"]
+texture_filter = 4
+position = Vector2(1936, 458)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("16_u5eay")
+
+[node name="CandleFlame" type="GPUParticles2D" parent="GreatHall/GreatHallItems/Candelabra"]
+texture_filter = 4
+position = Vector2(1878, 349)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_b1vjl")
+texture = ExtResource("12_bi74q")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+draw_order = 2
+
+[node name="CandleFlame2" type="GPUParticles2D" parent="GreatHall/GreatHallItems/Candelabra"]
+texture_filter = 4
+position = Vector2(1933, 341)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_b1vjl")
+texture = ExtResource("12_bi74q")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+draw_order = 2
+
+[node name="CandleFlame3" type="GPUParticles2D" parent="GreatHall/GreatHallItems/Candelabra"]
+texture_filter = 4
+position = Vector2(1992, 345)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_b1vjl")
+texture = ExtResource("12_bi74q")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+draw_order = 2
 
 [node name="Lord" type="Node2D" parent="."]
 unique_name_in_owner = true
