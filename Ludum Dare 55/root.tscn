@@ -54,6 +54,7 @@ script = ExtResource("6_ki38s")
 
 [node name="PauseMenu" type="Control" parent="UIOnCamera"]
 process_mode = 2
+visible = false
 top_level = true
 layout_mode = 3
 anchors_preset = 8

@@ -43,6 +43,16 @@ public partial class QuestItem : Node2D
         // Create the Area2D that will be used for the Interaction
     }
 
+    public void EnableInteraction()
+    {
+        
+    }
+
+    public void DisableInteraction()
+    {
+        
+    }
+
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
