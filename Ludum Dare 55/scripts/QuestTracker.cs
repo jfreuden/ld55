@@ -21,6 +21,8 @@ public partial class QuestTracker : Node2D
     [Export] private float delayHigh { get; set; } = 60.0f;
     
     private Timer bellTimer = new();
+
+    private int CompletedTasks { get; set; } = 0;
     
     // All the QuestItem Children on this QuestTracker are all Bell Start quests
 
@@ -93,6 +95,7 @@ public partial class QuestTracker : Node2D
 
     public void NextTask(QuestMarker finishedTask)
     {
+        CompletedTasks++;
         var nextTask = finishedTask.NextTaskMarker;
 
         finishedTask.DisableInteraction();
