@@ -10,26 +10,88 @@ radius = 40.0
 radius = 200.0
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
 y_sort_enabled = true
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_h1ss1")
 
 [node name="FeetCollisionCircle" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 shape = SubResource("CircleShape2D_xt5pn")
 
 [node name="Character" parent="." instance=ExtResource("2_2wm77")]
+y_sort_enabled = true
 position = Vector2(-7, -109.505)
 scale = Vector2(0.57, 0.57)
+
+[node name="Polygon" parent="Character" index="0"]
+y_sort_enabled = true
+
+[node name="Polygon head" parent="Character/Polygon" index="0"]
+y_sort_enabled = true
+
+[node name="Polygon chest" parent="Character/Polygon" index="1"]
+y_sort_enabled = true
+
+[node name="Polygon arm front" parent="Character/Polygon" index="2"]
+y_sort_enabled = true
+
+[node name="Polygon arm back" parent="Character/Polygon" index="3"]
+y_sort_enabled = true
+
+[node name="Polygon leg front" parent="Character/Polygon" index="4"]
+y_sort_enabled = true
+
+[node name="Polygon leg back" parent="Character/Polygon" index="5"]
+y_sort_enabled = true
+
+[node name="Skeleton" parent="Character" index="1"]
+y_sort_enabled = true
+
+[node name="hip" parent="Character/Skeleton" index="0"]
+y_sort_enabled = true
+
+[node name="belly" parent="Character/Skeleton/hip" index="0"]
+y_sort_enabled = true
+
+[node name="head" parent="Character/Skeleton/hip/belly" index="0"]
+y_sort_enabled = true
+
+[node name="shoulder back" parent="Character/Skeleton/hip/belly" index="1"]
+y_sort_enabled = true
+
+[node name="arm back" parent="Character/Skeleton/hip/belly/shoulder back" index="0"]
+y_sort_enabled = true
+scale = Vector2(1, 1)
+
+[node name="shoulder front" parent="Character/Skeleton/hip/belly" index="2"]
+y_sort_enabled = true
+scale = Vector2(0.999998, 0.999998)
+
+[node name="arm front" parent="Character/Skeleton/hip/belly/shoulder front" index="0"]
+y_sort_enabled = true
+scale = Vector2(0.999998, 0.999998)
 
 [node name="PlayerHand" type="Node2D" parent="Character/Skeleton/hip/belly/shoulder front/arm front" index="0"]
 unique_name_in_owner = true
 z_index = 200
+y_sort_enabled = true
 position = Vector2(73.94, 37.913)
 rotation = -1.23714
 scale = Vector2(1.9533, 1.73373)
 skew = -0.295234
+
+[node name="leg back" parent="Character/Skeleton/hip" index="1"]
+y_sort_enabled = true
+
+[node name="knee back" parent="Character/Skeleton/hip/leg back" index="0"]
+y_sort_enabled = true
+
+[node name="leg front" parent="Character/Skeleton/hip" index="2"]
+y_sort_enabled = true
+
+[node name="knee front" parent="Character/Skeleton/hip/leg front" index="0"]
+y_sort_enabled = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false

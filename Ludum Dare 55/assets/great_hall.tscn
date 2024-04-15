@@ -7,6 +7,7 @@
 [node name="GreatHall" type="Node2D"]
 
 [node name="LevelStaticBody" type="StaticBody2D" parent="."]
+z_index = -1000
 
 [node name="InternalWalls" type="Sprite2D" parent="LevelStaticBody"]
 visible = false
