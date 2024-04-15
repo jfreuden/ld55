@@ -17,13 +17,18 @@ public partial class QuestTracker : Node2D
     /// </summary>
     private Godot.Collections.Array<QuestMarker> DisabledStarts = new Array<QuestMarker>();
 
+
+    [Export] public Godot.Collections.Array<AudioStreamMP3> QuestAcceptBarks = new();
+    [Export] public Godot.Collections.Array<AudioStreamMP3> QuestProgressBarks = new();
+    [Export] public Godot.Collections.Array<AudioStreamMP3> QuestCompleteBarks = new();
+
     [Export] private float delayLow { get; set; } = 15.0f;
     [Export] private float delayHigh { get; set; } = 60.0f;
-    
+
     private Timer bellTimer = new();
 
     private int CompletedTasks { get; set; } = 0;
-    
+
     // All the QuestItem Children on this QuestTracker are all Bell Start quests
 
     // Called when the node enters the scene tree for the first time.
@@ -33,14 +38,13 @@ public partial class QuestTracker : Node2D
         bellTimer.OneShot = true;
         AddChild(bellTimer);
         bellTimer.Start(4.5);
-        
     }
 
     public void ResetBellTimer()
     {
         bellTimer.Start(GD.RandRange(delayLow, delayHigh));
     }
-    
+
     public override void _ExitTree()
     {
         bellTimer.Free();
@@ -90,7 +94,6 @@ public partial class QuestTracker : Node2D
         ActiveTasks.Add(pickedStart);
         pickedStart.EnableInteraction();
         ResetBellTimer();
-
     }
 
     public void NextTask(QuestMarker finishedTask)
@@ -110,6 +113,11 @@ public partial class QuestTracker : Node2D
         // When we hit the end of a quest chain, let's check our disabled starts to see if it's a repeatable chain, that also leads to this one.
         if (nextTask is null)
         {
+            var audioStreamPlayer2D = GetNode<AudioStreamPlayer2D>("/root/Root/BarkPlayer");
+            audioStreamPlayer2D.Stop();
+            audioStreamPlayer2D.Stream = QuestCompleteBarks.PickRandom();
+            audioStreamPlayer2D.Play();
+
             foreach (var start in DisabledStarts)
             {
                 var ptr = start;
@@ -124,18 +132,36 @@ public partial class QuestTracker : Node2D
                         {
                             DisabledStarts.Remove(start);
                             start.Reparent(this);
-                        } 
+                        }
+
                         return;
                     }
+
                     ptr = ptr.NextTaskMarker;
                 }
             }
-            
+
             return;
+        }
+        else
+        {
+            if (finishedTask.QuestTaskType == QuestMarker.TaskType.Bell)
+            {
+                var audioStreamPlayer2D = GetNode<AudioStreamPlayer2D>("/root/Root/BarkPlayer");
+                audioStreamPlayer2D.Stop();
+                audioStreamPlayer2D.Stream = QuestAcceptBarks.PickRandom();
+                audioStreamPlayer2D.Play();
+            }
+            else
+            {
+                var audioStreamPlayer2D = GetNode<AudioStreamPlayer2D>("/root/Root/BarkPlayer");
+                audioStreamPlayer2D.Stop();
+                audioStreamPlayer2D.Stream = QuestProgressBarks.PickRandom();
+                audioStreamPlayer2D.Play();
+            }
         }
 
         ActiveTasks.Add(nextTask);
         nextTask.EnableInteraction();
-
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=75 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -11,31 +11,50 @@
 [ext_resource type="AudioStream" uid="uid://chetk8cgeknwh" path="res://audio/items/angry bell.mp3" id="8_0m0x8"]
 [ext_resource type="PackedScene" uid="uid://cofxny2pw65u0" path="res://white_cloth.tscn" id="9_6dmwk"]
 [ext_resource type="AudioStream" uid="uid://vlsa0s7miclw" path="res://audio/items/light bell.mp3" id="9_g53vt"]
+[ext_resource type="AudioStream" uid="uid://be2jg08vco34p" path="res://audio/characters/lord/begon1.mp3" id="9_xnyxj"]
+[ext_resource type="AudioStream" uid="uid://cei33rh0iaam5" path="res://audio/characters/lord/begon2.mp3" id="10_5cw2j"]
 [ext_resource type="AudioStream" uid="uid://bfmxdo6xpi8m" path="res://audio/items/medium bell.mp3" id="10_jmjk3"]
 [ext_resource type="Texture2D" uid="uid://do2fl74lhd4sk" path="res://assets/items/Bowl.png" id="10_xvdqk"]
 [ext_resource type="Texture2D" uid="uid://s5jym3xvrwvk" path="res://assets/items/Cheese.png" id="11_53qhx"]
+[ext_resource type="AudioStream" uid="uid://b4xqovws4xt30" path="res://audio/characters/lord/get it done1.mp3" id="11_o3b8h"]
 [ext_resource type="Texture2D" uid="uid://c47247o3xgtw3" path="res://assets/flame_particle.png" id="12_bi74q"]
+[ext_resource type="AudioStream" uid="uid://cbwr5tnihd7e6" path="res://audio/characters/lord/get it done2.mp3" id="12_fuktn"]
 [ext_resource type="Texture2D" uid="uid://6qlo6eo2khol" path="res://assets/items/Fish.png" id="12_wrlxa"]
+[ext_resource type="AudioStream" uid="uid://dceevmqvnpu5v" path="res://audio/characters/lord/hurry up lad1.mp3" id="13_5jooh"]
 [ext_resource type="Texture2D" uid="uid://dc6lgbjcblp15" path="res://assets/items/Fork.png" id="13_jnaj6"]
+[ext_resource type="AudioStream" uid="uid://ba7hfyo4k5yeo" path="res://audio/characters/lord/hurry up lad2.mp3" id="14_3roim"]
 [ext_resource type="Texture2D" uid="uid://dqxot8sqxvsmn" path="res://assets/items/Board Game.png" id="14_bc0mh"]
 [ext_resource type="Texture2D" uid="uid://c5ovd7vofl8yr" path="res://assets/items/Grape.png" id="14_d4jrx"]
 [ext_resource type="Texture2D" uid="uid://bculfs6oc3go2" path="res://assets/items/Honeycomb.png" id="15_7437r"]
+[ext_resource type="AudioStream" uid="uid://dtkr74y4ehek0" path="res://audio/characters/servant/as fast as i can.mp3" id="15_qqno4"]
 [ext_resource type="Texture2D" uid="uid://4wd7jerivl2c" path="res://assets/items/Knife.png" id="16_kf1vi"]
 [ext_resource type="Texture2D" uid="uid://bh6fq3wnd2wm1" path="res://assets/items/Candelabra.png" id="16_u5eay"]
+[ext_resource type="AudioStream" uid="uid://bme0pe8kb8ycb" path="res://audio/characters/servant/as you wish.mp3" id="16_w1vwp"]
 [ext_resource type="Texture2D" uid="uid://bhnl36u27m7iq" path="res://assets/items/Candle.png" id="17_0eewh"]
 [ext_resource type="Texture2D" uid="uid://bgt2ej1udkuwo" path="res://assets/items/Milk Jug.png" id="17_16q1j"]
+[ext_resource type="AudioStream" uid="uid://c37y5q8bpt3sq" path="res://audio/characters/servant/moaning.mp3" id="17_tqfwk"]
+[ext_resource type="AudioStream" uid="uid://sp7hna25ggyy" path="res://audio/characters/servant/yes my lord.mp3" id="18_q116p"]
 [ext_resource type="Texture2D" uid="uid://e7m0j3mjhn1m" path="res://assets/items/royal_table.png" id="18_srgq5"]
+[ext_resource type="AudioStream" uid="uid://cthf8ygldeexw" path="res://audio/characters/lord/ahh1.mp3" id="19_7cq88"]
 [ext_resource type="Texture2D" uid="uid://wpyk0e4ukr7r" path="res://assets/items/Salad.png" id="19_jtsx1"]
 [ext_resource type="Texture2D" uid="uid://bpjclvxva2h54" path="res://assets/items/Sausage.png" id="20_j5rbb"]
+[ext_resource type="AudioStream" uid="uid://b2kq0u4piles8" path="res://audio/characters/lord/ahh2.mp3" id="20_qo0hp"]
+[ext_resource type="AudioStream" uid="uid://b0g4x21qxmihn" path="res://audio/characters/lord/ahh3.mp3" id="21_4luu0"]
 [ext_resource type="Texture2D" uid="uid://bue0f1ibvda3p" path="res://assets/items/Soup.png" id="21_qdsug"]
 [ext_resource type="Texture2D" uid="uid://dah2ejukgm3eh" path="res://assets/items/Hand Mirror.png" id="22_a182i"]
+[ext_resource type="AudioStream" uid="uid://dk0jfnm1r07nn" path="res://audio/characters/lord/i am waiting1.mp3" id="22_stdwd"]
 [ext_resource type="Texture2D" uid="uid://ckphbjipydbq6" path="res://assets/items/Spoon.png" id="22_v6waf"]
+[ext_resource type="AudioStream" uid="uid://cj7ge20647a52" path="res://audio/characters/lord/i am waiting2.mp3" id="23_16vaq"]
 [ext_resource type="Texture2D" uid="uid://buncw8ws31d8b" path="res://assets/items/Strawberries.png" id="23_jn3ge"]
 [ext_resource type="Texture2D" uid="uid://dqi0dfhho4763" path="res://assets/items/Tart.png" id="24_c0rly"]
+[ext_resource type="AudioStream" uid="uid://bqs4cpyt4dsb2" path="res://audio/characters/lord/quiet1.mp3" id="24_fd8qx"]
 [ext_resource type="Texture2D" uid="uid://nwg1j4gy7seu" path="res://assets/items/Ivory Comb.png" id="24_vanv3"]
 [ext_resource type="Texture2D" uid="uid://umgqb5h2y077" path="res://assets/items/Teaset.png" id="25_ovsgh"]
+[ext_resource type="AudioStream" uid="uid://d3fmcg8aujgrp" path="res://audio/characters/lord/quiet2.mp3" id="25_yr4fo"]
+[ext_resource type="AudioStream" uid="uid://kgtakkgshry0" path="res://audio/characters/lord/very good1.mp3" id="26_2qyke"]
 [ext_resource type="Texture2D" uid="uid://cw6ok7tq185ks" path="res://assets/items/Tomato Splat.png" id="26_sek7u"]
 [ext_resource type="Texture2D" uid="uid://c7fm7jl43f4uw" path="res://assets/items/Love Letter.png" id="26_tmmvl"]
+[ext_resource type="AudioStream" uid="uid://c0pmlyrt44ptg" path="res://audio/characters/lord/very good2.mp3" id="27_fj5fv"]
 [ext_resource type="Texture2D" uid="uid://d3r3tcsc3h0js" path="res://assets/items/Tomato.png" id="27_nscma"]
 [ext_resource type="Texture2D" uid="uid://bc1hf8l3f42at" path="res://assets/items/Parchment.png" id="28_37cyh"]
 [ext_resource type="Texture2D" uid="uid://c1vqp0ohr86d4" path="res://assets/items/Wine Gobblet.png" id="28_i070w"]
@@ -175,11 +194,13 @@ libraries = {
 [node name="QuestTracker" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_4escj")
+QuestAcceptBarks = [ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource("11_o3b8h"), ExtResource("12_fuktn"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("15_qqno4"), ExtResource("16_w1vwp"), ExtResource("17_tqfwk"), ExtResource("18_q116p")]
+QuestProgressBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")]
+QuestCompleteBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")]
 delayHigh = 20.0
 
-[node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+[node name="QuestStart" parent="QuestTracker" instance=ExtResource("6_sdruh")]
 Repeatable = true
-NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/SplatBrother/ModifyTest")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1
@@ -642,6 +663,8 @@ process_material = SubResource("ParticleProcessMaterial_1gfnb")
 texture = ExtResource("12_bi74q")
 visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 draw_order = 2
+
+[node name="BarkPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="hidden" from="GreatHall/GreatHallItems/SplatBrother" to="GreatHall/GreatHallItems/TomatoOnPainting" method="show"]
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
