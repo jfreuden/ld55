@@ -1,169 +1,115 @@
-[gd_scene load_steps=7 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=8 format=3 uid="uid://cloqedpwjuuck"]
 
-[ext_resource type="Script" path="res://CharacterBody2D.cs" id="1_w6ins"]
-[ext_resource type="Texture2D" uid="uid://djfcumo41rmp" path="res://assets/rooms/great hall.png" id="2_s7acj"]
-[ext_resource type="Texture2D" uid="uid://c15dycfs1lsnj" path="res://wall-mask-internal.png" id="3_6567p"]
-[ext_resource type="Texture2D" uid="uid://b4wloyny1mol0" path="res://wall-mask-west.png" id="4_gpfmj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xt5pn"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bt3iy"]
-radius = 64.0
+[ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://player.tscn" id="1_mhivb"]
+[ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://great_hall.tscn" id="2_8pfmp"]
+[ext_resource type="PackedScene" uid="uid://bpmyoo2dlicjq" path="res://quest_marker.tscn" id="4_d27h0"]
+[ext_resource type="Script" path="res://TaskList.cs" id="5_31w6c"]
+[ext_resource type="Texture2D" uid="uid://c8kpcciqdx0ln" path="res://assets/bell.png" id="6_iayre"]
+[ext_resource type="PackedScene" uid="uid://dioaep4bdyd8c" path="res://quest_start.tscn" id="6_sdruh"]
+[ext_resource type="Script" path="res://QuestTracker.cs" id="7_4escj"]
 
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-motion_mode = 1
-platform_on_leave = 2
-script = ExtResource("1_w6ins")
-Speed = 300.0
+[node name="Player" parent="." instance=ExtResource("1_mhivb")]
+unique_name_in_owner = true
+z_index = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_xt5pn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
-[node name="Polygon2D" type="Polygon2D" parent="CharacterBody2D"]
-y_sort_enabled = true
-color = Color(1, 0.337255, 1, 1)
-polygon = PackedVector2Array(9, 15, -11, 16, -13, -15, 14, -13)
+[node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
+z_index = -1
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="GreatHallItems" type="Node2D" parent="GreatHall"]
 
-[node name="InteractionCircle" type="Area2D" parent="CharacterBody2D"]
+[node name="MooseHead" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-211, -834)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionCircle"]
-shape = SubResource("CircleShape2D_bt3iy")
+[node name="PlaceCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Place the towel over the deer head"
+QuestTaskType = 3
+NextTaskMarker = NodePath("../RetakeCloth")
 
-[node name="GreatHall2" type="Node2D" parent="."]
+[node name="RetakeCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Actually the cloth should go elsewhere"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../WaitTest")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="GreatHall2"]
+[node name="WaitTest" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Wait... I'm thinking...."
+QuestTaskType = 5
+NextTaskMarker = NodePath("../../Sword/DeliverTest")
+QuestTime = 3.0
 
-[node name="InternalWalls" type="Sprite2D" parent="GreatHall2/StaticBody2D"]
+[node name="WhiteCloth" type="Polygon2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-445, -831)
+offset = Vector2(404, -87)
+polygon = PackedVector2Array(-438, 85, -406, 102, -376, 102, -370, 80, -386, 67, -433, 71)
+
+[node name="TakeTest" parent="GreatHall/GreatHallItems/WhiteCloth" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Take the towel off the nice painting"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../../MooseHead/PlaceCloth")
+
+[node name="TomatoOnPainting" type="Polygon2D" parent="GreatHall/GreatHallItems"]
 visible = false
-texture_filter = 1
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-texture = ExtResource("3_6567p")
+position = Vector2(78, -832)
+color = Color(1, 0, 0.113725, 1)
+polygon = PackedVector2Array(-21, 26, -69, 23, -70, -4, -59, -26, 15, -35, 44, -27, 42, -1, 42, 18, -7, 25)
 
-[node name="WestWall" type="Sprite2D" parent="GreatHall2/StaticBody2D"]
-visible = false
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-texture = ExtResource("4_gpfmj")
+[node name="ModifyTest" parent="GreatHall/GreatHallItems/TomatoOnPainting" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Throw a tomato at the painting"
+QuestTaskType = 1
+NextTaskMarker = NodePath("../../WhiteCloth/TakeTest")
 
-[node name="Floor" type="Sprite2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(-180, -63)
-scale = Vector2(0.563229, 0.563229)
-texture = ExtResource("2_s7acj")
+[node name="Sword" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-1019, -829)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-1131.5, -1909.9, -1131.5, -1172, -1024.7, -1172, -1021.5, -1168.8, -1021.5, -1154.9, -1023.7, -1134, -1117.6, -1134, -1131.5, -1134.9, -1131.5, -319, -1169.5, -319, -1169.5, -365, -1425.5, -365, -1923.5, -366, -1923.5, -369, -1925.6, -404, -1922.5, -404, -1169.5, -406, -1169.5, -1885.1, -1166.5, -1909.2, -1166.5, -1912.1)
+[node name="DeliverTest" parent="GreatHall/GreatHallItems/Sword" instance=ExtResource("4_d27h0")]
+QuestString = "Use the sword to destroy the cloth"
+QuestTaskType = 4
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-752.5, -1909.9, -752.5, -1172, -148.5, -1172, -148.5, -1414.8, -128.5, -1417.3, -128.5, -1416, -113.5, -1416, -113.5, -1414.1, -110.5, -1412.1, -110.5, -639, -148.5, -639, -148.5, -1134, -896.3, -1134, -899.5, -1137.2, -899.5, -1141.1, -895.2, -1172, -789.5, -1172, -789.5, -1175, -788.5, -1909, -788.5, -1912.1)
+[node name="QuestTracker" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_4escj")
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-110.5, -1908.9, -110.5, -1663, -143.5, -1663, -143.5, -1664.6, -148.5, -1666.6, -148.5, -1908.2, -146.5, -1909.2, -146.5, -1911.1)
-
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(1424.5, -1908.9, 1424.5, -1540, 1421.7, -1540, 1394.5, -1537.8, 1394.5, -1539.5, 1386.5, -1541.4, 1386.5, -1908.2, 1388.5, -1909.2, 1388.5, -1911.1)
-
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(2420.5, -1908.1, 2420.5, -1388, 2411.5, -1388, 2411.5, -1391, 2413.5, -1908, 2413.5, -1910.2, 2415.6, -1911.3)
-
-[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(1424.5, -1287.9, 1424.5, -923, 1789.5, -922, 1789.5, -919, 1791.6, -885, 1788.5, -885, 1410.5, -883, 1410.5, -884.1, 1390.5, -885.1, 1390.5, -887, 1386.5, -890, 1386.5, -1287.2, 1388.5, -1288.2, 1388.5, -1290.1)
-
-[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(2418.5, -921, 2418.5, -918, 2420.6, -886, 2417.5, -886, 2335.5, -883, 2051.5, -883, 2051.5, -922)
-
-[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-2171.5, -403, -2169.3, -374, -2171.3, -374, -2175.3, -366, -2355.5, -366, -2417.5, -365, -2417.5, -368, -2419.6, -403, -2416.7, -403, -2401.5, -404.8, -2401.5, -406, -2171.5, -406)
-
-[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-110.5, -392.8, -110.5, -135.9, -111.7, -122, -113.6, -122, -126.7, -110, -363.5, -110, -363.5, -108, -365.5, 125, -399.5, 125, -401.5, -110, -1153, -110, -1160.5, -113.8, -1160.5, -118, -1164.3, -118, -1170.5, -124.2, -1170.5, -143, -1169.4, -143, -1167.4, -198, -1133.6, -198, -1131.6, -148, -148.5, -148, -148.5, -391.8, -130.5, -393.8, -130.5, -395.3)
-
-[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-363.5, 376.2, -363.5, 612, -132.4, 612, -116.5, 613.1, -116.5, 615.5, -109.5, 625.4, -109.5, 628, -108.5, 1394, -111.4, 1394, -144.5, 1396.1, -144.5, 1394.1, -147.5, 1392.1, -147.5, 1377, -146.5, 653, -363.5, 653, -651.5, 650, -651.5, 640.9, -647.2, 612, -401.5, 612, -401.5, 375.8, -399.5, 374.8, -399.5, 372.8)
-
-[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-892.5, 614, -892.5, 630.1, -895.8, 653, -1118.6, 653, -1133.5, 652.1, -1133.5, 701, -1134.5, 1901, -1169.5, 1901, -1171.5, 915, -1922.4, 915, -1924.6, 878, -1921.5, 878, -1172.5, 877, -1171.5, 650, -1170.4, 650, -1168.4, 618, -1166.6, 618, -1163.6, 613, -1158.5, 613, -1158.5, 612)
-
-[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(894.5, 619, 898.7, 655, 895.5, 655, 655.5, 656, 654.5, 894, 651.8, 894, 641.8, 897, 618.5, 897, 618.5, 894, 616.5, 634, 617.5, 634, 617.5, 630, 619.9, 630, 621.5, 628.9, 621.5, 621, 623.4, 621, 625.4, 618, 629.2, 618, 633.5, 617.3, 633.5, 616, 894.5, 616)
-
-[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(1029.8, 621.8, 1028.7, 624, 1020.5, 624, 1020.5, 618.8, 1022.5, 617.8, 1022.5, 616.6, 1025.2, 615.6)
-
-[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(1924.5, 618, 1924.5, 657, 1899.5, 657, 1676.5, 656, 1676.5, 658, 1674.5, 1418, 1672.3, 1418, 1661.3, 1428, 1659.6, 1428, 1655.7, 1429, 909.5, 1429, 909.5, 1426, 907.4, 1393, 910.5, 1393, 996.5, 1390, 997.5, 1390, 1637.5, 1391, 1637.5, 656, 1529.5, 656, 1529.5, 616)
-
-[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(2418.5, 619, 2420.6, 655, 2417.5, 655, 2173.5, 657, 2173.5, 616, 2418.5, 616)
-
-[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(-2173.5, 877.9, -2170.5, 879.9, -2170.5, 901, -2169.3, 913, -2172.5, 913, -2417.5, 915, -2417.5, 877, -2372.5, 877, -2372.5, 876, -2173.5, 876)
-
-[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(654.5, 1275.2, 654.5, 1390, 652.7, 1390, 649.7, 1396, 620.7, 1396, 617.5, 1392.8, 617.5, 1387, 618.5, 1275, 618.5, 1271.8)
-
-[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="GreatHall2/StaticBody2D"]
-position = Vector2(1542, -217)
-scale = Vector2(1.11368, 1.11368)
-polygon = PackedVector2Array(42.5, -1906, -114.5, -1903, -144.5, -1903, -2411.5, -1904, -2411.5, -1357, -2413.5, 1894, -402.5, 1894, -402.5, 1396, -392.2, 1388, -369.5, 1388, -369.5, 1389.9, -367.9, 1391, -363.5, 1391, -143.5, 1388, -112.5, 1388, 40.5, 1390, 40.5, 1393, 42.5, 1676, 39.5, 1676, -112.5, 1678, -112.5, 2182.5, -117.3, 2192, -123.5, 2192, -2696.5, 2195, -2696.5, 2193.5, -2703.5, 2191.5, -2703.5, 2186, -2706.5, 2118, -2706.5, 2117, -2706.5, -2195, 42.5, -2195)
+[node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+QuestString = "Let's debug!"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../Bell/SimpleInteraction")
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" type="Control" parent="UIOnCamera"]
-process_mode = 2
-visible = false
-top_level = true
+[node name="Control" type="Control" parent="UIOnCamera"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Ring Bell"
+
+[node name="PauseMenu" type="Control" parent="UIOnCamera/Control"]
+process_mode = 2
+top_level = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -172,7 +118,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UIOnCamera/PauseMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UIOnCamera/Control/PauseMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -186,20 +133,48 @@ offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Continue" type="Button" parent="UIOnCamera/PauseMenu/VBoxContainer"]
+[node name="Continue" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
 layout_mode = 2
 text = "Return to Game"
 
-[node name="Menu" type="Button" parent="UIOnCamera/PauseMenu/VBoxContainer"]
+[node name="Menu" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
 layout_mode = 2
 text = "Quit to Menu"
 
-[node name="Quit" type="Button" parent="UIOnCamera/PauseMenu/VBoxContainer"]
+[node name="Quit" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
 layout_mode = 2
 text = "Quit to Desktop"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIOnCamera/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+horizontal_scroll_mode = 0
+
+[node name="TaskList" type="VBoxContainer" parent="UIOnCamera/Control/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("5_31w6c")
+
+[node name="Label" type="Label" parent="UIOnCamera/Control/ScrollContainer/TaskList"]
+layout_mode = 2
+horizontal_alignment = 2
 
 [node name="HUD" type="Control" parent="UIOnCamera"]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="UIOnWorld" type="CanvasLayer" parent="."]
+
+[node name="Bell" type="Sprite2D" parent="."]
+position = Vector2(1254, -215)
+texture = ExtResource("6_iayre")
+
+[node name="SimpleInteraction" parent="Bell" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Touch the offscreen Bell"
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
+
+[connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]

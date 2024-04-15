@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ahsvfqvibem"
-path="res://.godot/imported/other-floor-mask.png-a6078aa5eed47e093cc1629e4743012d.ctex"
+uid="uid://b4wloyny1mol0"
+path="res://.godot/imported/wall-mask-west.png-5fac61fabbaca572937282f567653695.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://other-floor-mask.png"
-dest_files=["res://.godot/imported/other-floor-mask.png-a6078aa5eed47e093cc1629e4743012d.ctex"]
+source_file="res://assets/rooms/wall-mask-west.png"
+dest_files=["res://.godot/imported/wall-mask-west.png-5fac61fabbaca572937282f567653695.ctex"]
 
 [params]
 

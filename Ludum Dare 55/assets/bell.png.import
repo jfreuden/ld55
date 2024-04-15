@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xi3chgn2jw6x"
-path="res://.godot/imported/wall-mask-east.png-61d9819001bcdfc15a084fd645c024ef.ctex"
+uid="uid://c8kpcciqdx0ln"
+path="res://.godot/imported/bell.png-18437d6880a7fd33f7fd41d71f82ab75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wall-mask-east.png"
-dest_files=["res://.godot/imported/wall-mask-east.png-61d9819001bcdfc15a084fd645c024ef.ctex"]
+source_file="res://assets/bell.png"
+dest_files=["res://.godot/imported/bell.png-18437d6880a7fd33f7fd41d71f82ab75.ctex"]
 
 [params]
 
