@@ -205,7 +205,6 @@ delayHigh = 20.0
 
 [node name="QuestStart" parent="QuestTracker" instance=ExtResource("6_sdruh")]
 Repeatable = true
-NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/SplatBrother/ModifyTest")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1

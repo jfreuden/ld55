@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpmyoo2dlicjq"]
+[gd_scene load_steps=5 format=3 uid="uid://bpmyoo2dlicjq"]
 
 [ext_resource type="Script" path="res://scripts/QuestMarker.cs" id="1_6fnbx"]
+[ext_resource type="Texture2D" uid="uid://bm4cabeud3bqs" path="res://assets/interaction-circle.png" id="2_i0eyk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5lnw"]
 radius = 100.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k1qlw"]
+blend_mode = 2
 
 [node name="QuestMarker" type="Node2D"]
 script = ExtResource("1_6fnbx")
@@ -24,7 +28,17 @@ offset_left = -70.0
 offset_right = 70.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 3
 text = "Press F to Interact"
 horizontal_alignment = 1
+
+[node name="Interaction-circle" type="Sprite2D" parent="."]
+texture_filter = 4
+material = SubResource("CanvasItemMaterial_k1qlw")
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("2_i0eyk")
 
 [connection signal="timeout" from="TaskClock" to="." method="OnTimerTimeout"]
