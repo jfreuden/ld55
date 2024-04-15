@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=56 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -136,6 +136,9 @@ gravity = Vector3(0, -100, 0)
 scale_min = 0.2
 scale_max = 0.4
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_meh4j"]
+radius = 25.0
+
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
 
@@ -180,6 +183,7 @@ NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/SplatBrother/ModifyTes
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1
+metadata/_edit_lock_ = true
 
 [node name="GreatHallItems" type="Node2D" parent="GreatHall"]
 
@@ -411,48 +415,49 @@ scale = Vector2(0.355, 0.355)
 texture = ExtResource("28_i070w")
 
 [node name="FurCoat" type="Sprite2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(3082, -121)
-scale = Vector2(0.355, 0.355)
+z_index = 1
+position = Vector2(78, 578)
+scale = Vector2(0.104174, 0.104174)
 texture = ExtResource("45_g0jnp")
 
 [node name="RoyalTable" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(-1875, 31)
+position = Vector2(-694, 348)
 metadata/_edit_group_ = true
 
 [node name="RoyalTable" type="Sprite2D" parent="GreatHall/GreatHallItems/RoyalTable"]
 texture_filter = 4
-position = Vector2(2286, 356)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("18_srgq5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreatHall/GreatHallItems/RoyalTable"]
-polygon = PackedVector2Array(2138, 413, 2436, 413, 2435, 359, 2136, 359)
+polygon = PackedVector2Array(-147, 56, -145, 3, 140, 3, 140, 56)
 
 [node name="BeerBarrel" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-463, 343)
 metadata/_edit_group_ = true
 
 [node name="BeerBarrel" type="Sprite2D" parent="GreatHall/GreatHallItems/BeerBarrel"]
 texture_filter = 4
-position = Vector2(2508, 388)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("31_d07d0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GreatHall/GreatHallItems/BeerBarrel"]
-polygon = PackedVector2Array(2478, 461, 2478, 386, 2532, 386, 2533, 461)
+scale = Vector2(0.355, 0.355)
+polygon = PackedVector2Array(-73.2394, 205.634, -73.2394, 28.169, 61.9718, 30.9859, 61.9718, 205.634)
 
 [node name="Sconce" type="Node2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(18, 70)
+position = Vector2(2315, 387)
 metadata/_edit_group_ = true
 
 [node name="Sconce" type="Sprite2D" parent="GreatHall/GreatHallItems/Sconce"]
 texture_filter = 4
-position = Vector2(2321, 83)
+position = Vector2(0, 83)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("34_ua05v")
 
 [node name="CandleFlame" type="GPUParticles2D" parent="GreatHall/GreatHallItems/Sconce"]
 texture_filter = 4
-position = Vector2(2333, -20)
+position = Vector2(0, -20)
 process_material = SubResource("ParticleProcessMaterial_1gfnb")
 texture = ExtResource("12_bi74q")
 visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
@@ -512,6 +517,17 @@ texture = ExtResource("12_bi74q")
 visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 draw_order = 2
 
+[node name="CoatStand" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(78, 663)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="GreatHall/GreatHallItems/CoatStand"]
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+polygon = PackedVector2Array(-18, 16, 20, 16, 20, 7, 2, 7, 2, -130, 10, -130, 12, -134, 2, -134, 4, -143, 8, -142, 9, -147, -14, -147, -13, -142, -9, -144, -7, -134, -16, -134, -14, -131, -7, -131, -7, 8, -22, 8, -22, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreatHall/GreatHallItems/CoatStand"]
+shape = SubResource("CircleShape2D_meh4j")
+
 [node name="Lord" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -524,6 +540,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control"]
 visible = false
