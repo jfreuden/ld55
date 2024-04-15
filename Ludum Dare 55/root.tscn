@@ -162,7 +162,7 @@ delayHigh = 20.0
 
 [node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
 Repeatable = true
-NextTaskMarker = NodePath("../../Player/Camera2D/Bell/SimpleInteraction")
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = -1
@@ -427,6 +427,9 @@ texture = ExtResource("28_i070w")
 position = Vector2(3082, -121)
 scale = Vector2(0.355, 0.355)
 texture = ExtResource("45_g0jnp")
+
+[node name="Lord" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 

@@ -43,7 +43,8 @@ public partial class QuestMarker : Node2D
             InteractionCollisionShape.Disabled = false;
             InteractionEnabled = true;
             InteractionLabel.Show();
-            Show();            
+            Show();
+            GlobalPosition = GetNode<Node2D>("/root/Root/%Lord").GlobalPosition;
         }
         
     }

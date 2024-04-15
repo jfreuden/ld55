@@ -86,8 +86,7 @@ public partial class QuestTracker : Node2D
 
         DisabledStarts.Add(pickedStart);
         ActiveTasks.Add(pickedStart);
-        bool success = pickedStart.Interact();
-        if (success) GD.Print("Says it worked");
+        pickedStart.EnableInteraction();
         ResetBellTimer();
 
     }
