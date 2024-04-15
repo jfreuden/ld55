@@ -103,6 +103,7 @@ editor_draw_drag_margin = true
 [node name="Bell" type="Sprite2D" parent="Player/Camera2D"]
 unique_name_in_owner = true
 visible = false
+z_index = 400
 texture = ExtResource("6_iayre")
 script = ExtResource("7_y4v7a")
 streams = [ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")]

@@ -16,13 +16,39 @@ public partial class Player : Godot.CharacterBody2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        var animationPlayer = GetNode<AnimationPlayer>("Character/AnimationPlayer");
+        animationPlayer.Play("idle");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
         Vector2 joyVector2 = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        var animationPlayer = GetNode<AnimationPlayer>("Character/AnimationPlayer");
 
+        
+        var absDist = joyVector2.Dot(joyVector2);
+        if (absDist > 0.0f)
+        {
+            animationPlayer.SpeedScale = absDist;
+            animationPlayer.Play("walk");
+        }
+        else
+        {
+            animationPlayer.SpeedScale = 1.0f;
+            animationPlayer.Play("idle");
+        }
+
+        var character = GetNode<Node2D>("Character");
+        if (joyVector2.X < 0.0f)
+        {
+            character.Scale = new Vector2(character.Scale.Y, character.Scale.Y);
+        }
+        else if (joyVector2.X > 0.0f)
+        {
+            character.Scale = new Vector2(-character.Scale.Y, character.Scale.Y);
+        }
+        
         if (Input.IsActionJustPressed("ui_accept"))
         {
             HandleInteractKey();
