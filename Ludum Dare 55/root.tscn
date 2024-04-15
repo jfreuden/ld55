@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://great_hall.tscn" id="2_8pfmp"]
 [ext_resource type="PackedScene" uid="uid://bpmyoo2dlicjq" path="res://quest_marker.tscn" id="4_d27h0"]
 [ext_resource type="Script" path="res://TaskList.cs" id="5_31w6c"]
-[ext_resource type="Texture2D" uid="uid://c8kpcciqdx0ln" path="res://bell.png" id="6_iayre"]
+[ext_resource type="Texture2D" uid="uid://c8kpcciqdx0ln" path="res://assets/bell.png" id="6_iayre"]
 [ext_resource type="PackedScene" uid="uid://dioaep4bdyd8c" path="res://quest_start.tscn" id="6_sdruh"]
 [ext_resource type="Script" path="res://QuestTracker.cs" id="7_4escj"]
 
