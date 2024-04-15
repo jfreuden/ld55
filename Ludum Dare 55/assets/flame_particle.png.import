@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bajw3e0g37f2h"
-path="res://.godot/imported/great hall.png-b06c120b5af3d4b3b946f069ae2f72f9.ctex"
+uid="uid://c47247o3xgtw3"
+path="res://.godot/imported/flame_particle.png-d20657ff7907bd835b5ef58840b40804.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/characters/servant/great hall.png"
-dest_files=["res://.godot/imported/great hall.png-b06c120b5af3d4b3b946f069ae2f72f9.ctex"]
+source_file="res://assets/flame_particle.png"
+dest_files=["res://.godot/imported/flame_particle.png-d20657ff7907bd835b5ef58840b40804.ctex"]
 
 [params]
 
