@@ -59,13 +59,13 @@ public partial class Player : Godot.CharacterBody2D
         }
     }
 
-    public void OnAreaEntered(Area2D area)
-    {
-        GD.Print(area);
-    }
-
-    public void OnAreaExited(Area2D area)
-    {
-        GD.Print(area);
-    }
+    // public void OnAreaEntered(Area2D area)
+    // {
+    //     GD.Print(area);
+    // }
+    //
+    // public void OnAreaExited(Area2D area)
+    // {
+    //     GD.Print(area);
+    // }
 }

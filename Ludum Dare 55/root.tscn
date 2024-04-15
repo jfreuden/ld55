@@ -13,6 +13,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_mhivb")]
 unique_name_in_owner = true
+z_index = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_smoothed = true
@@ -29,24 +30,60 @@ z_index = -1
 [node name="MooseHead" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-211, -834)
 
-[node name="TestItem2" type="Polygon2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(72, -831)
+[node name="PlaceCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Place the towel over the deer head"
+QuestTaskType = 3
+NextTaskMarker = NodePath("../RetakeCloth")
+
+[node name="RetakeCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Actually the cloth should go elsewhere"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../WaitTest")
+
+[node name="WaitTest" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Wait... I'm thinking...."
+QuestTaskType = 5
+NextTaskMarker = NodePath("../../Sword/DeliverTest")
+QuestTime = 3.0
+
+[node name="WhiteCloth" type="Polygon2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-445, -831)
 offset = Vector2(404, -87)
 polygon = PackedVector2Array(-438, 85, -406, 102, -376, 102, -370, 80, -386, 67, -433, 71)
 
-[node name="TomatoOnPainting" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+[node name="TakeTest" parent="GreatHall/GreatHallItems/WhiteCloth" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Take the towel off the nice painting"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../../MooseHead/PlaceCloth")
+
+[node name="TomatoOnPainting" type="Polygon2D" parent="GreatHall/GreatHallItems"]
 visible = false
 position = Vector2(78, -832)
+color = Color(1, 0, 0.113725, 1)
+polygon = PackedVector2Array(-21, 26, -69, 23, -70, -4, -59, -26, 15, -35, 44, -27, 42, -1, 42, 18, -7, 25)
 
-[node name="UIOnCamera" type="CanvasLayer" parent="."]
+[node name="ModifyTest" parent="GreatHall/GreatHallItems/TomatoOnPainting" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Throw a tomato at the painting"
+QuestTaskType = 1
+NextTaskMarker = NodePath("../../WhiteCloth/TakeTest")
 
-[node name="QuestTracker" type="Node2D" parent="UIOnCamera"]
+[node name="Sword" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-1019, -829)
+
+[node name="DeliverTest" parent="GreatHall/GreatHallItems/Sword" instance=ExtResource("4_d27h0")]
+QuestString = "Use the sword to destroy the cloth"
+QuestTaskType = 4
+
+[node name="QuestTracker" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_4escj")
 
-[node name="QuestStart" parent="UIOnCamera/QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+[node name="QuestStart" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+QuestString = "Let's debug!"
 QuestTaskType = 6
-NextTaskMarker = NodePath("../../../Bell/QuestMarker")
+NextTaskMarker = NodePath("../../Bell/SimpleInteraction")
+
+[node name="UIOnCamera" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UIOnCamera"]
 layout_mode = 3
@@ -136,6 +173,8 @@ anchors_preset = 0
 position = Vector2(1254, -215)
 texture = ExtResource("6_iayre")
 
-[node name="QuestMarker" parent="Bell" instance=ExtResource("4_d27h0")]
+[node name="SimpleInteraction" parent="Bell" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Touch the offscreen Bell"
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/TomatoOnPainting/ModifyTest")
 
-[connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="UIOnCamera/QuestTracker" method="RingBell"]
+[connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]

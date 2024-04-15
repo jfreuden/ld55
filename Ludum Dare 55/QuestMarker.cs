@@ -35,12 +35,17 @@ public partial class QuestMarker : Node2D
         InteractionCircle.Radius = InteractionRadius;
 
         TaskClock.Start();
-        InteractionArea.Monitorable = true;
-        InteractionArea.Monitoring = true;
-        InteractionCollisionShape.Disabled = false;
-        InteractionEnabled = true;
-        InteractionLabel.Show();
-        Show();
+
+        if (QuestTaskType != TaskType.Wait)
+        {
+            InteractionArea.Monitorable = true;
+            InteractionArea.Monitoring = true;
+            InteractionCollisionShape.Disabled = false;
+            InteractionEnabled = true;
+            InteractionLabel.Show();
+            Show();            
+        }
+        
     }
 
     private void BindChildren()
@@ -123,7 +128,7 @@ public partial class QuestMarker : Node2D
         if (success)
         {
             // Stop the timer and proceed to the next task, unless it failed
-            GetNode<QuestTracker>("%QuestTracker").NextTask(this);
+            GetNode<QuestTracker>("/root/Root/QuestTracker").NextTask(this);
         }
         else
         {
@@ -159,8 +164,8 @@ public partial class QuestMarker : Node2D
     /// <returns>true if we successfully picked up something, false otherwise</returns>
     public bool InteractTake()
     {
-        var parent = (CanvasItem)GetParent();
-        Node2D hand = GetNodeOrNull<Node2D>("%PlayerHand");
+        var parent = (Node2D)GetParent();
+        Node2D hand = GetNodeOrNull<Node2D>("%Player/%PlayerHand");
 
         if (hand is null)
         {
@@ -170,11 +175,12 @@ public partial class QuestMarker : Node2D
 
         if (hand.GetChildCount() > 0)
         {
-            GD.Print("Something already in the hand");
+            GD.PrintErr("Something already in the hand");
             return false;
         }
 
-        parent.Reparent(hand);
+        parent.Reparent(hand, false);
+        parent.Position = Vector2.Zero;
         parent.Show();
         return true;
     }
@@ -186,7 +192,7 @@ public partial class QuestMarker : Node2D
     public bool InteractPlace(bool visible = true)
     {
         var parent = (CanvasItem)GetParent();
-        Node2D hand = GetNodeOrNull<Node2D>("%PlayerHand");
+        Node2D hand = GetNodeOrNull<Node2D>("%Player/%PlayerHand");
         
         if (hand is null)
         {
@@ -206,8 +212,9 @@ public partial class QuestMarker : Node2D
             return false;
         }
 
-        CanvasItem child = (CanvasItem)hand.GetChild(0);
-        child.Reparent(parent);
+        Node2D child = (Node2D)hand.GetChild(0);
+        child.Reparent(parent, false);
+        child.Position = Vector2.Zero;
         child.Visible = visible;
         
         return true;
@@ -226,7 +233,8 @@ public partial class QuestMarker : Node2D
     {
         if (QuestTaskType == TaskType.Wait)
         {
-            InteractWait();
+            GD.Print("Wait time for the task has passed");
+            Interact();
         }
         else
         {
