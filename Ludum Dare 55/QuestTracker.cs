@@ -39,13 +39,14 @@ public partial class QuestTracker : Node2D
     
     public override void _ExitTree()
     {
+        bellTimer.Free();
         // Dispose of the nodes that we were keeping around in the DisabledStarts list
         foreach (var node in DisabledStarts)
         {
             node.Free();
         }
+
         DisabledStarts.Clear();
-        
         base._ExitTree();
     }
 
