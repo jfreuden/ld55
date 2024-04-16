@@ -212,6 +212,11 @@ QuestString = "Get me some honey'd milk"
 QuestTaskType = 6
 NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
 
+[node name="Ex Wifes Coat" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+QuestString = "The Lord has a task for you"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/FurCoat/QuestMarker")
+
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = 2
 y_sort_enabled = true
@@ -243,19 +248,6 @@ QuestTime = 3.0
 
 [node name="TakeTest" parent="GreatHall/GreatHallItems/WhiteCloth" index="0" node_paths=PackedStringArray("NextTaskMarker")]
 NextTaskMarker = NodePath("../../MooseHead/PlaceCloth")
-
-[node name="SplatBrother" type="Node2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(78, -832)
-
-[node name="ModifyTest" parent="GreatHall/GreatHallItems/SplatBrother" instance=ExtResource("4_d27h0")]
-QuestString = "Throw a tomato at the painting"
-QuestTaskType = 1
-
-[node name="TomatoOnPainting" type="Polygon2D" parent="GreatHall/GreatHallItems"]
-visible = false
-position = Vector2(78, -832)
-color = Color(1, 0, 0.113725, 1)
-polygon = PackedVector2Array(-21, 26, -69, 23, -70, -4, -59, -26, 15, -35, 44, -27, 42, -1, 42, 18, -7, 25)
 
 [node name="Sword" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-1019, -829)
@@ -350,12 +342,6 @@ position = Vector2(2690, -200)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("16_kf1vi")
 
-[node name="LoveLetter" type="Sprite2D" parent="GreatHall/GreatHallItems"]
-texture_filter = 4
-position = Vector2(2985, -121)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("26_tmmvl")
-
 [node name="MilkJug" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
 position = Vector2(-454, -399)
@@ -438,17 +424,31 @@ position = Vector2(2613, -478)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("25_ovsgh")
 
+[node name="SplatBrother" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(78, -832)
+
+[node name="QuestMarker" parent="GreatHall/GreatHallItems/SplatBrother" instance=ExtResource("4_d27h0")]
+QuestString = "Throw the tomato at the painting of my ex-wife!"
+QuestTaskType = 1
+
 [node name="TomatoSplat" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+visible = false
 texture_filter = 4
-position = Vector2(1842, -378)
+position = Vector2(73, -830)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("26_sek7u")
 
 [node name="Tomato" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+z_index = 5
 texture_filter = 4
-position = Vector2(2002, -363)
+position = Vector2(914, 361)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("27_nscma")
+
+[node name="TakeTomato" parent="GreatHall/GreatHallItems/Tomato" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Grab a tomato from that table"
+QuestTaskType = 1
+NextTaskMarker = NodePath("../../SplatBrother/QuestMarker")
 
 [node name="WineGobblet" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -456,11 +456,41 @@ position = Vector2(2818, 94)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("28_i070w")
 
+[node name="LoveLetterBrother" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(-17, 661)
+scale = Vector2(0.15, 0.15)
+
+[node name="QuestMarker3" parent="GreatHall/GreatHallItems/LoveLetterBrother" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+position = Vector2(633.333, -553.333)
+QuestString = "Shake out the Coat (1)"
+QuestTaskType = 1
+NextTaskMarker = NodePath(".")
+
+[node name="LoveLetter" type="Sprite2D" parent="GreatHall/GreatHallItems"]
+visible = false
+texture_filter = 4
+position = Vector2(-17, 661)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("26_tmmvl")
+
+[node name="QuestMarker" parent="GreatHall/GreatHallItems/LoveLetter" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "What's that!?! Bring me that!"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../../../../Lord/DeliverLetterToLord")
+
 [node name="FurCoat" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 z_index = 1
 position = Vector2(78, 578)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("45_g0jnp")
+
+[node name="QuestMarker" parent="GreatHall/GreatHallItems/FurCoat" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Shake out the Coat (3)"
+NextTaskMarker = NodePath("../QuestMarker2")
+
+[node name="QuestMarker2" parent="GreatHall/GreatHallItems/FurCoat" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Shake out the Coat (2)"
+NextTaskMarker = NodePath("../../LoveLetterBrother/QuestMarker3")
 
 [node name="Polish1" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(3365.04, -262.272)
@@ -601,6 +631,7 @@ shape = SubResource("CircleShape2D_meh4j")
 position = Vector2(703, 438)
 scale = Vector2(2.35529, 2.35529)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="RoyalTable" type="Sprite2D" parent="GreatHall/GreatHallItems/RoyalTable2"]
 texture_filter = 4
@@ -619,6 +650,16 @@ scale = Vector2(0.556, 0.556)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999998)
+
+[node name="DeliverLetterToLord" parent="Lord" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Bring me that letter!"
+QuestTaskType = 4
+NextTaskMarker = NodePath("WaitForRead")
+
+[node name="WaitForRead" parent="Lord/DeliverLetterToLord" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Wait for the Lord to read the letter"
+QuestTaskType = 5
+NextTaskMarker = NodePath("../../../GreatHall/GreatHallItems/Tomato/TakeTomato")
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
@@ -718,7 +759,7 @@ draw_order = 2
 
 [node name="BarkPlayer" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="hidden" from="GreatHall/GreatHallItems/SplatBrother" to="GreatHall/GreatHallItems/TomatoOnPainting" method="show"]
+[connection signal="hidden" from="GreatHall/GreatHallItems/LoveLetterBrother" to="GreatHall/GreatHallItems/LoveLetter" method="show"]
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
 
 [editable path="GreatHall/GreatHallItems/WhiteCloth"]
