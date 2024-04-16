@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qsqpkd2ybjt"]
 
-[ext_resource type="Script" path="res://scripts/menu.cs" id="1_h0fub"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_e800d"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -15,7 +15,7 @@ focus_neighbor_right = NodePath("NinePatchRect/VBoxContainer/Play")
 focus_neighbor_bottom = NodePath("NinePatchRect/VBoxContainer/Play")
 focus_next = NodePath("NinePatchRect/VBoxContainer/Play")
 focus_previous = NodePath("NinePatchRect/VBoxContainer/Play")
-script = ExtResource("1_h0fub")
+script = ExtResource("1_e800d")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
