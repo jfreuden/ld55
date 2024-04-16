@@ -184,7 +184,7 @@ visible = false
 z_index = 400
 texture = ExtResource("6_iayre")
 script = ExtResource("3_dvsi4")
-streams = [ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")]
+streams = Array[AudioStreamMP3]([ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")])
 
 [node name="SimpleInteraction" parent="Player/Camera2D/Bell" instance=ExtResource("4_d27h0")]
 quest_string = "Touch the offscreen Bell"
@@ -200,9 +200,9 @@ libraries = {
 unique_name_in_owner = true
 z_index = 1000
 script = ExtResource("8_ctlei")
-quest_accept_barks = [ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource("11_o3b8h"), ExtResource("12_fuktn"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("15_qqno4"), ExtResource("16_w1vwp"), ExtResource("17_tqfwk"), ExtResource("18_q116p")]
-quest_progress_barks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")]
-quest_complete_barks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")]
+quest_accept_barks = Array[AudioStreamMP3]([ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource("11_o3b8h"), ExtResource("12_fuktn"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("15_qqno4"), ExtResource("16_w1vwp"), ExtResource("17_tqfwk"), ExtResource("18_q116p")])
+quest_progress_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")])
+quest_complete_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")])
 delay_high = 20.0
 
 [node name="Ex Wifes Coat" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
@@ -561,7 +561,7 @@ texture = ExtResource("25_ovsgh")
 [node name="TomatoSplat" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 visible = false
 texture_filter = 4
-position = Vector2(73, -830)
+position = Vector2(112, -837)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("26_sek7u")
 
@@ -973,6 +973,7 @@ quest_string = "Place the knife!"
 quest_task_type = 3
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Cheese/TakeCheese")
 
+[connection signal="hidden" from="GreatHall/GreatHallItems/SplatBrother" to="GreatHall/GreatHallItems/TomatoSplat" method="show"]
 [connection signal="hidden" from="GreatHall/GreatHallItems/LoveLetterBrother" to="GreatHall/GreatHallItems/LoveLetter" method="show"]
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
 

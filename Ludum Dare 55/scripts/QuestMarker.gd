@@ -15,7 +15,7 @@ enum TaskType {
 # Exported variables
 @export var quest_string : String = "Describe the task"
 @export var quest_task_type : TaskType
-@export var next_task_marker : NodePath
+@export var next_task_marker : QuestMarker
 @export var quest_time : float = 30.0
 @export var interaction_radius : float = 100.0
 

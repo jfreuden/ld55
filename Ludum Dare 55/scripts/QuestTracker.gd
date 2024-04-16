@@ -58,9 +58,9 @@ func ring_bell():
     picked_start.enable_interaction()
     reset_bell_timer()
 
-func next_task(finished_task):
+func next_task(finished_task: QuestMarker):
     completed_tasks += 1
-    var next_task = finished_task.next_task_marker
+    var next_task: QuestMarker = finished_task.next_task_marker
 
     finished_task.disable_interaction()
     active_tasks.erase(finished_task)
