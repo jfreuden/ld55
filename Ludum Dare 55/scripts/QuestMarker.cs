@@ -15,7 +15,7 @@ public partial class QuestMarker : Node2D
     }
 
     [Export] public string QuestString { get; private set; } = "Describe the task";
-    [Export] public TaskType QuestTaskType { get; private protected set; }
+    [Export] public TaskType QuestTaskType { get; set; }
     [Export] public QuestMarker NextTaskMarker { get; private set; }
     [Export] public float QuestTime { get; private set; } = 30.0f;
     [Export] public float InteractionRadius { get; private set; } = 100.0f;
@@ -44,7 +44,10 @@ public partial class QuestMarker : Node2D
             InteractionEnabled = true;
             InteractionLabel.Show();
             Show();
-            if (QuestTaskType == TaskType.Bell) GlobalPosition = GetNode<Node2D>("/root/Root/%Lord").GlobalPosition;
+            GD.Print(GetNode<Node2D>("/root/Root/Lord").GlobalPosition);
+            GD.Print(GlobalPosition);
+            GD.Print(QuestTaskType);
+            if (QuestTaskType == TaskType.Bell) GlobalPosition = GetNode<Node2D>("/root/Root/Lord").GlobalPosition;
         }
         
     }

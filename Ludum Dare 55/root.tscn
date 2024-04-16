@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=80 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -198,6 +198,7 @@ libraries = {
 
 [node name="QuestTracker" type="Node2D" parent="."]
 unique_name_in_owner = true
+z_index = 1000
 script = ExtResource("7_4escj")
 QuestAcceptBarks = [ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource("11_o3b8h"), ExtResource("12_fuktn"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("15_qqno4"), ExtResource("16_w1vwp"), ExtResource("17_tqfwk"), ExtResource("18_q116p")]
 QuestProgressBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")]
@@ -205,6 +206,8 @@ QuestCompleteBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResou
 delayHigh = 20.0
 
 [node name="Bedtime" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+z_index = 0
+y_sort_enabled = false
 QuestString = "Get me some honey'd milk"
 QuestTaskType = 6
 NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
@@ -614,10 +617,7 @@ position = Vector2(-809, 0)
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 
-[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
-scale = Vector2(1, 1)
-
-[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999998)
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
@@ -633,7 +633,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

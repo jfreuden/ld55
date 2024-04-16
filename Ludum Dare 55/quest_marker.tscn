@@ -10,6 +10,8 @@ radius = 100.0
 blend_mode = 2
 
 [node name="QuestMarker" type="Node2D"]
+z_index = 1000
+y_sort_enabled = true
 script = ExtResource("1_6fnbx")
 
 [node name="TaskClock" type="Timer" parent="."]

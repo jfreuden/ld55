@@ -10,6 +10,8 @@ public partial class QuestStart : QuestMarker
     public override void _Ready()
     {
         QuestTaskType = TaskType.Bell;
+        GlobalPosition = GetNode<Node2D>("/root/Root/Lord").GlobalPosition;
+        
         base._Ready();
     }
 }
