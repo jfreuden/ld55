@@ -195,19 +195,6 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Camera2D/Bell"]
 
-[node name="Bedtime" parent="." node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
-visible = true
-QuestString = "Get me some honey'd milk"
-QuestTaskType = 6
-NextTaskMarker = NodePath("../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
-
-[node name="Hunter" parent="." node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
-visible = true
-Repeatable = true
-QuestString = "Your lord is a mighty hunter"
-QuestTaskType = 6
-NextTaskMarker = NodePath("../GreatHall/GreatHallItems/MooseHead/Moose")
-
 [node name="QuestTracker" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_4escj")
@@ -215,6 +202,19 @@ QuestAcceptBarks = [ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource
 QuestProgressBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")]
 QuestCompleteBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")]
 delayHigh = 20.0
+
+[node name="Bedtime" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+visible = true
+QuestString = "Get me some honey'd milk"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
+
+[node name="Hunter" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+visible = true
+Repeatable = true
+QuestString = "Your lord is a mighty hunter"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/MooseHead/Moose")
 
 [node name="Beer Refill" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
 Repeatable = true
