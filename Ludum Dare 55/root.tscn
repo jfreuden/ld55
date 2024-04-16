@@ -825,9 +825,6 @@ scale = Vector2(1, 1)
 [node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
 scale = Vector2(0.999998, 0.999998)
 
-[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
-scale = Vector2(0.999998, 0.999998)
-
 [node name="DeliverLetterToLord" parent="Lord" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
 QuestString = "Bring me that letter!"
 QuestTaskType = 4
