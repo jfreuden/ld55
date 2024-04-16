@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpmyoo2dlicjq"]
 
-[ext_resource type="Script" path="res://scripts/QuestMarker.cs" id="1_6fnbx"]
+[ext_resource type="Script" path="res://scripts/QuestMarker.gd" id="1_gh1nk"]
 [ext_resource type="Texture2D" uid="uid://bm4cabeud3bqs" path="res://assets/interaction-circle.png" id="2_i0eyk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5lnw"]
@@ -12,7 +12,7 @@ blend_mode = 2
 [node name="QuestMarker" type="Node2D"]
 z_index = 1000
 y_sort_enabled = true
-script = ExtResource("1_6fnbx")
+script = ExtResource("1_gh1nk")
 
 [node name="TaskClock" type="Timer" parent="."]
 
@@ -43,4 +43,4 @@ material = SubResource("CanvasItemMaterial_k1qlw")
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("2_i0eyk")
 
-[connection signal="timeout" from="TaskClock" to="." method="OnTimerTimeout"]
+[connection signal="timeout" from="TaskClock" to="." method="_on_Timer_timeout"]

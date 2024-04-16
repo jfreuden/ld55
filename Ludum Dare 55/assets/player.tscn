@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3kfj8bhi0wu8"]
 
-[ext_resource type="Script" path="res://scripts/Player.cs" id="1_h1ss1"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_idk07"]
 [ext_resource type="PackedScene" uid="uid://dnsc8cfm31p5u" path="res://assets/servant.tscn" id="2_2wm77"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt5pn"]
@@ -13,7 +13,7 @@ radius = 200.0
 y_sort_enabled = true
 motion_mode = 1
 platform_on_leave = 2
-script = ExtResource("1_h1ss1")
+script = ExtResource("1_idk07")
 
 [node name="FeetCollisionCircle" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -104,8 +104,5 @@ polygon = PackedVector2Array(28, 28, -28, 27, -52, -129, 50, -128)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionCircle"]
 shape = SubResource("CircleShape2D_bt3iy")
 debug_color = Color(0, 0.65098, 0.0509804, 0.419608)
-
-[connection signal="area_entered" from="InteractionCircle" to="." method="OnAreaEntered"]
-[connection signal="area_exited" from="InteractionCircle" to="." method="OnAreaExited"]
 
 [editable path="Character"]
