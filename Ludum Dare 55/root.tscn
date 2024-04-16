@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/QuestTracker.cs" id="7_4escj"]
 [ext_resource type="Script" path="res://Bell.cs" id="7_y4v7a"]
 [ext_resource type="AudioStream" uid="uid://chetk8cgeknwh" path="res://audio/items/angry bell.mp3" id="8_0m0x8"]
-[ext_resource type="PackedScene" uid="uid://cofxny2pw65u0" path="res://white_cloth.tscn" id="9_6dmwk"]
 [ext_resource type="AudioStream" uid="uid://vlsa0s7miclw" path="res://audio/items/light bell.mp3" id="9_g53vt"]
 [ext_resource type="AudioStream" uid="uid://be2jg08vco34p" path="res://audio/characters/lord/begon1.mp3" id="9_xnyxj"]
 [ext_resource type="AudioStream" uid="uid://cei33rh0iaam5" path="res://audio/characters/lord/begon2.mp3" id="10_5cw2j"]
@@ -207,8 +206,6 @@ QuestCompleteBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResou
 delayHigh = 20.0
 
 [node name="Bedtime" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
-z_index = 0
-y_sort_enabled = false
 QuestString = "Get me some honey'd milk"
 QuestTaskType = 6
 NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
@@ -234,6 +231,18 @@ QuestTaskType = 6
 stream = ExtResource("29_crlcg")
 autoplay = true
 
+[node name="Hunter" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+visible = true
+Repeatable = true
+QuestString = "Your lord is a mighty hunter"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/MooseHead/Moose")
+
+[node name="Beer Refill" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+Repeatable = true
+QuestString = "My beer tankard is empty"
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/BeerKeg/Take")
+
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = 2
 y_sort_enabled = true
@@ -245,36 +254,22 @@ y_sort_enabled = true
 [node name="MooseHead" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-211, -834)
 
-[node name="PlaceCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Place the towel over the deer head"
-QuestTaskType = 3
-NextTaskMarker = NodePath("../RetakeCloth")
+[node name="Moose" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Admire the great deer I killed"
+NextTaskMarker = NodePath("../../Snake/Snake")
 
-[node name="RetakeCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Actually the cloth should go elsewhere"
-QuestTaskType = 2
-NextTaskMarker = NodePath("../WaitTest")
-
-[node name="WaitTest" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Wait... I'm thinking...."
-QuestTaskType = 5
-NextTaskMarker = NodePath("../../Sword/DeliverTest")
-QuestTime = 3.0
-
-[node name="WhiteCloth" parent="GreatHall/GreatHallItems" instance=ExtResource("9_6dmwk")]
-
-[node name="TakeTest" parent="GreatHall/GreatHallItems/WhiteCloth" index="0" node_paths=PackedStringArray("NextTaskMarker")]
-NextTaskMarker = NodePath("../../MooseHead/PlaceCloth")
+[node name="SplatBrother" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(78, -832)
 
 [node name="Sword" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-1019, -829)
 
-[node name="DeliverTest" parent="GreatHall/GreatHallItems/Sword" instance=ExtResource("4_d27h0")]
-QuestString = "Use the sword to destroy the cloth"
-QuestTaskType = 4
-
 [node name="Snake" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(696, -552)
+
+[node name="Snake" parent="GreatHall/GreatHallItems/Snake" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "And dust my snake trophy"
+NextTaskMarker = NodePath("../../../../Lord/Hunter End")
 
 [node name="AppleCore" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -290,9 +285,14 @@ texture = ExtResource("30_is227")
 
 [node name="BeerKeg" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
-position = Vector2(1887, 73)
+position = Vector2(-632, -33)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("32_hg6xr")
+
+[node name="Take" parent="GreatHall/GreatHallItems/BeerKeg" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Grab the Beer Jug"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../../BeerBarrel/FillBeer")
 
 [node name="BoardGame" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -432,14 +432,14 @@ texture = ExtResource("22_a182i")
 
 [node name="Honeycomb" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
-position = Vector2(-535, -395)
+position = Vector2(-317, -25)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("15_7437r")
 
 [node name="Honeycomb" parent="GreatHall/GreatHallItems/Honeycomb" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
 QuestString = "Take the honey comb"
 QuestTaskType = 2
-NextTaskMarker = NodePath("../../MilkJug/Milkjug")
+NextTaskMarker = NodePath("../../MilkJug/Mix")
 
 [node name="IvoryComb" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -449,13 +449,19 @@ texture = ExtResource("24_vanv3")
 
 [node name="MilkJug" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
-position = Vector2(-454, -399)
+position = Vector2(-263, -3)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("17_16q1j")
 
-[node name="Milkjug" parent="GreatHall/GreatHallItems/MilkJug" instance=ExtResource("4_d27h0")]
+[node name="Mix" parent="GreatHall/GreatHallItems/MilkJug" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
 QuestString = "Mix into the milk jug"
 QuestTaskType = 4
+NextTaskMarker = NodePath("../Take")
+
+[node name="Take" parent="GreatHall/GreatHallItems/MilkJug" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Pick up the milk"
+QuestTaskType = 2
+NextTaskMarker = NodePath("../../../../Lord/Bedtime/Milk")
 
 [node name="Parchment" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -633,6 +639,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("46_sewul")
 
 [node name="RoyalTable" type="StaticBody2D" parent="GreatHall/GreatHallItems"]
+z_index = -1000
 y_sort_enabled = true
 position = Vector2(-357, 28)
 scale = Vector2(2.35529, 2.35529)
@@ -656,6 +663,10 @@ polygon = PackedVector2Array(-147, 56, -145, 3, 140, 3, 140, 56)
 position = Vector2(1031, -354)
 scale = Vector2(2.37125, 2.37125)
 metadata/_edit_group_ = true
+
+[node name="FillBeer" parent="GreatHall/GreatHallItems/BeerBarrel" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Fill it to the brim"
+NextTaskMarker = NodePath("../../../../Lord/Beer Refill/Place")
 
 [node name="BeerBarrel" type="Sprite2D" parent="GreatHall/GreatHallItems/BeerBarrel"]
 texture_filter = 4
@@ -771,6 +782,40 @@ polygon = PackedVector2Array(-147, 56, -145, 3, 140, 3, 140, 56)
 unique_name_in_owner = true
 position = Vector2(-809, 0)
 
+[node name="Beer Refill" type="Node2D" parent="Lord"]
+position = Vector2(177, -21)
+
+[node name="Place" parent="Lord/Beer Refill" instance=ExtResource("4_d27h0")]
+QuestString = "Replace Beer"
+QuestTaskType = 3
+
+[node name="Bedtime" type="Node2D" parent="Lord"]
+
+[node name="Milk" parent="Lord/Bedtime" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Give the lord his sippy drink"
+QuestTaskType = 4
+NextTaskMarker = NodePath("../Interact")
+
+[node name="Interact" parent="Lord/Bedtime" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Tell your Lord a Bedtime story"
+NextTaskMarker = NodePath("../Wait")
+
+[node name="Wait" parent="Lord/Bedtime" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "ZZZZ.... zzzzz ....."
+QuestTaskType = 5
+NextTaskMarker = NodePath("../Interact2")
+QuestTime = 3.0
+
+[node name="Interact2" parent="Lord/Bedtime" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "You bore me tell me a different one"
+NextTaskMarker = NodePath("../Interact3")
+
+[node name="Interact3" parent="Lord/Bedtime" instance=ExtResource("4_d27h0")]
+QuestString = "That's enough get out of my face"
+
+[node name="Hunter End" parent="Lord" instance=ExtResource("4_d27h0")]
+QuestString = "Praise your lord on his achievents"
+
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 
@@ -787,6 +832,9 @@ QuestString = "Wait for the Lord to read the letter"
 QuestTaskType = 5
 NextTaskMarker = NodePath("../../../GreatHall/GreatHallItems/Tomato/TakeTomato")
 
+[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
+scale = Vector2(0.999998, 0.999998)
+
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UIOnCamera"]
@@ -800,6 +848,7 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -924,5 +973,4 @@ NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Cheese/TakeCheese")
 [connection signal="hidden" from="GreatHall/GreatHallItems/LoveLetterBrother" to="GreatHall/GreatHallItems/LoveLetter" method="show"]
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
 
-[editable path="GreatHall/GreatHallItems/WhiteCloth"]
 [editable path="Lord/Character"]
