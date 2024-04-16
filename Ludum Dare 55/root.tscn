@@ -205,15 +205,20 @@ QuestProgressBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResou
 QuestCompleteBarks = [ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")]
 delayHigh = 20.0
 
+[node name="Ex Wifes Coat" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+QuestString = "The Lord has a task for you"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/FurCoat/Shake1of3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="QuestTracker"]
+stream = ExtResource("29_crlcg")
+volume_db = -15.0
+autoplay = true
+
 [node name="Bedtime" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
 QuestString = "Get me some honey'd milk"
 QuestTaskType = 6
 NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
-
-[node name="Ex Wifes Coat" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
-QuestString = "The Lord has a task for you"
-QuestTaskType = 6
-NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/FurCoat/QuestMarker")
 
 [node name="HungryForSalad" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
 QuestString = "The lord is hungry"
@@ -229,10 +234,6 @@ NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Soup/TakeSoup")
 QuestString = "The lord is hungry"
 QuestTaskType = 6
 NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Cheese/TakeCheese")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="QuestTracker"]
-stream = ExtResource("29_crlcg")
-autoplay = true
 
 [node name="Hunter" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
 visible = true
@@ -586,11 +587,11 @@ texture = ExtResource("28_i070w")
 position = Vector2(-17, 661)
 scale = Vector2(0.15, 0.15)
 
-[node name="QuestMarker3" parent="GreatHall/GreatHallItems/LoveLetterBrother" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+[node name="Shake3of3" parent="GreatHall/GreatHallItems/LoveLetterBrother" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
 position = Vector2(633.333, -553.333)
 QuestString = "Shake out the Coat (1)"
 QuestTaskType = 1
-NextTaskMarker = NodePath(".")
+NextTaskMarker = NodePath("../../LoveLetter/TakeLetter")
 
 [node name="LoveLetter" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 visible = false
@@ -599,7 +600,7 @@ position = Vector2(-17, 661)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("26_tmmvl")
 
-[node name="QuestMarker" parent="GreatHall/GreatHallItems/LoveLetter" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+[node name="TakeLetter" parent="GreatHall/GreatHallItems/LoveLetter" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
 QuestString = "What's that!?! Bring me that!"
 QuestTaskType = 2
 NextTaskMarker = NodePath("../../../../Lord/DeliverLetterToLord")
@@ -610,13 +611,13 @@ position = Vector2(78, 578)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("45_g0jnp")
 
-[node name="QuestMarker" parent="GreatHall/GreatHallItems/FurCoat" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+[node name="Shake1of3" parent="GreatHall/GreatHallItems/FurCoat" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
 QuestString = "Shake out the Coat (3)"
-NextTaskMarker = NodePath("../QuestMarker2")
+NextTaskMarker = NodePath("../Shake2of3")
 
-[node name="QuestMarker2" parent="GreatHall/GreatHallItems/FurCoat" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+[node name="Shake2of3" parent="GreatHall/GreatHallItems/FurCoat" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
 QuestString = "Shake out the Coat (2)"
-NextTaskMarker = NodePath("../../LoveLetterBrother/QuestMarker3")
+NextTaskMarker = NodePath("../../LoveLetterBrother/Shake3of3")
 
 [node name="Polish1" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(3365.04, -262.272)
