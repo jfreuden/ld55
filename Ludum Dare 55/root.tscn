@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/QuestTracker.cs" id="7_4escj"]
 [ext_resource type="Script" path="res://Bell.cs" id="7_y4v7a"]
 [ext_resource type="AudioStream" uid="uid://chetk8cgeknwh" path="res://audio/items/angry bell.mp3" id="8_0m0x8"]
-[ext_resource type="PackedScene" uid="uid://cofxny2pw65u0" path="res://white_cloth.tscn" id="9_6dmwk"]
 [ext_resource type="AudioStream" uid="uid://vlsa0s7miclw" path="res://audio/items/light bell.mp3" id="9_g53vt"]
 [ext_resource type="AudioStream" uid="uid://be2jg08vco34p" path="res://audio/characters/lord/begon1.mp3" id="9_xnyxj"]
 [ext_resource type="AudioStream" uid="uid://cei33rh0iaam5" path="res://audio/characters/lord/begon2.mp3" id="10_5cw2j"]
@@ -209,6 +208,12 @@ QuestString = "Get me some honey'd milk"
 QuestTaskType = 6
 NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/Honeycomb/Honeycomb")
 
+[node name="Hunter" parent="QuestTracker" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("6_sdruh")]
+Repeatable = true
+QuestString = "Your lord is a mighty hunter"
+QuestTaskType = 6
+NextTaskMarker = NodePath("../../GreatHall/GreatHallItems/MooseHead/Moose")
+
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = 2
 y_sort_enabled = true
@@ -220,49 +225,22 @@ y_sort_enabled = true
 [node name="MooseHead" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-211, -834)
 
-[node name="PlaceCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Place the towel over the deer head"
-QuestTaskType = 3
-NextTaskMarker = NodePath("../RetakeCloth")
-
-[node name="RetakeCloth" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Actually the cloth should go elsewhere"
-QuestTaskType = 2
-NextTaskMarker = NodePath("../WaitTest")
-
-[node name="WaitTest" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
-QuestString = "Wait... I'm thinking...."
-QuestTaskType = 5
-NextTaskMarker = NodePath("../../Sword/DeliverTest")
-QuestTime = 3.0
-
-[node name="WhiteCloth" parent="GreatHall/GreatHallItems" instance=ExtResource("9_6dmwk")]
-
-[node name="TakeTest" parent="GreatHall/GreatHallItems/WhiteCloth" index="0" node_paths=PackedStringArray("NextTaskMarker")]
-NextTaskMarker = NodePath("../../MooseHead/PlaceCloth")
+[node name="Moose" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "Admire the great deer I killed"
+NextTaskMarker = NodePath("../../Snake/Snake")
 
 [node name="SplatBrother" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(78, -832)
 
-[node name="ModifyTest" parent="GreatHall/GreatHallItems/SplatBrother" instance=ExtResource("4_d27h0")]
-QuestString = "Throw a tomato at the painting"
-QuestTaskType = 1
-
-[node name="TomatoOnPainting" type="Polygon2D" parent="GreatHall/GreatHallItems"]
-visible = false
-position = Vector2(78, -832)
-color = Color(1, 0, 0.113725, 1)
-polygon = PackedVector2Array(-21, 26, -69, 23, -70, -4, -59, -26, 15, -35, 44, -27, 42, -1, 42, 18, -7, 25)
-
 [node name="Sword" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-1019, -829)
 
-[node name="DeliverTest" parent="GreatHall/GreatHallItems/Sword" instance=ExtResource("4_d27h0")]
-QuestString = "Use the sword to destroy the cloth"
-QuestTaskType = 4
-
 [node name="Snake" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(696, -552)
+
+[node name="Snake" parent="GreatHall/GreatHallItems/Snake" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
+QuestString = "And dust my snake trophy"
+NextTaskMarker = NodePath("../../../../Lord/Hunter End")
 
 [node name="AppleCore" type="Sprite2D" parent="GreatHall/GreatHallItems"]
 texture_filter = 4
@@ -611,6 +589,9 @@ polygon = PackedVector2Array(-147, 56, -145, 3, 140, 3, 140, 56)
 unique_name_in_owner = true
 position = Vector2(-809, 0)
 
+[node name="Hunter End" parent="Lord" instance=ExtResource("4_d27h0")]
+QuestString = "Praise your lord on his achievents"
+
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 
@@ -618,6 +599,9 @@ scale = Vector2(0.556, 0.556)
 scale = Vector2(1, 1)
 
 [node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
+
+[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999998)
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
@@ -719,8 +703,6 @@ draw_order = 2
 
 [node name="BarkPlayer" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="hidden" from="GreatHall/GreatHallItems/SplatBrother" to="GreatHall/GreatHallItems/TomatoOnPainting" method="show"]
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
 
-[editable path="GreatHall/GreatHallItems/WhiteCloth"]
 [editable path="Lord/Character"]
