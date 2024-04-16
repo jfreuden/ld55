@@ -647,7 +647,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="RoyalTable" type="Sprite2D" parent="GreatHall/GreatHallItems/RoyalTable"]
-z_index = -1
 y_sort_enabled = true
 texture_filter = 4
 position = Vector2(2.97203, 64.111)
@@ -823,6 +822,9 @@ scale = Vector2(0.556, 0.556)
 scale = Vector2(1, 1)
 
 [node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
+
+[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999998)
 
 [node name="DeliverLetterToLord" parent="Lord" node_paths=PackedStringArray("NextTaskMarker") instance=ExtResource("4_d27h0")]
