@@ -17,11 +17,19 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=948
+window/size/viewport_height=533
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="Ludum Dare 55"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [input]
 
