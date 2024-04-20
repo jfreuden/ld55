@@ -813,15 +813,6 @@ metadata/_edit_group_ = true
 [node name="Skeleton" parent="Lord/Character" index="1"]
 visible = false
 
-[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
-scale = Vector2(1, 1)
-
-[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
-scale = Vector2(0.999998, 0.999998)
-
-[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
-scale = Vector2(0.999998, 0.999998)
-
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UIOnCamera"]
@@ -845,6 +836,7 @@ offset_left = -75.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 text = "Ring Bell"
 
 [node name="PauseMenu" type="Control" parent="UIOnCamera/Control"]
@@ -902,6 +894,7 @@ script = ExtResource("54_she2a")
 
 [node name="Label" type="Label" parent="UIOnCamera/Control/ScrollContainer/TaskList"]
 layout_mode = 2
+text = "Questname: Questdetails - 999.99"
 horizontal_alignment = 2
 
 [node name="HUD" type="Control" parent="UIOnCamera"]

@@ -19,6 +19,9 @@ enum TaskType {
 @export var quest_time : float = 30.0
 @export var interaction_radius : float = 100.0
 
+signal interaction_succeeded
+signal interaction_failed
+
 # Member variables
 var task_clock : Timer
 var interaction_area : Area2D
@@ -48,7 +51,9 @@ func _on_Timer_timeout():
         print("Wait time for the task has passed")
         interact()
     else:
-        print("Murder Attempt not yet implemented")
+        print("The Lord has lost patience")
+        var quest_tracker = get_node("/root/Root/QuestTracker")
+        quest_tracker.reset_all_timers()
 
 func interact():
     var success = false
@@ -70,8 +75,15 @@ func interact():
         var quest_tracker = get_node("/root/Root/QuestTracker")
         if quest_tracker:
             quest_tracker.next_task(self)
+        interaction_succeeded.emit()
     else:
         print("Task Interaction Attempt Failed")
+        var t: Tween = create_tween()
+        t.tween_property(self, "modulate", Color.CYAN, 0.4)
+        t.tween_property(self, "modulate", Color.WHITE, 0.4)
+        t.play()
+        interaction_failed.emit()
+    return success
 
 func interact_basic() -> bool:
     return true

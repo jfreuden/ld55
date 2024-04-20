@@ -42,18 +42,26 @@ func handle_interact_key():
     var overlapping_areas = $InteractionCircle.get_overlapping_areas()
     print(overlapping_areas.size(), " overlaps upon Interaction")
 
-    # Get the closest parent
-    if overlapping_areas.size() > 0:
+    var success = false
+        
+    while !success && overlapping_areas.size() > 0:
+        # Get the closest parent
+        var selected_area = overlapping_areas[0]
         var selected_parent = overlapping_areas[0].get_parent()
-        var closest_distance = selected_parent.position.distance_to(position)
+        var closest_distance = selected_parent.global_position.distance_to(global_position)
 
         for area in overlapping_areas:
-            var distance_to = area.position.distance_to(position)
+            var distance_to = area.global_position.distance_to(global_position)
             if distance_to < closest_distance:
                 closest_distance = distance_to
+                selected_area = area
                 selected_parent = area.get_parent()
 
-        var success = selected_parent.interact()
+        success = selected_parent.interact()
+        if success:
+            return
+        else:
+            overlapping_areas.erase(selected_area)
 
 # Unused signals
 # func _on_Area2D_area_entered(area):
