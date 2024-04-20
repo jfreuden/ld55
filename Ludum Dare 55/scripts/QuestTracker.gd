@@ -97,3 +97,8 @@ func next_task(finished_task: QuestMarker):
     active_tasks.append(next_task)
     next_task.enable_interaction()
 
+func reset_all_timers():
+    for task: QuestMarker in active_tasks:
+        task.task_clock.start()
+    pass
+

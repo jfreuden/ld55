@@ -839,12 +839,6 @@ quest_string = "Praise your lord on his achievents"
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 
-[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
-scale = Vector2(1, 1)
-
-[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
-scale = Vector2(0.999998, 0.999998)
-
 [node name="DeliverLetterToLord" parent="Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Bring me that letter!"
 quest_task_type = 4
@@ -868,7 +862,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -879,6 +872,7 @@ offset_left = -75.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 text = "Ring Bell"
 
 [node name="PauseMenu" type="Control" parent="UIOnCamera/Control"]
@@ -936,6 +930,7 @@ script = ExtResource("54_she2a")
 
 [node name="Label" type="Label" parent="UIOnCamera/Control/ScrollContainer/TaskList"]
 layout_mode = 2
+text = "Questname: Questdetails - 999.99"
 horizontal_alignment = 2
 
 [node name="HUD" type="Control" parent="UIOnCamera"]
@@ -992,6 +987,6 @@ next_task_marker = NodePath("../../GreatHall/GreatHallItems/Cheese/TakeCheese")
 
 [connection signal="hidden" from="GreatHall/GreatHallItems/SplatBrother" to="GreatHall/GreatHallItems/TomatoSplat" method="show"]
 [connection signal="hidden" from="GreatHall/GreatHallItems/LoveLetterBrother" to="GreatHall/GreatHallItems/LoveLetter" method="show"]
-[connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="RingBell"]
+[connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="ring_bell"]
 
 [editable path="Lord/Character"]

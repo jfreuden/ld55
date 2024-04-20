@@ -48,7 +48,9 @@ func _on_Timer_timeout():
         print("Wait time for the task has passed")
         interact()
     else:
-        print("Murder Attempt not yet implemented")
+        print("The Lord has lost patience")
+        var quest_tracker = get_node("/root/Root/QuestTracker")
+        quest_tracker.reset_all_timers()
 
 func interact():
     var success = false
@@ -72,6 +74,11 @@ func interact():
             quest_tracker.next_task(self)
     else:
         print("Task Interaction Attempt Failed")
+        var t: Tween = create_tween()
+        t.tween_property(self, "modulate", Color.CYAN, 0.4)
+        t.tween_property(self, "modulate", Color.WHITE, 0.4)
+        t.play()
+    return success
 
 func interact_basic() -> bool:
     return true
