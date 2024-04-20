@@ -5,11 +5,11 @@ extends Node2D
 
 # Member variables
 var active_tasks : Array = []
-var disabled_starts : Array = []
 var bell_timer : Timer = Timer.new()
 var completed_tasks : int = 0
 
 # Exported variables
+@export var disabled_starts : Array[QuestStart] = []
 @export var quest_accept_barks : Array[AudioStreamMP3] = []
 @export var quest_progress_barks : Array[AudioStreamMP3] = []
 @export var quest_complete_barks : Array[AudioStreamMP3] = []
@@ -75,8 +75,13 @@ func next_task(finished_task: QuestMarker):
 
         for start in disabled_starts:
             var ptr = start
+            var attempts : int = 0
 
             while ptr != null:
+                attempts = attempts + 1
+                if attempts > 100:
+                    # This quest chain is likely a cicular loop, break out
+                    break;
                 if ptr == finished_task:
                     if start is QuestStart and start.repeatable:
                         disabled_starts.erase(start)

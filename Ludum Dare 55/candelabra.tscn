@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://uhf23irwb08g"]
+
+[ext_resource type="Texture2D" uid="uid://bh6fq3wnd2wm1" path="res://assets/items/Candelabra.png" id="1_lnl24"]
+[ext_resource type="Texture2D" uid="uid://c47247o3xgtw3" path="res://assets/flame_particle.png" id="2_lirwd"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b1vjl"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+angle_min = -10.0
+angle_max = 10.0
+direction = Vector3(0, -1, 0)
+spread = 36.91
+flatness = 0.011
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, -100, 0)
+scale_min = 0.2
+scale_max = 0.4
+
+[node name="Candelabra" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+
+[node name="Candelabra" type="Sprite2D" parent="."]
+texture_filter = 4
+texture = ExtResource("1_lnl24")
+
+[node name="CandleFlame" type="GPUParticles2D" parent="Candelabra"]
+texture_filter = 4
+position = Vector2(-166.197, -312.676)
+scale = Vector2(2.8169, 2.8169)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_b1vjl")
+texture = ExtResource("2_lirwd")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+local_coords = true
+draw_order = 2
+
+[node name="CandleFlame2" type="GPUParticles2D" parent="Candelabra"]
+texture_filter = 4
+position = Vector2(-2.81689, -340.845)
+scale = Vector2(2.8169, 2.8169)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_b1vjl")
+texture = ExtResource("2_lirwd")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+local_coords = true
+draw_order = 2
+
+[node name="CandleFlame3" type="GPUParticles2D" parent="Candelabra"]
+texture_filter = 4
+position = Vector2(157.746, -321.127)
+scale = Vector2(2.8169, 2.8169)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_b1vjl")
+texture = ExtResource("2_lirwd")
+visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
+local_coords = true
+draw_order = 2

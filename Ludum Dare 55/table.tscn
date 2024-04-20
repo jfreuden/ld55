@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb31sugmv1e1r"]
+
+[ext_resource type="Texture2D" uid="uid://e7m0j3mjhn1m" path="res://assets/rooms/royal_table.png" id="1_1btih"]
+
+[node name="RoyalTable" type="StaticBody2D"]
+y_sort_enabled = true
+scale = Vector2(0.8, 0.8)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="RoyalTable" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 4
+texture = ExtResource("1_1btih")
+offset = Vector2(-7.17594, 87.2332)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-270.727, 102.554)
+polygon = PackedVector2Array(-155.992, 144.204, -154.813, -10.609, 659.725, -10.2161, 656.189, 143.026)

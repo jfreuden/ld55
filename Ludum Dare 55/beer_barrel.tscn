@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://chujrsl84ckv3"]
+
+[ext_resource type="Texture2D" uid="uid://e4vc18qhwpho" path="res://assets/items/beer barrel.png" id="2_6sevk"]
+
+[node name="BeerBarrel" type="StaticBody2D"]
+position = Vector2(1031, -354)
+scale = Vector2(2.37125, 2.37125)
+
+[node name="BeerBarrel" type="Sprite2D" parent="."]
+texture_filter = 4
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("2_6sevk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.355, 0.355)
+polygon = PackedVector2Array(-73.2394, 205.634, -73.2394, 28.169, 61.9718, 30.9859, 61.9718, 205.634)

@@ -19,10 +19,12 @@ script = ExtResource("1_gh1nk")
 [node name="InteractionArea" type="Area2D" parent="."]
 
 [node name="InteractionCollisionShape" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
 shape = SubResource("CircleShape2D_a5lnw")
 debug_color = Color(0, 0.647059, 0.207843, 0.419608)
 
 [node name="InteractionLabel" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -38,6 +40,7 @@ text = "Press F to Interact"
 horizontal_alignment = 1
 
 [node name="Interaction-circle" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 4
 material = SubResource("CanvasItemMaterial_k1qlw")
 scale = Vector2(2.2, 2.2)

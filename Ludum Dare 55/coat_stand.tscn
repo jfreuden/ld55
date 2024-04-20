@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlmujgqvolaye"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_meh4j"]
+radius = 25.0
+
+[node name="CoatStand" type="StaticBody2D"]
+position = Vector2(0, 85.0001)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+polygon = PackedVector2Array(-18, 16, 20, 16, 20, 7, 2, 7, 2, -130, 10, -130, 12, -134, 2, -134, 4, -143, 8, -142, 9, -147, -14, -147, -13, -142, -9, -144, -7, -134, -16, -134, -14, -131, -7, -131, -7, 8, -22, 8, -22, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_meh4j")
