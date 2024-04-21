@@ -53,6 +53,7 @@ func _on_Timer_timeout():
     else:
         print("The Lord has lost patience")
         var quest_tracker = get_node("/root/Root/QuestTracker")
+        get_node("/root/Root/%Lord/Character").attack_player()
         quest_tracker.reset_all_timers()
 
 func interact():
@@ -158,9 +159,6 @@ func enable_children():
         interaction_enabled = true
         interaction_panel.show()
         show()
-        print(get_node("/root/Root/Lord").global_position)
-        print(global_position)
-        print(quest_task_type)
         if quest_task_type == TaskType.BELL:
             global_position = get_node("/root/Root/Lord").global_position
 

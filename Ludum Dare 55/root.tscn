@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=89 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -59,7 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://4bmv5cgf7fbg" path="res://assets/items/Apple.png" id="30_is227"]
 [ext_resource type="Texture2D" uid="uid://ywpjm0gun7o1" path="res://assets/items/Ruling for Dunces.png" id="31_5qmv5"]
 [ext_resource type="Texture2D" uid="uid://buryelenfelf1" path="res://assets/items/Beer Keg.png" id="32_hg6xr"]
-[ext_resource type="PackedScene" uid="uid://dlmujgqvolaye" path="res://coat_stand.tscn" id="34_nb3ac"]
+[ext_resource type="PackedScene" path="res://coat_stand.tscn" id="34_nb3ac"]
 [ext_resource type="Texture2D" uid="uid://dhccgafds2vnk" path="res://assets/items/Signet Ring.png" id="35_hmpox"]
 [ext_resource type="Texture2D" uid="uid://djs6mjspqll03" path="res://assets/items/Skull.png" id="36_ws2x4"]
 [ext_resource type="Texture2D" uid="uid://b8b5s3ipfm75t" path="res://assets/items/Polish1.png" id="43_3fgov"]
@@ -69,12 +69,13 @@
 [ext_resource type="Texture2D" uid="uid://drm270k3ffjh2" path="res://assets/items/Chamber_Pot.png" id="46_sewul"]
 [ext_resource type="PackedScene" uid="uid://dfhqfp3a3k2x0" path="res://lord.tscn" id="53_005yn"]
 [ext_resource type="Script" path="res://scripts/TaskList.gd" id="54_she2a"]
-[ext_resource type="PackedScene" uid="uid://bb31sugmv1e1r" path="res://table.tscn" id="66_1v6wv"]
+[ext_resource type="PackedScene" path="res://table.tscn" id="66_1v6wv"]
 [ext_resource type="PackedScene" uid="uid://br04g8k04gms8" path="res://table_small.tscn" id="66_we1xn"]
-[ext_resource type="PackedScene" uid="uid://mxid62lfnsne" path="res://sconce.tscn" id="69_o8t2g"]
+[ext_resource type="PackedScene" path="res://sconce.tscn" id="69_o8t2g"]
 [ext_resource type="PackedScene" uid="uid://chujrsl84ckv3" path="res://beer_barrel.tscn" id="69_p12tg"]
-[ext_resource type="PackedScene" uid="uid://v06r3woq4e45" path="res://candle.tscn" id="70_utxtm"]
+[ext_resource type="PackedScene" path="res://candle.tscn" id="70_utxtm"]
 [ext_resource type="PackedScene" uid="uid://uhf23irwb08g" path="res://candelabra.tscn" id="71_w61il"]
+[ext_resource type="Script" path="res://Foggy.gd" id="75_a2q6q"]
 
 [sub_resource type="Animation" id="Animation_qsqa8"]
 length = 0.001
@@ -136,6 +137,44 @@ _data = {
 "RESET": SubResource("Animation_qsqa8"),
 "ring_the_bell": SubResource("Animation_gag2d")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tmmmk"]
+
+[sub_resource type="Gradient" id="Gradient_kv1r1"]
+colors = PackedColorArray(0, 0, 0, 1, 0.19855, 0.0707438, 0.0461028, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vk0h5"]
+noise_type = 3
+seed = -5
+frequency = 0.0074
+offset = Vector3(0, 1.5, 0)
+fractal_octaves = 2
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tloyi"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_kv1r1")
+noise = SubResource("FastNoiseLite_vk0h5")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qovvk"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_m4j07"]
+offsets = PackedFloat32Array(0, 0.992958)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c11ly"]
+seed = 9
+frequency = 0.0275
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f8wk2"]
+width = 400
+height = 400
+seamless = true
+seamless_blend_skirt = 0.52
+color_ramp = SubResource("Gradient_m4j07")
+noise = SubResource("FastNoiseLite_c11ly")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1gfnb"]
 lifetime_randomness = 0.25
@@ -322,6 +361,7 @@ position = Vector2(-311, 572)
 
 [node name="FurCoat" type="Sprite2D" parent="GreatHall/GreatHallItems/Coat Quest"]
 z_index = 1
+position = Vector2(0, -43)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("45_g0jnp")
 
@@ -816,6 +856,12 @@ metadata/_edit_group_ = true
 [node name="Skeleton" parent="Lord/Character" index="2"]
 visible = false
 
+[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
+scale = Vector2(1, 1)
+
+[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
+scale = Vector2(0.999998, 0.999998)
+
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UIOnCamera"]
@@ -828,17 +874,27 @@ grow_vertical = 2
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIOnCamera/Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -31.0
+offset_left = -154.0
+offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="DEBUGAttackPlayer" type="Button" parent="UIOnCamera/Control/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Attack Player
+"
+
+[node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
 text = "Ring Bell"
 
 [node name="PauseMenu" type="Control" parent="UIOnCamera/Control"]
@@ -902,7 +958,23 @@ horizontal_alignment = 2
 layout_mode = 3
 anchors_preset = 0
 
-[node name="UIOnWorld" type="CanvasLayer" parent="."]
+[node name="Foggy" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+script = ExtResource("75_a2q6q")
+
+[node name="Brown" type="Polygon2D" parent="Foggy"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_tmmmk")
+texture = SubResource("NoiseTexture2D_tloyi")
+polygon = PackedVector2Array(-4420, -3837, 3852, -3803, 3852, 3113, -4454, 3147)
+
+[node name="Detail" type="Polygon2D" parent="Foggy"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_qovvk")
+texture = SubResource("NoiseTexture2D_f8wk2")
+texture_rotation = -1.01578
+polygon = PackedVector2Array(-4420, -3837, 3852, -3803, 3852, 3113, -4454, 3147)
 
 [node name="CandleFlame" type="GPUParticles2D" parent="."]
 visible = false
@@ -919,6 +991,7 @@ draw_order = 2
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Salad" to="GreatHall/GreatHallItems/Table Serving/Salad/Salad" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Soup" to="GreatHall/GreatHallItems/Table Serving/Soup/Soup" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Cheese" to="GreatHall/GreatHallItems/Table Food/Cheese" method="hide"]
-[connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="ring_bell"]
+[connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGAttackPlayer" to="Lord/Character" method="attack_player"]
+[connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGRingBell" to="QuestTracker" method="ring_bell"]
 
 [editable path="Lord/Character"]

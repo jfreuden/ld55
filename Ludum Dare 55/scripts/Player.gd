@@ -62,11 +62,3 @@ func handle_interact_key():
             return
         else:
             overlapping_areas.erase(selected_area)
-
-# Unused signals
-# func _on_Area2D_area_entered(area):
-#     print(area)
-#
-# func _on_Area2D_area_exited(area):
-#     print(area)
-
