@@ -43,7 +43,7 @@ func handle_interact_key():
     print(overlapping_areas.size(), " overlaps upon Interaction")
 
     var success = false
-        
+
     while !success && overlapping_areas.size() > 0:
         # Get the closest parent
         var selected_area = overlapping_areas[0]

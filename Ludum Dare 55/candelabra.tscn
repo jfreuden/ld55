@@ -18,15 +18,18 @@ scale_min = 0.2
 scale_max = 0.4
 
 [node name="Candelabra" type="Node2D"]
+y_sort_enabled = true
 scale = Vector2(0.2, 0.2)
 
 [node name="Candelabra" type="Sprite2D" parent="."]
 texture_filter = 4
+position = Vector2(-4.76837e-07, 270)
 texture = ExtResource("1_lnl24")
+offset = Vector2(4.76837e-07, -270)
 
 [node name="CandleFlame" type="GPUParticles2D" parent="Candelabra"]
 texture_filter = 4
-position = Vector2(-166.197, -312.676)
+position = Vector2(-165, -581.831)
 scale = Vector2(2.8169, 2.8169)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_b1vjl")
@@ -37,7 +40,7 @@ draw_order = 2
 
 [node name="CandleFlame2" type="GPUParticles2D" parent="Candelabra"]
 texture_filter = 4
-position = Vector2(-2.81689, -340.845)
+position = Vector2(-1.61988, -610)
 scale = Vector2(2.8169, 2.8169)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_b1vjl")
@@ -48,7 +51,7 @@ draw_order = 2
 
 [node name="CandleFlame3" type="GPUParticles2D" parent="Candelabra"]
 texture_filter = 4
-position = Vector2(157.746, -321.127)
+position = Vector2(158.943, -590.282)
 scale = Vector2(2.8169, 2.8169)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_b1vjl")

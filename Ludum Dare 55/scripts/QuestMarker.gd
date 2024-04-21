@@ -16,8 +16,8 @@ enum TaskType {
 @export var quest_string : String = "Describe the task"
 @export var quest_task_type : TaskType
 @export var next_task_marker : QuestMarker
-@export var quest_time : float = 30.0
-@export var interaction_radius : float = 100.0
+@export var quest_time : float = 15.0
+@export var interaction_radius : float = 50.0
 
 signal interaction_succeeded
 signal interaction_failed
@@ -27,7 +27,7 @@ var task_clock : Timer
 var interaction_area : Area2D
 var interaction_collision_shape : CollisionShape2D
 var interaction_circle : CircleShape2D
-var interaction_label : Label
+var interaction_panel : Panel
 var interaction_enabled : bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -128,7 +128,7 @@ func interact_place(visible: bool = true) -> bool:
 
     var child : Node2D = hand.get_child(0)
     child.reparent(parent, false)
-    child.position = Vector2.ZERO
+    child.position = position
     child.visible = visible
 
     return true
@@ -141,8 +141,14 @@ func interact_wait() -> bool:
 
 func enable_children():
     task_clock.wait_time = quest_time
-    interaction_circle.radius = interaction_radius
-    global_scale = Vector2(1.0, 1.0)
+
+    #set interaction panel size based on user radius
+    interaction_panel.size = Vector2.ONE * interaction_radius * 2;
+    interaction_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE, true)
+
+    #ensure circle is not smaller than min panel size
+    interaction_circle.radius = interaction_radius;
+
     task_clock.start()
 
     if quest_task_type != TaskType.WAIT:
@@ -150,7 +156,7 @@ func enable_children():
         interaction_area.monitoring = true
         interaction_collision_shape.disabled = false
         interaction_enabled = true
-        interaction_label.show()
+        interaction_panel.show()
         show()
         print(get_node("/root/Root/Lord").global_position)
         print(global_position)
@@ -164,7 +170,7 @@ func disable_children():
     interaction_area.monitoring = false
     interaction_collision_shape.disabled = true
     interaction_enabled = false
-    interaction_label.hide()
+    interaction_panel.hide()
     hide()
 
 func bind_children():
@@ -175,6 +181,6 @@ func bind_children():
     interaction_collision_shape = node_and_shape[0]
     interaction_circle = node_and_shape[1]
 
-    interaction_label = get_node("InteractionLabel")
+    interaction_panel = get_node("InteractionPanel")
     # Todo: bind to particle emitter
 

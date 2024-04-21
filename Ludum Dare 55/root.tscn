@@ -173,9 +173,6 @@ texture = ExtResource("6_iayre")
 script = ExtResource("3_dvsi4")
 streams = Array[AudioStreamMP3]([ExtResource("8_0m0x8"), ExtResource("9_g53vt"), ExtResource("10_jmjk3")])
 
-[node name="SimpleInteraction" parent="Player/Camera2D/Bell" instance=ExtResource("4_d27h0")]
-quest_string = "Touch the offscreen Bell"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera2D/Bell"]
 libraries = {
 "": SubResource("AnimationLibrary_o1u8i")
@@ -183,43 +180,29 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Camera2D/Bell"]
 
-[node name="QuestTracker" type="Node2D" parent="." node_paths=PackedStringArray("disabled_starts")]
+[node name="QuestTracker" type="Node2D" parent="."]
 unique_name_in_owner = true
 z_index = 1000
 script = ExtResource("8_ctlei")
-disabled_starts = [NodePath("HungryForSalad"), NodePath("HungryForSoup"), NodePath("HungryForCheese")]
 quest_accept_barks = Array[AudioStreamMP3]([ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource("11_o3b8h"), ExtResource("12_fuktn"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("15_qqno4"), ExtResource("16_w1vwp"), ExtResource("17_tqfwk"), ExtResource("18_q116p")])
 quest_progress_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")])
 quest_complete_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")])
 delay_high = 20.0
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="QuestTracker"]
-stream = ExtResource("29_crlcg")
-volume_db = -15.0
-autoplay = true
 
 [node name="Ex Wifes Coat" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "The Lord has a task for you"
 quest_task_type = 6
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Coat Quest/FurCoat/Shake 1")
 
+[node name="Beer Refill" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+repeatable = true
+quest_string = "My beer tankard is empty"
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/BeerKeg/Take Beer")
+
 [node name="Bedtime" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "Get me some honey'd milk"
 quest_task_type = 6
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Honeycomb/Take Honeycomb")
-
-[node name="HungryForSalad" parent="QuestTracker" instance=ExtResource("6_sdruh")]
-quest_string = "The lord is hungry"
-quest_task_type = 6
-
-[node name="HungryForSoup" parent="QuestTracker" instance=ExtResource("6_sdruh")]
-quest_string = "The lord is hungry"
-quest_task_type = 6
-
-[node name="HungryForCheese" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "The lord is hungry"
-quest_task_type = 6
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Cheese/TakeCheese")
 
 [node name="Hunter" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 repeatable = true
@@ -227,10 +210,25 @@ quest_string = "My hunting trophies look dirty!!!"
 quest_task_type = 6
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Snake/Dust Snake")
 
-[node name="Beer Refill" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
-quest_string = "My beer tankard is empty"
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Lord Table/BeerKeg/Take Beer")
+[node name="Hungry for Salad" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord is hungry"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Salad/Take Salad")
+
+[node name="Hungry for Soup" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord is hungry"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Soup/Take Soup")
+
+[node name="Hungry for Cheese" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord is hungry"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Cheese/Take Cheese")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="QuestTracker"]
+stream = ExtResource("29_crlcg")
+volume_db = -15.0
+autoplay = true
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = 2
@@ -241,11 +239,12 @@ metadata/_edit_lock_ = true
 y_sort_enabled = true
 
 [node name="MooseHead" type="Node2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(-115, -848)
+position = Vector2(-115, -836)
 
 [node name="Admire Moose Head" parent="GreatHall/GreatHallItems/MooseHead" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Look at this moose I killed! The oldest one in the entire herd!"
 next_task_marker = NodePath("../../../../Lord/Hunter End")
+interaction_radius = 100.0
 
 [node name="Ex Wife Painting" type="Node2D" parent="GreatHall/GreatHallItems"]
 
@@ -256,23 +255,23 @@ position = Vector2(112, -837)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("26_sek7u")
 
-[node name="Tomato Trigger" type="Node2D" parent="GreatHall/GreatHallItems/Ex Wife Painting"]
+[node name="Throw Tomato" parent="GreatHall/GreatHallItems/Ex Wife Painting" instance=ExtResource("4_d27h0")]
 position = Vector2(78, -832)
-
-[node name="Throw Tomato" parent="GreatHall/GreatHallItems/Ex Wife Painting/Tomato Trigger" instance=ExtResource("4_d27h0")]
 quest_string = "Throw the tomato at the painting of my ex-wife!"
-quest_task_type = 1
+quest_task_type = 4
+interaction_radius = 100.0
 
 [node name="Sword" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-1019, -829)
 
 [node name="Snake" type="Node2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(824, -579)
+position = Vector2(848, -567)
 metadata/_edit_group_ = true
 
 [node name="Dust Snake" parent="GreatHall/GreatHallItems/Snake" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Dust that snake trophy lad. Its not gonna bite ya you know.."
 next_task_marker = NodePath("../../MooseHead/Admire Moose Head")
+interaction_radius = 100.0
 
 [node name="Sconce Left" parent="GreatHall/GreatHallItems" instance=ExtResource("69_o8t2g")]
 position = Vector2(-898, -836)
@@ -305,16 +304,16 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("46_sewul")
 
 [node name="Beer Barrel" type="Node2D" parent="GreatHall/GreatHallItems"]
+position = Vector2(994, -282)
 
 [node name="Beer Barrel" parent="GreatHall/GreatHallItems/Beer Barrel" instance=ExtResource("69_p12tg")]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Fill Beer" parent="GreatHall/GreatHallItems/Beer Barrel" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(1031, -354)
-scale = Vector2(2.37125, 2.37125)
 quest_string = "Fill it to the brim"
-next_task_marker = NodePath("../../Lord Table/Place Beer")
+next_task_marker = NodePath("../../Table Lord/Place Beer")
+interaction_radius = 75.0
 
 [node name="Coat Quest" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-311, 572)
@@ -327,22 +326,22 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("45_g0jnp")
 
 [node name="Shake 1" parent="GreatHall/GreatHallItems/Coat Quest/FurCoat" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "Shake out the Coat (3)"
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Shake out that dusty coat!"
 next_task_marker = NodePath("../Shake 2")
+interaction_radius = 75.0
 
 [node name="Shake 2" parent="GreatHall/GreatHallItems/Coat Quest/FurCoat" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "Shake out the Coat (2)"
-next_task_marker = NodePath("../../Love Letter Trigger/Shake 3")
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Keep shaking!"
+next_task_marker = NodePath("../Shake 3")
+interaction_radius = 75.0
 
-[node name="Love Letter Trigger" type="Node2D" parent="GreatHall/GreatHallItems/Coat Quest"]
-position = Vector2(-95, 83)
-scale = Vector2(0.15, 0.15)
-
-[node name="Shake 3" parent="GreatHall/GreatHallItems/Coat Quest/Love Letter Trigger" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(633.333, -553.333)
-quest_string = "Shake out the Coat (1)"
-quest_task_type = 1
+[node name="Shake 3" parent="GreatHall/GreatHallItems/Coat Quest/FurCoat" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Really shake it out lad!"
 next_task_marker = NodePath("../../Love Letter/Take Letter")
+interaction_radius = 75.0
 
 [node name="Love Letter" type="Sprite2D" parent="GreatHall/GreatHallItems/Coat Quest"]
 visible = false
@@ -352,48 +351,43 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("26_tmmvl")
 
 [node name="Take Letter" parent="GreatHall/GreatHallItems/Coat Quest/Love Letter" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
 quest_string = "What's that!?! Bring me that!"
 quest_task_type = 2
 next_task_marker = NodePath("../../../../../Lord/Ex Wifes Coat/Deliver Letter")
 
 [node name="Table Serving" type="Node2D" parent="GreatHall/GreatHallItems"]
+y_sort_enabled = true
 position = Vector2(528, -403)
 
-[node name="RoyalTable" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("66_we1xn")]
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("66_we1xn")]
 
-[node name="PutForkAway" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
-visible = false
-position = Vector2(91.083, 7.7939)
-quest_string = "Put the fork away"
-quest_task_type = 4
+[node name="Place Fork" parent="GreatHall/GreatHallItems/Table Serving" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(82, -9)
+quest_string = "Put the fork down!"
+quest_task_type = 3
+next_task_marker = NodePath("../Salad/Take Salad Bowl")
 
-[node name="PutSpoonAway" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
-visible = false
-position = Vector2(123.625, 7)
-quest_string = "Put the spoon away"
-quest_task_type = 4
+[node name="Place Spoon" parent="GreatHall/GreatHallItems/Table Serving" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(94, 4)
+quest_string = "Put the spoon down!"
+quest_task_type = 3
+next_task_marker = NodePath("../Soup/Take Soup Bowl")
 
-[node name="PutKnifeAway" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
-visible = false
-position = Vector2(138.706, 8.5879)
+[node name="Place Knife" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
+position = Vector2(75, 16)
 quest_string = "Put the knife away"
-quest_task_type = 4
+quest_task_type = 3
 
-[node name="PutSoupBowlAway" parent="GreatHall/GreatHallItems/Table Serving" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-visible = false
-position = Vector2(90, 11.3031)
-scale = Vector2(0.15, 0.15)
-quest_string = "Put the bowl away"
-quest_task_type = 4
-next_task_marker = NodePath("../../Lord Table/Spoon/TakeSpoonUsed")
+[node name="Place Soup Bowl" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
+position = Vector2(15, 25)
+quest_string = "Put the bowl down"
+quest_task_type = 3
 
-[node name="PutSaladBowlAway" parent="GreatHall/GreatHallItems/Table Serving" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-visible = false
-position = Vector2(124.515, 7.3751)
-scale = Vector2(0.15, 0.15)
-quest_string = "Put the dirty dish away"
-quest_task_type = 4
-next_task_marker = NodePath("../../Lord Table/Fork/TakeFork")
+[node name="Place Salad Bowl" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
+position = Vector2(3, 2)
+quest_string = "Put the bowl down"
+quest_task_type = 3
 
 [node name="Teaset" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
 texture_filter = 4
@@ -402,60 +396,54 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("25_ovsgh")
 offset = Vector2(20, -133.333)
 
-[node name="SoupBowl" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
-visible = false
-texture_filter = 4
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_xvdqk")
-
-[node name="ModifySoupBowl" parent="GreatHall/GreatHallItems/Table Serving/SoupBowl" instance=ExtResource("4_d27h0")]
-quest_string = "Take this bowl"
-quest_task_type = 1
-
-[node name="TakeSoupBowlUsed" parent="GreatHall/GreatHallItems/Table Serving/SoupBowl" instance=ExtResource("4_d27h0")]
-quest_string = "Take the dirty bowl away!"
-quest_task_type = 4
-
-[node name="SaladBowl" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
-visible = false
-texture_filter = 4
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("10_xvdqk")
-
-[node name="ModifySaladBowl" parent="GreatHall/GreatHallItems/Table Serving/SaladBowl" instance=ExtResource("4_d27h0")]
-quest_string = "Take this bowl"
-quest_task_type = 1
-
-[node name="TakeSaladBowlUsed" parent="GreatHall/GreatHallItems/Table Serving/SaladBowl" instance=ExtResource("4_d27h0")]
-quest_string = "Take the dirty bowl away!"
-quest_task_type = 2
-
 [node name="Salad" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
 texture_filter = 4
 position = Vector2(10.858, 16.325)
 scale = Vector2(0.15, 0.15)
+texture = ExtResource("10_xvdqk")
+
+[node name="Salad" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving/Salad"]
+position = Vector2(0.946859, -8.83341)
 texture = ExtResource("19_jtsx1")
 
-[node name="TakeSalad" parent="GreatHall/GreatHallItems/Table Serving/Salad" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+[node name="Take Salad" parent="GreatHall/GreatHallItems/Table Serving/Salad" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
 quest_string = "Get that Salad!"
 quest_task_type = 2
-next_task_marker = NodePath("../../../Lord Table/Deliver Salad")
+next_task_marker = NodePath("../../../Table Lord/Place Salad")
+
+[node name="Take Salad Bowl" parent="GreatHall/GreatHallItems/Table Serving/Salad" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Take that bowl away!"
+quest_task_type = 2
+next_task_marker = NodePath("../../Place Salad Bowl")
 
 [node name="Soup" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
 texture_filter = 4
 position = Vector2(60.858, 52.325)
 scale = Vector2(0.15, 0.15)
+texture = ExtResource("10_xvdqk")
+
+[node name="Soup" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving/Soup"]
 texture = ExtResource("21_qdsug")
 
-[node name="TakeSoup" parent="GreatHall/GreatHallItems/Table Serving/Soup" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+[node name="Take Soup" parent="GreatHall/GreatHallItems/Table Serving/Soup" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
 quest_string = "Get that Soup!"
 quest_task_type = 2
-next_task_marker = NodePath("../../../Lord Table/Deliver Soup")
+next_task_marker = NodePath("../../../Table Lord/Place Soup")
+
+[node name="Take Soup Bowl" parent="GreatHall/GreatHallItems/Table Serving/Soup" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Take that bowl away"
+quest_task_type = 2
+next_task_marker = NodePath("../../Place Soup Bowl")
 
 [node name="Table Food" type="Node2D" parent="GreatHall/GreatHallItems"]
+y_sort_enabled = true
 position = Vector2(684, 220)
 
-[node name="RoyalTable" parent="GreatHall/GreatHallItems/Table Food" instance=ExtResource("66_1v6wv")]
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Food" instance=ExtResource("66_1v6wv")]
 
 [node name="Apple" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -476,13 +464,13 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_16q1j")
 
 [node name="Mix Honeycomb" parent="GreatHall/GreatHallItems/Table Food/MilkJug" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(3.33333, 3.33333)
 quest_string = "Mix into the milk jug"
 quest_task_type = 4
 next_task_marker = NodePath("../Take Milkjug")
 
 [node name="Take Milkjug" parent="GreatHall/GreatHallItems/Table Food/MilkJug" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(3.33333, 3.33333)
 quest_string = "Pick up the milk"
 quest_task_type = 2
 next_task_marker = NodePath("../../../../../Lord/Bedtime/Give Milk")
@@ -495,7 +483,7 @@ texture = ExtResource("15_7437r")
 metadata/_edit_group_ = true
 
 [node name="Take Honeycomb" parent="GreatHall/GreatHallItems/Table Food/Honeycomb" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(6.66667, 6.66667)
 quest_string = "Take the honey comb"
 quest_task_type = 2
 next_task_marker = NodePath("../../MilkJug/Mix Honeycomb")
@@ -507,11 +495,11 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("11_53qhx")
 metadata/_edit_group_ = true
 
-[node name="TakeCheese" parent="GreatHall/GreatHallItems/Table Food/Cheese" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-scale = Vector2(0.2, 0.2)
+[node name="Take Cheese" parent="GreatHall/GreatHallItems/Table Food/Cheese" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(5, 5)
 quest_string = "Get the cheese!"
 quest_task_type = 2
-next_task_marker = NodePath("../../../Lord Table/Deliver Cheese")
+next_task_marker = NodePath("../../../Table Lord/Place Cheese")
 
 [node name="Sausage" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -539,11 +527,11 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("27_nscma")
 metadata/_edit_group_ = true
 
-[node name="TakeTomato" parent="GreatHall/GreatHallItems/Table Food/Tomato" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-scale = Vector2(0.2, 0.2)
+[node name="Take Tomato" parent="GreatHall/GreatHallItems/Table Food/Tomato" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(5, 5)
 quest_string = "Grab a tomato from that table"
-quest_task_type = 1
-next_task_marker = NodePath("../../../Ex Wife Painting/Tomato Trigger/Throw Tomato")
+quest_task_type = 2
+next_task_marker = NodePath("../../../Ex Wife Painting/Throw Tomato")
 
 [node name="Fish" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -553,9 +541,10 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("12_wrlxa")
 
 [node name="Table Vanity" type="Node2D" parent="GreatHall/GreatHallItems"]
+y_sort_enabled = true
 position = Vector2(-14, 527)
 
-[node name="RoyalTable" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("66_we1xn")]
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("66_we1xn")]
 
 [node name="Candelabra" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("71_w61il")]
 position = Vector2(123.8, -52)
@@ -582,9 +571,10 @@ texture = ExtResource("14_bc0mh")
 offset = Vector2(-460, -1480)
 
 [node name="Table Writting" type="Node2D" parent="GreatHall/GreatHallItems"]
+y_sort_enabled = true
 position = Vector2(-855, 487)
 
-[node name="RoyalTable" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("66_we1xn")]
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("66_we1xn")]
 position = Vector2(16, 20)
 
 [node name="Candle" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
@@ -620,45 +610,47 @@ position = Vector2(-38.0583, 78.9438)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("35_hmpox")
 
-[node name="Lord Table" type="Node2D" parent="GreatHall/GreatHallItems"]
+[node name="Table Lord" type="Node2D" parent="GreatHall/GreatHallItems"]
+y_sort_enabled = true
 position = Vector2(-506, -88)
 
-[node name="RoyalTable" parent="GreatHall/GreatHallItems/Lord Table" instance=ExtResource("66_we1xn")]
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("66_we1xn")]
 
-[node name="Deliver Salad" parent="GreatHall/GreatHallItems/Lord Table" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(-132.095, 33.0748)
+[node name="Place Salad" parent="GreatHall/GreatHallItems/Table Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-96, 35)
 quest_string = "I want that salad!"
-quest_task_type = 4
+quest_task_type = 3
 next_task_marker = NodePath("../../../../Lord/Wait Eat Salad")
 
-[node name="Deliver Soup" parent="GreatHall/GreatHallItems/Lord Table" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(-132.095, 33.0748)
+[node name="Place Soup" parent="GreatHall/GreatHallItems/Table Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-147, 18)
 quest_string = "Bring me the soup!"
-quest_task_type = 4
+quest_task_type = 3
 next_task_marker = NodePath("../../../../Lord/Wait Eat Soup")
 
-[node name="Deliver Cheese" parent="GreatHall/GreatHallItems/Lord Table" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(-132.095, 33.0748)
+[node name="Place Cheese" parent="GreatHall/GreatHallItems/Table Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-149, 42)
 quest_string = "Bring me that!"
-quest_task_type = 4
+quest_task_type = 3
 next_task_marker = NodePath("../../../../Lord/Wait Eat Cheese")
 
-[node name="Place Beer" parent="GreatHall/GreatHallItems/Lord Table" instance=ExtResource("4_d27h0")]
-position = Vector2(-103.095, -4.92511)
+[node name="Place Beer" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("4_d27h0")]
+position = Vector2(-63.3001, 0.0749512)
 quest_string = "Replace Beer"
 quest_task_type = 3
 
-[node name="Candelabra" parent="GreatHall/GreatHallItems/Lord Table" instance=ExtResource("71_w61il")]
+[node name="Candelabra" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("71_w61il")]
 position = Vector2(137, -54)
 
-[node name="Skull" type="Sprite2D" parent="GreatHall/GreatHallItems/Lord Table"]
+[node name="Skull" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
 texture_filter = 4
 position = Vector2(69.9996, 43)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("36_ws2x4")
 offset = Vector2(-6.66675, -100)
 
-[node name="AppleCore" type="Sprite2D" parent="GreatHall/GreatHallItems/Lord Table"]
+[node name="AppleCore" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
+visible = false
 texture_filter = 4
 position = Vector2(-145.095, -1.92511)
 rotation = 0.228638
@@ -666,71 +658,69 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("29_vulab")
 offset = Vector2(-6.6665, -100)
 
-[node name="BeerKeg" type="Sprite2D" parent="GreatHall/GreatHallItems/Lord Table"]
+[node name="BeerKeg" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
 texture_filter = 4
-position = Vector2(-103.095, -4.92511)
+position = Vector2(-63.3001, 0.0749512)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("32_hg6xr")
 offset = Vector2(33.3337, -113.333)
 metadata/_edit_group_ = true
 
-[node name="Take Beer" parent="GreatHall/GreatHallItems/Lord Table/BeerKeg" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+[node name="Take Beer" parent="GreatHall/GreatHallItems/Table Lord/BeerKeg" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(0, -6.10352e-05)
+scale = Vector2(6.66667, 6.66667)
 quest_string = "Grab the Beer Jug"
 quest_task_type = 2
 next_task_marker = NodePath("../../../Beer Barrel/Fill Beer")
 
-[node name="Knife" type="Sprite2D" parent="GreatHall/GreatHallItems/Lord Table"]
+[node name="Knife" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
 texture_filter = 4
-position = Vector2(-126.096, 13.0749)
+position = Vector2(-128, -8.00001)
 rotation = -2.36667
-scale = Vector2(0.162515, 0.162515)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("16_kf1vi")
 metadata/_edit_group_ = true
 
-[node name="TakeKnifeUsed" parent="GreatHall/GreatHallItems/Lord Table/Knife" instance=ExtResource("4_d27h0")]
+[node name="Take Knife" parent="GreatHall/GreatHallItems/Table Lord/Knife" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+rotation = 2.36667
+scale = Vector2(5, 5)
 quest_string = "Take my knife away!"
 quest_task_type = 2
+next_task_marker = NodePath("../../../Table Serving/Place Knife")
 
-[node name="PlaceKnife" parent="GreatHall/GreatHallItems/Lord Table/Knife" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "Place the knife!"
-quest_task_type = 3
-next_task_marker = NodePath("../../../Table Food/Cheese/TakeCheese")
-
-[node name="Fork" type="Sprite2D" parent="GreatHall/GreatHallItems/Lord Table"]
+[node name="Fork" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
 texture_filter = 4
-position = Vector2(-129.757, 56.3811)
+position = Vector2(-132.684, 64.2206)
 rotation = -2.42601
-scale = Vector2(0.162515, 0.162515)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("13_jnaj6")
 metadata/_edit_group_ = true
 
-[node name="PlaceFork" parent="GreatHall/GreatHallItems/Lord Table/Fork" instance=ExtResource("4_d27h0")]
-quest_string = "Put the fork down!"
-quest_task_type = 3
-
-[node name="TakeFork" parent="GreatHall/GreatHallItems/Lord Table/Fork" instance=ExtResource("4_d27h0")]
+[node name="Take Fork" parent="GreatHall/GreatHallItems/Table Lord/Fork" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+rotation = 2.42601
+scale = Vector2(5, 5)
 quest_string = "Take my fork away!"
 quest_task_type = 2
+next_task_marker = NodePath("../../../Table Serving/Place Fork")
 
-[node name="Spoon" type="Sprite2D" parent="GreatHall/GreatHallItems/Lord Table"]
+[node name="Spoon" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
 texture_filter = 4
-position = Vector2(-128.757, 67.381)
+position = Vector2(-131.684, 75.2205)
 rotation = -2.32652
-scale = Vector2(0.162515, 0.162515)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("22_v6waf")
 metadata/_edit_group_ = true
 
-[node name="TakeSpoonUsed" parent="GreatHall/GreatHallItems/Lord Table/Spoon" instance=ExtResource("4_d27h0")]
-quest_string = "Take away my spoon!"
+[node name="Take Spoon" parent="GreatHall/GreatHallItems/Table Lord/Spoon" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+rotation = 2.32652
+scale = Vector2(5, 5)
+quest_string = "Take my spoon away!"
 quest_task_type = 2
+next_task_marker = NodePath("../../../Table Serving/Place Spoon")
 
-[node name="PlaceSpoon" parent="GreatHall/GreatHallItems/Lord Table/Spoon" instance=ExtResource("4_d27h0")]
-quest_string = "Put the spoon down!"
-quest_task_type = 3
-
-[node name="WineGobblet" type="Sprite2D" parent="GreatHall/GreatHallItems/Lord Table"]
+[node name="WineGobblet" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
 texture_filter = 4
-position = Vector2(-70, 68)
+position = Vector2(-37, 51)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("28_i070w")
 offset = Vector2(0, -120)
@@ -739,24 +729,26 @@ offset = Vector2(0, -120)
 unique_name_in_owner = true
 position = Vector2(-769, 1)
 
-[node name="Wait Eat Salad" parent="Lord" instance=ExtResource("4_d27h0")]
-scale = Vector2(0.15, 0.15)
+[node name="Wait Eat Salad" parent="Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "I'm eating my salad, leave me be!"
 quest_task_type = 5
-quest_time = 15.0
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Fork/Take Fork")
+quest_time = 75.0
+interaction_radius = 75.0
 
-[node name="Wait Eat Soup" parent="Lord" instance=ExtResource("4_d27h0")]
-scale = Vector2(0.15, 0.15)
+[node name="Wait Eat Soup" parent="Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "I'm eating my soup, go away!"
 quest_task_type = 5
-quest_time = 15.0
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Spoon/Take Spoon")
+quest_time = 75.0
+interaction_radius = 75.0
 
 [node name="Wait Eat Cheese" parent="Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-scale = Vector2(0.15, 0.15)
 quest_string = "I'm eating my cheese, go away!"
 quest_task_type = 5
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Lord Table/Knife/TakeKnifeUsed")
-quest_time = 15.0
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Knife/Take Knife")
+quest_time = 75.0
+interaction_radius = 75.0
 
 [node name="Ex Wifes Coat" type="Node2D" parent="Lord"]
 
@@ -764,12 +756,15 @@ quest_time = 15.0
 quest_string = "Bring me that letter!"
 quest_task_type = 4
 next_task_marker = NodePath("../Read Wait")
+quest_time = 10.0
+interaction_radius = 75.0
 
 [node name="Read Wait" parent="Lord/Ex Wifes Coat" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Wait for the Lord to read the letter"
 quest_task_type = 5
-next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Food/Tomato/TakeTomato")
-quest_time = 1.0
+next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Food/Tomato/Take Tomato")
+quest_time = 20.0
+interaction_radius = 75.0
 
 [node name="Bedtime" type="Node2D" parent="Lord"]
 
@@ -777,40 +772,48 @@ quest_time = 1.0
 quest_string = "Give the lord his sippy drink"
 quest_task_type = 4
 next_task_marker = NodePath("../Story Bad")
+interaction_radius = 75.0
 
 [node name="Story Bad" parent="Lord/Bedtime" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Tell your Lord a Bedtime story"
 next_task_marker = NodePath("../Wait")
+interaction_radius = 75.0
 
 [node name="Wait" parent="Lord/Bedtime" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "ZZZZ.... zzzzz ....."
 quest_task_type = 5
 next_task_marker = NodePath("../Story 1")
 quest_time = 3.0
+interaction_radius = 75.0
 
 [node name="Story 1" parent="Lord/Bedtime" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "You are BORING ME! I want a different one!"
 next_task_marker = NodePath("../Story 2")
+interaction_radius = 75.0
 
 [node name="Story 2" parent="Lord/Bedtime" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Tell him about a Lord Rofus and a servant that he worked to death."
 next_task_marker = NodePath("../Story 3")
+interaction_radius = 75.0
 
 [node name="Story 3" parent="Lord/Bedtime" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "That poor servant boy...."
 next_task_marker = NodePath("../Bedtime End")
+interaction_radius = 75.0
 
 [node name="Bedtime End" parent="Lord/Bedtime" instance=ExtResource("4_d27h0")]
 quest_string = "What are you standing around for! You have a job to do lad!"
+interaction_radius = 75.0
 
 [node name="Hunter End" parent="Lord" instance=ExtResource("4_d27h0")]
 quest_string = "Tell your lord he is a mighty hunter. Moderately healthy deer should fear him."
+interaction_radius = 75.0
 
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 metadata/_edit_group_ = true
 
-[node name="Skeleton" parent="Lord/Character" index="1"]
+[node name="Skeleton" parent="Lord/Character" index="2"]
 visible = false
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
@@ -836,7 +839,6 @@ offset_left = -75.0
 offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
-focus_mode = 0
 text = "Ring Bell"
 
 [node name="PauseMenu" type="Control" parent="UIOnCamera/Control"]
@@ -894,7 +896,6 @@ script = ExtResource("54_she2a")
 
 [node name="Label" type="Label" parent="UIOnCamera/Control/ScrollContainer/TaskList"]
 layout_mode = 2
-text = "Questname: Questdetails - 999.99"
 horizontal_alignment = 2
 
 [node name="HUD" type="Control" parent="UIOnCamera"]
@@ -913,8 +914,11 @@ draw_order = 2
 
 [node name="BarkPlayer" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="hidden" from="GreatHall/GreatHallItems/Ex Wife Painting/Tomato Trigger" to="GreatHall/GreatHallItems/Ex Wife Painting/Tomato Splat" method="show"]
-[connection signal="hidden" from="GreatHall/GreatHallItems/Coat Quest/Love Letter Trigger" to="GreatHall/GreatHallItems/Coat Quest/Love Letter" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Ex Wife Painting/Throw Tomato" to="GreatHall/GreatHallItems/Ex Wife Painting/Tomato Splat" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Coat Quest/FurCoat/Shake 3" to="GreatHall/GreatHallItems/Coat Quest/Love Letter" method="show"]
+[connection signal="interaction_succeeded" from="Lord/Wait Eat Salad" to="GreatHall/GreatHallItems/Table Serving/Salad/Salad" method="hide"]
+[connection signal="interaction_succeeded" from="Lord/Wait Eat Soup" to="GreatHall/GreatHallItems/Table Serving/Soup/Soup" method="hide"]
+[connection signal="interaction_succeeded" from="Lord/Wait Eat Cheese" to="GreatHall/GreatHallItems/Table Food/Cheese" method="hide"]
 [connection signal="pressed" from="UIOnCamera/Control/DEBUGRingBell" to="QuestTracker" method="ring_bell"]
 
 [editable path="Lord/Character"]

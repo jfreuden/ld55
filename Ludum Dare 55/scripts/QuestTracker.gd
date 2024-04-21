@@ -14,14 +14,14 @@ var completed_tasks : int = 0
 @export var quest_progress_barks : Array[AudioStreamMP3] = []
 @export var quest_complete_barks : Array[AudioStreamMP3] = []
 @export var delay_low : float = 15.0
-@export var delay_high : float = 60.0
+@export var delay_high : float = 35.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     bell_timer.connect("timeout", ring_bell)
     bell_timer.one_shot = true
     add_child(bell_timer)
-    reset_bell_timer()
+    bell_timer.start(2.0)
 
 func _exit_tree():
     bell_timer.queue_free()
@@ -104,6 +104,7 @@ func next_task(finished_task: QuestMarker):
 
 func reset_all_timers():
     for task: QuestMarker in active_tasks:
-        task.task_clock.start()
+        if task.quest_task_type != QuestMarker.TaskType.WAIT:
+            task.task_clock.start()
     pass
 

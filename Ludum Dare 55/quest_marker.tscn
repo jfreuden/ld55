@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpmyoo2dlicjq"]
+[gd_scene load_steps=6 format=3 uid="uid://bpmyoo2dlicjq"]
 
 [ext_resource type="Script" path="res://scripts/QuestMarker.gd" id="1_gh1nk"]
 [ext_resource type="Texture2D" uid="uid://bm4cabeud3bqs" path="res://assets/interaction-circle.png" id="2_i0eyk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5lnw"]
-radius = 100.0
+resource_local_to_scene = true
+radius = 50.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k1qlw"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sjnmf"]
 blend_mode = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mvphi"]
+texture = ExtResource("2_i0eyk")
 
 [node name="QuestMarker" type="Node2D"]
 z_index = 1000
@@ -23,27 +27,40 @@ visible = false
 shape = SubResource("CircleShape2D_a5lnw")
 debug_color = Color(0, 0.647059, 0.207843, 0.419608)
 
-[node name="InteractionLabel" type="Label" parent="."]
+[node name="InteractionPanel" type="Panel" parent="."]
 visible = false
-anchors_preset = 5
+material = SubResource("CanvasItemMaterial_sjnmf")
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -70.0
-offset_right = 70.0
-offset_bottom = 23.0
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mvphi")
+
+[node name="Label" type="Label" parent="InteractionPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.6
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 3
 text = "Press F to Interact"
 horizontal_alignment = 1
-
-[node name="Interaction-circle" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 4
-material = SubResource("CanvasItemMaterial_k1qlw")
-scale = Vector2(2.2, 2.2)
-texture = ExtResource("2_i0eyk")
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="timeout" from="TaskClock" to="." method="_on_Timer_timeout"]

@@ -1678,7 +1678,15 @@ _data = {
 [node name="Character" type="Node2D"]
 script = ExtResource("1_ma8vh")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(-3, -7)
+polygon = PackedVector2Array(-85, 142, -29, 40, 88, 40, 44, 143)
+
 [node name="Polygon" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Polygon chair back" type="Polygon2D" parent="Polygon"]
 position = Vector2(-48, -78)
@@ -1774,6 +1782,7 @@ polygon = PackedVector2Array(158.503, 536.054, 52.3809, 539.456, 10.8844, 553.06
 uv = PackedVector2Array(158.503, 536.054, 52.3809, 539.456, 10.8844, 553.061, 8.84354, 572.109, 30.6122, 584.354, 123.129, 586.395, 242.857, 585.714, 300.68, 582.313, 311.565, 563.945, 295.918, 544.898, 261.224, 533.333)
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="hip" type="Bone2D" parent="Skeleton"]
 rest = Transform2D(1, 0, 0, 1, 1, -17)
