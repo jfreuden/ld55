@@ -18,7 +18,7 @@ func attack_player():
     # maybe consider using the signal???
     tween.tween_callback(animation_player.pause)
     tween.tween_property(spear, "global_rotation", (arm.global_position - player.global_position).angle(), 0.01)
-    tween.tween_property(spear, "global_position", arm.global_position, 0.01) 
+    tween.tween_property(spear, "global_position", arm.global_position, 0.01)
     tween.tween_property(spear, "global_position", player.global_position, 0.3) # the throw
     tween.tween_callback(animation_player.stop)
     tween.tween_property(animation_player, "speed_scale", 1.0, 0.05)

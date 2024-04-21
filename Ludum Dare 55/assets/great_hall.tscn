@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://fb6qwh0jo32"]
+[gd_scene load_steps=5 format=3 uid="uid://fb6qwh0jo32"]
 
 [ext_resource type="Texture2D" uid="uid://c15dycfs1lsnj" path="res://assets/rooms/wall-mask-internal.png" id="1_xeet0"]
 [ext_resource type="Texture2D" uid="uid://b4wloyny1mol0" path="res://assets/rooms/wall-mask-west.png" id="2_umamn"]
 [ext_resource type="Texture2D" uid="uid://djfcumo41rmp" path="res://assets/rooms/great hall.png" id="3_r70jt"]
+[ext_resource type="Texture2D" uid="uid://cmpt0g64876ga" path="res://assets/items/Tiger Rug.png" id="4_xxc7i"]
 
 [node name="GreatHall" type="Node2D"]
 
@@ -27,6 +28,12 @@ texture_filter = 4
 position = Vector2(-180, -63)
 scale = Vector2(0.563229, 0.563229)
 texture = ExtResource("3_r70jt")
+
+[node name="TigerRug" type="Sprite2D" parent="LevelStaticBody/Floor"]
+position = Vector2(321.361, 177.548)
+scale = Vector2(0.887738, 0.887738)
+texture = ExtResource("4_xxc7i")
+offset = Vector2(188, -76)
 
 [node name="Doors" type="Node2D" parent="LevelStaticBody/Floor"]
 position = Vector2(-990.716, -1059.96)
