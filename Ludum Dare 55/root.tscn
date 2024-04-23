@@ -207,6 +207,11 @@ quest_string = "My hunting trophies look dirty!!!"
 quest_task_type = 6
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Snake/Dust Snake")
 
+[node name="Feed the Tiger" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "Your lord has a task for you"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Rug/Pet the Tiger")
+
 [node name="Hungry for Salad" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "The lord is hungry"
 quest_task_type = 6
@@ -227,10 +232,25 @@ quest_string = "The lord is hungry"
 quest_task_type = 6
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Apple/Take Apple")
 
-[node name="Feed the Tiger" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "Your lord has a task for you"
+[node name="Hungry for Strawberries" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord is hungry"
 quest_task_type = 6
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Rug/Pet the Tiger")
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Strawberries/Take Strawberries")
+
+[node name="Hungry for Grapes" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord is hungry"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Grape/Take Grape")
+
+[node name="Hungry for Sausages" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord is hungry"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Sausage/Take Sausage")
+
+[node name="Hungry for Tart" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord wants something sweet"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Tart/Take Tart")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = 2
@@ -526,8 +546,11 @@ position = Vector2(294, 34)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("14_d4jrx")
 
-[node name="Grape" parent="GreatHall/GreatHallItems/Table Food/Grape" instance=ExtResource("4_d27h0")]
+[node name="Take Grape" parent="GreatHall/GreatHallItems/Table Food/Grape" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(5, 5)
+quest_string = "Get me some of those juicy grapes"
+quest_task_type = 2
+next_task_marker = NodePath("../../../../../Lord/Deliver Grapes")
 
 [node name="MilkJug" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -579,8 +602,11 @@ position = Vector2(8, 38)
 scale = Vector2(0.225, 0.225)
 texture = ExtResource("20_j5rbb")
 
-[node name="Take Sausage" parent="GreatHall/GreatHallItems/Table Food/Sausage" instance=ExtResource("4_d27h0")]
+[node name="Take Sausage" parent="GreatHall/GreatHallItems/Table Food/Sausage" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(4.44444, 4.44444)
+quest_string = "Go get me those sausages!"
+quest_task_type = 2
+next_task_marker = NodePath("../../../../../Lord/Deliver Sausage")
 
 [node name="Strawberries" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -588,8 +614,11 @@ position = Vector2(108, 48)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("23_jn3ge")
 
-[node name="Take Strawberries" parent="GreatHall/GreatHallItems/Table Food/Strawberries" instance=ExtResource("4_d27h0")]
+[node name="Take Strawberries" parent="GreatHall/GreatHallItems/Table Food/Strawberries" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(5, 5)
+quest_string = "I want some strawberries!!"
+quest_task_type = 2
+next_task_marker = NodePath("../../../../../Lord/Deliver Strawberries")
 
 [node name="Tart" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -597,8 +626,11 @@ position = Vector2(172, 35)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("24_c0rly")
 
-[node name="Take Tart" parent="GreatHall/GreatHallItems/Table Food/Tart" instance=ExtResource("4_d27h0")]
+[node name="Take Tart" parent="GreatHall/GreatHallItems/Table Food/Tart" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(5, 5)
+quest_string = "Go get me that scrumption tart!"
+quest_task_type = 2
+next_task_marker = NodePath("../../../../../Lord/Deliver Tart")
 
 [node name="Tomato" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 z_index = 5
@@ -864,6 +896,22 @@ quest_task_type = 5
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Knife/Take Knife")
 quest_time = 75.0
 interaction_radius = 75.0
+
+[node name="Deliver Strawberries" parent="Lord" instance=ExtResource("4_d27h0")]
+quest_string = "I want those strawberries!"
+quest_task_type = 4
+
+[node name="Deliver Grapes" parent="Lord" instance=ExtResource("4_d27h0")]
+quest_string = "Give me those grapes lad!!"
+quest_task_type = 4
+
+[node name="Deliver Sausage" parent="Lord" instance=ExtResource("4_d27h0")]
+quest_string = "Give me those sausages!!! NOW!"
+quest_task_type = 4
+
+[node name="Deliver Tart" parent="Lord" instance=ExtResource("4_d27h0")]
+quest_string = "Get me my tart already!"
+quest_task_type = 4
 
 [node name="Ex Wifes Coat" type="Node2D" parent="Lord"]
 

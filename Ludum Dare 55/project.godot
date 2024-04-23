@@ -27,10 +27,6 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="Ludum Dare 55"
 
-[editor_plugins]
-
-enabled=PackedStringArray()
-
 [input]
 
 ui_accept={
