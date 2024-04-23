@@ -1,3 +1,4 @@
+@icon("res://assets/QuestMarker.svg")
 class_name QuestMarker
 extends Node2D
 

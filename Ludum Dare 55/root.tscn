@@ -545,7 +545,7 @@ next_task_marker = NodePath("../Take Milkjug")
 scale = Vector2(3.33333, 3.33333)
 quest_string = "Pick up the milk"
 quest_task_type = 2
-next_task_marker = NodePath("../../../../../Lord/Bedtime/Give Milk")
+next_task_marker = NodePath("../../../../../Lord/Bedtime/Deliver Milk")
 
 [node name="Honeycomb" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -635,7 +635,6 @@ position = Vector2(0, 524)
 
 [node name="Place Board Game" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("4_d27h0")]
 position = Vector2(-82, 31)
-scale = Vector2(1, 1)
 
 [node name="Candelabra" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("71_w61il")]
 position = Vector2(123.8, -52)
@@ -737,7 +736,6 @@ position = Vector2(1, 65)
 
 [node name="Place Board Game" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("4_d27h0")]
 position = Vector2(-23, 41)
-scale = Vector2(1, 1)
 
 [node name="Candelabra" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("71_w61il")]
 position = Vector2(144, -56)
@@ -898,7 +896,7 @@ quest_time = 30.0
 
 [node name="Bedtime" type="Node2D" parent="Lord"]
 
-[node name="Give Milk" parent="Lord/Bedtime" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+[node name="Deliver Milk" parent="Lord/Bedtime" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Give the lord his sippy drink"
 quest_task_type = 4
 next_task_marker = NodePath("../Story Bad")
