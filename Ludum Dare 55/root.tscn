@@ -212,6 +212,12 @@ quest_string = "Your lord has a task for you"
 quest_task_type = 6
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Rug/Pet the Tiger")
 
+[node name="Board game" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+repeatable = true
+quest_string = "Your lord is bored."
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Vanity/Board Game/Take Board Game")
+
 [node name="Hungry for Salad" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "The lord is hungry"
 quest_task_type = 6
@@ -665,8 +671,11 @@ position = Vector2(0, 524)
 
 [node name="Royal Table" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("66_we1xn")]
 
-[node name="Place Board Game" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("4_d27h0")]
+[node name="Place Board Game" parent="GreatHall/GreatHallItems/Table Vanity" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 position = Vector2(-82, 31)
+quest_string = "Put the board game down. That was close. You almost won that time."
+quest_task_type = 3
+next_task_marker = NodePath("../../../../Lord/Board Game Praise")
 
 [node name="Candelabra" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("71_w61il")]
 position = Vector2(123.8, -52)
@@ -691,8 +700,77 @@ position = Vector2(-82, 31)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("14_bc0mh")
 
-[node name="Take Board Game" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" instance=ExtResource("4_d27h0")]
+[node name="Take Board Game" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(6.66667, 6.66667)
+quest_string = "Go fetch that fox and goose game lad! Let's play a game or two!"
+quest_task_type = 2
+next_task_marker = NodePath("../../../Table Lord/Place Board Game")
+
+[node name="Fox and Geese 1" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Set up the pieces, quickly now! I will play fox of course"
+next_task_marker = NodePath("../Fox and Geese 2")
+
+[node name="Fox and Geese 2" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "The lord makes the first move"
+quest_task_type = 5
+next_task_marker = NodePath("../Fox and Geese 3")
+quest_time = 10.0
+
+[node name="Fox and Geese 3" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Make your move lad! Don't take too long now. "
+next_task_marker = NodePath("../Fox and Geese 4")
+
+[node name="Fox and Geese 4" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "The lord is thinking. "
+quest_task_type = 5
+next_task_marker = NodePath("../Fox and Geese 5")
+quest_time = 10.0
+
+[node name="Fox and Geese 5" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Blindly advance your geese. Strategy is only for nobles"
+next_task_marker = NodePath("../Fox and Geese 6")
+
+[node name="Fox and Geese 6" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "I'm thinking, don't distract me!!"
+quest_task_type = 5
+next_task_marker = NodePath("../Fox and Geese 7")
+quest_time = 10.0
+
+[node name="Fox and Geese 7" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Continue feeding your pieces to the lord."
+next_task_marker = NodePath("../Fox and Geese 8")
+
+[node name="Fox and Geese 8" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "You're about to be outfoxed lad, watch out!"
+quest_task_type = 5
+next_task_marker = NodePath("../Fox and Geese 9")
+quest_time = 10.0
+
+[node name="Fox and Geese 9" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Attempt to sorround the fox, but don't get too smart about it (like the last guy)"
+next_task_marker = NodePath("../Fox and Geese 10")
+
+[node name="Fox and Geese 10" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Hurrah lad! I've got you now!"
+quest_task_type = 5
+next_task_marker = NodePath("../Take Away Board Game")
+quest_time = 10.0
+
+[node name="Take Away Board Game" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Good fun lad, very good fun. Just another example of my brilliance."
+quest_task_type = 2
+next_task_marker = NodePath("../../Place Board Game")
 
 [node name="Table Writting" type="Node2D" parent="GreatHall/GreatHallItems"]
 y_sort_enabled = true
@@ -764,10 +842,13 @@ quest_string = "Replace Beer"
 quest_task_type = 3
 
 [node name="Place Teaset" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("4_d27h0")]
-position = Vector2(1, 65)
+position = Vector2(-7, 50)
 
-[node name="Place Board Game" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("4_d27h0")]
-position = Vector2(-23, 41)
+[node name="Place Board Game" parent="GreatHall/GreatHallItems/Table Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(108, 42)
+quest_string = "Your lord is kind enough to allow you a moment's liesure. Play with him!"
+quest_task_type = 3
+next_task_marker = NodePath("../../Table Vanity/Board Game/Fox and Geese 1")
 
 [node name="Candelabra" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("71_w61il")]
 position = Vector2(144, -56)
@@ -913,6 +994,14 @@ quest_task_type = 4
 quest_string = "Get me my tart already!"
 quest_task_type = 4
 
+[node name="Hunter Praise" parent="Lord" instance=ExtResource("4_d27h0")]
+quest_string = "Tell your lord he is a mighty hunter. Moderately healthy deer should fear him."
+interaction_radius = 75.0
+
+[node name="Board Game Praise" parent="Lord" instance=ExtResource("4_d27h0")]
+quest_string = "Tell your lord what clever fox he is indeed."
+interaction_radius = 75.0
+
 [node name="Ex Wifes Coat" type="Node2D" parent="Lord"]
 
 [node name="Deliver Letter" parent="Lord/Ex Wifes Coat" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
@@ -979,10 +1068,6 @@ interaction_radius = 75.0
 
 [node name="Go Away" parent="Lord/Bedtime" instance=ExtResource("4_d27h0")]
 quest_string = "What are you standing around for! You have a job to do lad!"
-interaction_radius = 75.0
-
-[node name="Hunter Praise" parent="Lord" instance=ExtResource("4_d27h0")]
-quest_string = "Tell your lord he is a mighty hunter. Moderately healthy deer should fear him."
 interaction_radius = 75.0
 
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
