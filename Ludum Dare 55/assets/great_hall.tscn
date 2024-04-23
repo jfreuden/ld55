@@ -1,9 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://fb6qwh0jo32"]
+[gd_scene load_steps=14 format=3 uid="uid://fb6qwh0jo32"]
 
 [ext_resource type="Texture2D" uid="uid://c15dycfs1lsnj" path="res://assets/rooms/wall-mask-internal.png" id="1_xeet0"]
 [ext_resource type="Texture2D" uid="uid://b4wloyny1mol0" path="res://assets/rooms/wall-mask-west.png" id="2_umamn"]
 [ext_resource type="Texture2D" uid="uid://djfcumo41rmp" path="res://assets/rooms/great hall.png" id="3_r70jt"]
 [ext_resource type="Texture2D" uid="uid://cmpt0g64876ga" path="res://assets/items/Tiger Rug.png" id="4_xxc7i"]
+[ext_resource type="Script" path="res://Foggy.gd" id="5_g8c8t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_68qhv"]
+
+[sub_resource type="Gradient" id="Gradient_kv1r1"]
+colors = PackedColorArray(0, 0, 0, 1, 0.19855, 0.0707438, 0.0461028, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vk0h5"]
+noise_type = 3
+seed = -5
+frequency = 0.0074
+offset = Vector3(0, 1.5, 0)
+fractal_octaves = 2
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l382m"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_kv1r1")
+noise = SubResource("FastNoiseLite_vk0h5")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f4qhc"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_m4j07"]
+offsets = PackedFloat32Array(0, 0.992958)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c11ly"]
+seed = 9
+frequency = 0.0275
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mo8uo"]
+width = 400
+height = 400
+seamless = true
+seamless_blend_skirt = 0.52
+color_ramp = SubResource("Gradient_m4j07")
+noise = SubResource("FastNoiseLite_c11ly")
 
 [node name="GreatHall" type="Node2D"]
 
@@ -120,3 +159,21 @@ polygon = PackedVector2Array(247, -579, 244, -425, 276, -429, 276, -587)
 
 [node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="LevelStaticBody"]
 polygon = PackedVector2Array(-584, -627, -886, -626, -886, -666, -589, -663)
+
+[node name="Foggy" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+script = ExtResource("5_g8c8t")
+
+[node name="Brown" type="Polygon2D" parent="Foggy"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_68qhv")
+texture = SubResource("NoiseTexture2D_l382m")
+polygon = PackedVector2Array(-4420, -3837, 3852, -3803, 3852, 3113, -4454, 3147)
+
+[node name="Detail" type="Polygon2D" parent="Foggy"]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_f4qhc")
+texture = SubResource("NoiseTexture2D_mo8uo")
+texture_rotation = -1.01578
+polygon = PackedVector2Array(-4420, -3837, 3852, -3803, 3852, 3113, -4454, 3147)

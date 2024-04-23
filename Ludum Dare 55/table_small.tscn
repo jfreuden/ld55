@@ -11,12 +11,11 @@ metadata/_edit_lock_ = true
 y_sort_enabled = true
 texture_filter = 4
 position = Vector2(0, -26.25)
-scale = Vector2(1, 1)
 texture = ExtResource("1_ieovq")
 offset = Vector2(-7.17594, 108.511)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 y_sort_enabled = true
 position = Vector2(1.25, 27.5)
-scale = Vector2(1, 1)
 polygon = PackedVector2Array(-205, 205.849, -207.5, 68.349, 203.75, 68.349, 206.25, 208.349)
