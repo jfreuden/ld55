@@ -866,6 +866,7 @@ next_task_marker = NodePath("../../Place Board Game")
 
 [node name="Candle" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("70_utxtm")]
 position = Vector2(119, -16)
+scale = Vector2(0.2, 0.2)
 
 [node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Vanity/Candle" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 position = Vector2(-16.9014, -135.211)
@@ -888,6 +889,7 @@ position = Vector2(-880, 510)
 
 [node name="Candle Right" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
 position = Vector2(130, -9)
+scale = Vector2(0.2, 0.2)
 
 [node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Writting/Candle Right" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 position = Vector2(-16.9014, -135.211)
@@ -904,6 +906,7 @@ interaction_radius = 100.0
 
 [node name="Candle Left" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
 position = Vector2(-123, -10)
+scale = Vector2(0.2, 0.2)
 
 [node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Writting/Candle Left" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 position = Vector2(-16.9014, -135.211)
@@ -981,47 +984,6 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("14_bc0mh")
 
 [node name="Royal Table" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("66_we1xn")]
-
-[node name="Candelabra" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("71_w61il")]
-
-[node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(-165, -581.831)
-scale = Vector2(6.66667, 6.66667)
-quest_string = "Snuff that candle!"
-next_task_marker = NodePath("../Snuff candle 2")
-
-[node name="Light candle" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(-165, -581.831)
-scale = Vector2(6.66667, 6.66667)
-quest_string = "Light that candle!"
-next_task_marker = NodePath("../Light candle2")
-interaction_radius = 20.0
-
-[node name="Snuff candle 2" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(-1.61987, -610)
-scale = Vector2(6.66667, 6.66667)
-quest_string = "Snuff that candle!"
-next_task_marker = NodePath("../Snuff candle 3")
-
-[node name="Light candle2" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(-1.61987, -610)
-scale = Vector2(6.66667, 6.66667)
-quest_string = "Light that candle!"
-next_task_marker = NodePath("../Light candle3")
-interaction_radius = 20.0
-
-[node name="Snuff candle 3" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(158.943, -590.282)
-scale = Vector2(6.66667, 6.66667)
-quest_string = "Snuff that candle!"
-next_task_marker = NodePath("../../../Table Vanity/Candle/Snuff candle")
-
-[node name="Light candle3" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(158.943, -590.282)
-scale = Vector2(6.66667, 6.66667)
-quest_string = "Light that candle!"
-next_task_marker = NodePath("../../../Table Vanity/Candle/Light candle")
-interaction_radius = 20.0
 
 [node name="Place Beer" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("4_d27h0")]
 position = Vector2(-45, 0)
@@ -1158,6 +1120,49 @@ offset = Vector2(0, -120)
 [node name="Refill Goblet" parent="GreatHall/GreatHallItems/Table Lord/WineGobblet" instance=ExtResource("4_d27h0")]
 scale = Vector2(6.66667, 6.66667)
 
+[node name="Candelabra" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("71_w61il")]
+position = Vector2(138, 1)
+scale = Vector2(0.2, 0.2)
+
+[node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-165, -581.831)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../Snuff candle 2")
+
+[node name="Light candle" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-165, -581.831)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../Light candle2")
+interaction_radius = 20.0
+
+[node name="Snuff candle 2" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-1.61987, -610)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../Snuff candle 3")
+
+[node name="Light candle2" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-1.61987, -610)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../Light candle3")
+interaction_radius = 20.0
+
+[node name="Snuff candle 3" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(158.943, -590.282)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../../../Table Vanity/Candle/Snuff candle")
+
+[node name="Light candle3" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(158.943, -590.282)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../../../Table Vanity/Candle/Light candle")
+interaction_radius = 20.0
+
 [node name="Lord" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-880, -8)
@@ -1218,7 +1223,6 @@ interaction_radius = 75.0
 quest_string = "The lord is somewhat pleased. For now."
 quest_task_type = 5
 next_task_marker = NodePath("../Too Dark")
-quest_time = 200.0
 interaction_radius = 75.0
 
 [node name="Too Dark" parent="Lord/Lights" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
@@ -1307,6 +1311,12 @@ metadata/_edit_group_ = true
 
 [node name="Skeleton" parent="Lord/Character" index="2"]
 visible = false
+
+[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
+scale = Vector2(1, 1)
+
+[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999998)
