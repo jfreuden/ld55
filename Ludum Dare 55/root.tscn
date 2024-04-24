@@ -58,7 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://4bmv5cgf7fbg" path="res://assets/items/Apple.png" id="30_is227"]
 [ext_resource type="Texture2D" uid="uid://ywpjm0gun7o1" path="res://assets/items/Ruling for Dunces.png" id="31_5qmv5"]
 [ext_resource type="Texture2D" uid="uid://buryelenfelf1" path="res://assets/items/Beer Keg.png" id="32_hg6xr"]
-[ext_resource type="PackedScene" uid="uid://dlmujgqvolaye" path="res://coat_stand.tscn" id="34_nb3ac"]
+[ext_resource type="PackedScene" path="res://coat_stand.tscn" id="34_nb3ac"]
 [ext_resource type="Texture2D" uid="uid://dhccgafds2vnk" path="res://assets/items/Signet Ring.png" id="35_hmpox"]
 [ext_resource type="Texture2D" uid="uid://djs6mjspqll03" path="res://assets/items/Skull.png" id="36_ws2x4"]
 [ext_resource type="Texture2D" uid="uid://b8b5s3ipfm75t" path="res://assets/items/Polish1.png" id="43_3fgov"]
@@ -1320,6 +1320,13 @@ scale = Vector2(0.999998, 0.999998)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999998)
+
+[node name="LordHand" type="Node2D" parent="Lord/Character/Skeleton/hip/belly/shoulder front/arm front" index="0"]
+unique_name_in_owner = true
+position = Vector2(84.09, -1.368)
+rotation = -0.520108
+scale = Vector2(1.11338, 0.988227)
+skew = 0.18326
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 
