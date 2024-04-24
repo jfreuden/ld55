@@ -92,9 +92,8 @@ func interact_basic() -> bool:
 
 func interact_modify() -> bool:
     var parent : CanvasItem = get_parent()
-    parent.visible = !parent.visible
+    parent.visible = !parent.visibility
     return true
-
 func interact_take() -> bool:
     var parent : Node2D = get_parent()
     var hand = get_node_or_null("/root/Root/%Player/%PlayerHand")
@@ -112,7 +111,7 @@ func interact_take() -> bool:
     parent.show()
     return true
 
-func interact_place(visible: bool = true) -> bool:
+func interact_place(place_visible: bool = true) -> bool:
     var parent : CanvasItem = get_parent()
     var hand = get_node_or_null("/root/Root/%Player/%PlayerHand")
 
@@ -131,7 +130,7 @@ func interact_place(visible: bool = true) -> bool:
     var child : Node2D = hand.get_child(0)
     child.reparent(parent, false)
     child.position = position
-    child.visible = visible
+    child.visible = place_visible
 
     return true
 

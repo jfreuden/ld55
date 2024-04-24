@@ -72,8 +72,8 @@
 [ext_resource type="PackedScene" uid="uid://br04g8k04gms8" path="res://table_small.tscn" id="66_we1xn"]
 [ext_resource type="PackedScene" uid="uid://mxid62lfnsne" path="res://sconce.tscn" id="69_o8t2g"]
 [ext_resource type="PackedScene" uid="uid://chujrsl84ckv3" path="res://beer_barrel.tscn" id="69_p12tg"]
-[ext_resource type="PackedScene" uid="uid://v06r3woq4e45" path="res://candle.tscn" id="70_utxtm"]
-[ext_resource type="PackedScene" uid="uid://uhf23irwb08g" path="res://candelabra.tscn" id="71_w61il"]
+[ext_resource type="PackedScene" uid="uid://c15wuypm623w1" path="res://candle.tscn" id="70_utxtm"]
+[ext_resource type="PackedScene" uid="uid://de6pcdjsufyy1" path="res://candelabra.tscn" id="71_w61il"]
 
 [sub_resource type="Animation" id="Animation_qsqa8"]
 length = 0.001
@@ -235,6 +235,12 @@ quest_string = "Your lord is bored and needs something to laugh at."
 quest_task_type = 6
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Skull/Make fun of Skull")
 
+[node name="Lights!" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+repeatable = true
+quest_string = "Its too bright in here!!"
+quest_task_type = 6
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Lights/Sconce 1/Snuff sconce")
+
 [node name="Hungry for Salad" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "The lord is hungry"
 quest_task_type = 6
@@ -325,16 +331,76 @@ quest_string = "Dust that snake trophy lad. Its not gonna bite ya you know.."
 next_task_marker = NodePath("../../MooseHead/Admire Moose Head")
 interaction_radius = 100.0
 
-[node name="Node2D" type="Node2D" parent="GreatHall/GreatHallItems"]
+[node name="Lights" type="Node2D" parent="GreatHall/GreatHallItems"]
+
+[node name="Sconce 1" parent="GreatHall/GreatHallItems/Lights" instance=ExtResource("69_o8t2g")]
+position = Vector2(-1138, -836)
+scale = Vector2(0.15, 0.15)
+
+[node name="Snuff sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 1" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that sconce!"
+next_task_marker = NodePath("../../Sconce 2/Snuff sconce")
+interaction_radius = 100.0
+
+[node name="Light sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 1" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that sconce!"
+next_task_marker = NodePath("../../Sconce 2/Light sconce")
+interaction_radius = 100.0
+
+[node name="Sconce 2" parent="GreatHall/GreatHallItems/Lights" instance=ExtResource("69_o8t2g")]
+position = Vector2(-898, -836)
+scale = Vector2(0.15, 0.15)
+
+[node name="Snuff sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 2" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that sconce!"
+next_task_marker = NodePath("../../Sconce 3/Snuff sconce")
+interaction_radius = 100.0
+
+[node name="Light sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 2" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that sconce!"
+next_task_marker = NodePath("../../Sconce 3/Light sconce")
+interaction_radius = 100.0
+
+[node name="Sconce 3" parent="GreatHall/GreatHallItems/Lights" instance=ExtResource("69_o8t2g")]
+position = Vector2(-583, -836)
+scale = Vector2(0.15, 0.15)
+
+[node name="Snuff sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 3" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that sconce!"
+next_task_marker = NodePath("../../Sconce 4/Snuff sconce")
+interaction_radius = 100.0
+
+[node name="Light sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 3" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that sconce!"
+next_task_marker = NodePath("../../Sconce 4/Light sconce")
+interaction_radius = 100.0
+
+[node name="Sconce 4" parent="GreatHall/GreatHallItems/Lights" instance=ExtResource("69_o8t2g")]
+position = Vector2(219, -836)
+scale = Vector2(0.15, 0.15)
+
+[node name="Snuff sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 4" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that sconce!"
+next_task_marker = NodePath("../../../Table Lord/Candelabra/Snuff candle")
+interaction_radius = 100.0
+
+[node name="Light sconce" parent="GreatHall/GreatHallItems/Lights/Sconce 4" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that sconce!"
+next_task_marker = NodePath("../../../Table Lord/Candelabra/Light candle")
+interaction_radius = 100.0
+
+[node name="Door" type="Node2D" parent="GreatHall/GreatHallItems"]
 position = Vector2(-736, -791)
 
-[node name="Sconce Left" parent="GreatHall/GreatHallItems/Node2D" instance=ExtResource("69_o8t2g")]
-position = Vector2(-162, -45)
-
-[node name="Sconce Right" parent="GreatHall/GreatHallItems/Node2D" instance=ExtResource("69_o8t2g")]
-position = Vector2(153, -45)
-
-[node name="Empty Chamberpot" parent="GreatHall/GreatHallItems/Node2D" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+[node name="Empty Chamberpot" parent="GreatHall/GreatHallItems/Door" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Throw the stink out the door. Make it someone else's problem!"
 next_task_marker = NodePath("../../Chamber Pot/Place Chamber Pot")
 
@@ -403,7 +469,7 @@ texture = ExtResource("46_sewul")
 scale = Vector2(6.66667, 6.66667)
 quest_string = "Go empty that chamber pot! And quickly!"
 quest_task_type = 2
-next_task_marker = NodePath("../../../Node2D/Empty Chamberpot")
+next_task_marker = NodePath("../../../Door/Empty Chamberpot")
 
 [node name="Throw Away Apple Core" parent="GreatHall/GreatHallItems/Chamber Pot" instance=ExtResource("4_d27h0")]
 quest_string = "Throw away the apple core"
@@ -470,43 +536,43 @@ next_task_marker = NodePath("../../../../../Lord/Ex Wifes Coat/Deliver Letter")
 
 [node name="Table Serving" type="Node2D" parent="GreatHall/GreatHallItems"]
 y_sort_enabled = true
-position = Vector2(473, -407)
+position = Vector2(540, -399)
 
 [node name="Royal Table" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("66_we1xn")]
 
 [node name="Place Fork" parent="GreatHall/GreatHallItems/Table Serving" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(82, -9)
+position = Vector2(86.225, -2)
 quest_string = "Put the fork down!"
 quest_task_type = 3
 next_task_marker = NodePath("../Salad/Take Salad Bowl")
 
 [node name="Place Spoon" parent="GreatHall/GreatHallItems/Table Serving" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(94, 4)
+position = Vector2(98.225, 11)
 quest_string = "Put the spoon down!"
 quest_task_type = 3
 next_task_marker = NodePath("../Soup/Take Soup Bowl")
 
 [node name="Place Knife" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
-position = Vector2(75, 16)
+position = Vector2(79.225, 23)
 quest_string = "Put the knife away"
 quest_task_type = 3
 
-[node name="Place Soup Bowl" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
-position = Vector2(15, 25)
-quest_string = "Put the bowl down"
-quest_task_type = 3
+[node name="Place Teaset" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
+position = Vector2(-55, 57.3251)
 
 [node name="Place Salad Bowl" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
-position = Vector2(3, 2)
+position = Vector2(15.067, 3.59998)
 quest_string = "Put the bowl down"
 quest_task_type = 3
 
-[node name="Place Teaset" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
-position = Vector2(-90.142, 51.325)
+[node name="Place Soup Bowl" parent="GreatHall/GreatHallItems/Table Serving" instance=ExtResource("4_d27h0")]
+position = Vector2(43.925, 57.925)
+quest_string = "Put the bowl down"
+quest_task_type = 3
 
 [node name="Teaset" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
 texture_filter = 4
-position = Vector2(-90.142, 51.325)
+position = Vector2(-85.225, 55.325)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("25_ovsgh")
 offset = Vector2(20, -133.333)
@@ -519,7 +585,7 @@ scale = Vector2(6.66667, 6.66667)
 
 [node name="Salad" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
 texture_filter = 4
-position = Vector2(10.858, 16.325)
+position = Vector2(22.925, 17.925)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("10_xvdqk")
 
@@ -541,7 +607,7 @@ next_task_marker = NodePath("../../Place Salad Bowl")
 
 [node name="Soup" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Serving"]
 texture_filter = 4
-position = Vector2(60.858, 52.325)
+position = Vector2(43.925, 57.925)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("10_xvdqk")
 
@@ -706,9 +772,6 @@ quest_string = "Put the board game down. That was close. You almost won that tim
 quest_task_type = 3
 next_task_marker = NodePath("../../../../Lord/Board Game Praise")
 
-[node name="Candelabra" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("71_w61il")]
-position = Vector2(123.8, -52)
-
 [node name="Hand Mirror" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Vanity"]
 texture_filter = 4
 position = Vector2(-13.2, 256)
@@ -801,42 +864,83 @@ quest_string = "Good fun lad, very good fun. Just another example of my brillian
 quest_task_type = 2
 next_task_marker = NodePath("../../Place Board Game")
 
+[node name="Candle" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("70_utxtm")]
+position = Vector2(119, -16)
+
+[node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Vanity/Candle" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-16.9014, -135.211)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../../../Table Writting/Candle Right/Snuff candle")
+
+[node name="Light candle" parent="GreatHall/GreatHallItems/Table Vanity/Candle" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-16.9014, -135.211)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../../../Table Writting/Candle Right/Light candle")
+interaction_radius = 100.0
+
 [node name="Table Writting" type="Node2D" parent="GreatHall/GreatHallItems"]
 y_sort_enabled = true
 position = Vector2(-880, 510)
 
 [node name="Royal Table" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("66_we1xn")]
 
-[node name="Candle" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
-position = Vector2(-133, 2.99994)
+[node name="Candle Right" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
+position = Vector2(130, -9)
 
-[node name="Candle2" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
-position = Vector2(120, -1.00006)
+[node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Writting/Candle Right" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-16.9014, -135.211)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../../Candle Left/Snuff candle")
+
+[node name="Light candle" parent="GreatHall/GreatHallItems/Table Writting/Candle Right" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-16.9014, -135.211)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../../Candle Left/Light candle")
+interaction_radius = 100.0
+
+[node name="Candle Left" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
+position = Vector2(-123, -10)
+
+[node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Writting/Candle Left" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-16.9014, -135.211)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../../../../../Lord/Lights/Lights Wait")
+
+[node name="Light candle" parent="GreatHall/GreatHallItems/Table Writting/Candle Left" instance=ExtResource("4_d27h0")]
+position = Vector2(-16.9014, -135.211)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+interaction_radius = 100.0
 
 [node name="Parchment" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Writting"]
 texture_filter = 4
-position = Vector2(-13.9999, 29.5249)
+position = Vector2(13, 32)
 rotation = 0.455531
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("28_37cyh")
 
 [node name="PenAndInk" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Writting"]
 texture_filter = 4
-position = Vector2(53.0001, 3.52494)
+position = Vector2(70, 20)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("29_xusqm")
 offset = Vector2(39.9999, -133.333)
 
 [node name="RulingForDunces" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Writting"]
 texture_filter = 4
-position = Vector2(68.0001, 46.5249)
-rotation = -0.774926
+position = Vector2(-64, 39)
+rotation = -2.49252
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("31_5qmv5")
 
 [node name="SignetRing" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Writting"]
 texture_filter = 4
-position = Vector2(-77, 0.999954)
+position = Vector2(92, 58)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("35_hmpox")
 
@@ -845,6 +949,7 @@ y_sort_enabled = true
 position = Vector2(-617, -97)
 
 [node name="Placeholders" type="Node2D" parent="GreatHall/GreatHallItems/Table Lord"]
+visible = false
 
 [node name="Salad" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord/Placeholders"]
 position = Vector2(-104, 30)
@@ -877,6 +982,47 @@ texture = ExtResource("14_bc0mh")
 
 [node name="Royal Table" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("66_we1xn")]
 
+[node name="Candelabra" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("71_w61il")]
+
+[node name="Snuff candle" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-165, -581.831)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../Snuff candle 2")
+
+[node name="Light candle" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-165, -581.831)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../Light candle2")
+interaction_radius = 20.0
+
+[node name="Snuff candle 2" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-1.61987, -610)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../Snuff candle 3")
+
+[node name="Light candle2" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(-1.61987, -610)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../Light candle3")
+interaction_radius = 20.0
+
+[node name="Snuff candle 3" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(158.943, -590.282)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Snuff that candle!"
+next_task_marker = NodePath("../../../Table Vanity/Candle/Snuff candle")
+
+[node name="Light candle3" parent="GreatHall/GreatHallItems/Table Lord/Candelabra" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(158.943, -590.282)
+scale = Vector2(6.66667, 6.66667)
+quest_string = "Light that candle!"
+next_task_marker = NodePath("../../../Table Vanity/Candle/Light candle")
+interaction_radius = 20.0
+
 [node name="Place Beer" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("4_d27h0")]
 position = Vector2(-45, 0)
 quest_string = "Replace Beer"
@@ -908,9 +1054,6 @@ position = Vector2(109, 38)
 quest_string = "Your lord is kind enough to allow you a moment's liesure. Play with him!"
 quest_task_type = 3
 next_task_marker = NodePath("../../Table Vanity/Board Game/Fox and Geese 1")
-
-[node name="Candelabra" parent="GreatHall/GreatHallItems/Table Lord" instance=ExtResource("71_w61il")]
-position = Vector2(149, -59)
 
 [node name="Skull" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Lord"]
 texture_filter = 4
@@ -1044,18 +1187,22 @@ interaction_radius = 75.0
 [node name="Deliver Strawberries" parent="Lord" instance=ExtResource("4_d27h0")]
 quest_string = "I want those strawberries!"
 quest_task_type = 4
+interaction_radius = 75.0
 
 [node name="Deliver Grapes" parent="Lord" instance=ExtResource("4_d27h0")]
 quest_string = "Give me those grapes lad!!"
 quest_task_type = 4
+interaction_radius = 75.0
 
 [node name="Deliver Sausage" parent="Lord" instance=ExtResource("4_d27h0")]
 quest_string = "Give me those sausages!!! NOW!"
 quest_task_type = 4
+interaction_radius = 75.0
 
 [node name="Deliver Tart" parent="Lord" instance=ExtResource("4_d27h0")]
 quest_string = "Get me my tart already!"
 quest_task_type = 4
+interaction_radius = 75.0
 
 [node name="Hunter Praise" parent="Lord" instance=ExtResource("4_d27h0")]
 quest_string = "Tell your lord he is a mighty hunter. Moderately healthy deer should fear him."
@@ -1063,6 +1210,40 @@ interaction_radius = 75.0
 
 [node name="Board Game Praise" parent="Lord" instance=ExtResource("4_d27h0")]
 quest_string = "Tell your lord what clever fox he is indeed."
+interaction_radius = 75.0
+
+[node name="Lights" type="Node2D" parent="Lord"]
+
+[node name="Lights Wait" parent="Lord/Lights" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+quest_string = "The lord is somewhat pleased. For now."
+quest_task_type = 5
+next_task_marker = NodePath("../Too Dark")
+quest_time = 200.0
+interaction_radius = 75.0
+
+[node name="Too Dark" parent="Lord/Lights" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+quest_string = "The lord is displeased again!"
+next_task_marker = NodePath("../Relight")
+interaction_radius = 75.0
+
+[node name="Relight" parent="Lord/Lights" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+quest_string = "It's too dark in here now! Light everything back up!"
+next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Lights/Sconce 1/Light sconce")
+interaction_radius = 75.0
+
+[node name="Hungry for Apples" type="Node2D" parent="Lord"]
+
+[node name="Deliver Apple" parent="Lord/Hungry for Apples" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+quest_string = "Give the lord the apple. Quickly. The doctor is coming."
+quest_task_type = 4
+next_task_marker = NodePath("../Wait Eat Apple")
+interaction_radius = 75.0
+
+[node name="Wait Eat Apple" parent="Lord/Hungry for Apples" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+quest_string = "I'm eating my apple, go away!"
+quest_task_type = 5
+next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Lord/Apple Core/Take Apple Core")
+quest_time = 30.0
 interaction_radius = 75.0
 
 [node name="Ex Wifes Coat" type="Node2D" parent="Lord"]
@@ -1080,19 +1261,6 @@ quest_task_type = 5
 next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Food/Tomato/Take Tomato")
 quest_time = 20.0
 interaction_radius = 75.0
-
-[node name="Hungry for Apples" type="Node2D" parent="Lord"]
-
-[node name="Deliver Apple" parent="Lord/Hungry for Apples" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "Give the lord the apple. Quickly. The doctor is coming."
-quest_task_type = 4
-next_task_marker = NodePath("../Wait Eat Apple")
-
-[node name="Wait Eat Apple" parent="Lord/Hungry for Apples" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "I'm eating my apple, go away!"
-quest_task_type = 5
-next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Lord/Apple Core/Take Apple Core")
-quest_time = 30.0
 
 [node name="Bedtime" type="Node2D" parent="Lord"]
 
@@ -1139,9 +1307,6 @@ metadata/_edit_group_ = true
 
 [node name="Skeleton" parent="Lord/Character" index="2"]
 visible = false
-
-[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
-scale = Vector2(0.999998, 0.999998)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999998)
@@ -1245,9 +1410,29 @@ anchors_preset = 0
 [node name="BarkPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Ex Wife Painting/Throw Tomato" to="GreatHall/GreatHallItems/Ex Wife Painting/Tomato Splat" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 1/Snuff sconce" to="GreatHall/GreatHallItems/Lights/Sconce 1/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 1/Light sconce" to="GreatHall/GreatHallItems/Lights/Sconce 1/CandleFlame" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 2/Snuff sconce" to="GreatHall/GreatHallItems/Lights/Sconce 2/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 2/Light sconce" to="GreatHall/GreatHallItems/Lights/Sconce 2/CandleFlame" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 3/Snuff sconce" to="GreatHall/GreatHallItems/Lights/Sconce 3/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 3/Light sconce" to="GreatHall/GreatHallItems/Lights/Sconce 3/CandleFlame" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 4/Snuff sconce" to="GreatHall/GreatHallItems/Lights/Sconce 4/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Lights/Sconce 4/Light sconce" to="GreatHall/GreatHallItems/Lights/Sconce 4/CandleFlame" method="show"]
 [connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Armour/Polish Armour" to="GreatHall/GreatHallItems/Armour/Polish2" method="show"]
 [connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Armour/Polish Armour 2" to="GreatHall/GreatHallItems/Armour/Polish3" method="show"]
 [connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Coat Quest/FurCoat/Shake 3" to="GreatHall/GreatHallItems/Coat Quest/Love Letter" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Vanity/Candle/Snuff candle" to="GreatHall/GreatHallItems/Table Vanity/Candle/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Vanity/Candle/Light candle" to="GreatHall/GreatHallItems/Table Vanity/Candle/CandleFlame" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Writting/Candle Right/Snuff candle" to="GreatHall/GreatHallItems/Table Writting/Candle Right/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Writting/Candle Right/Light candle" to="GreatHall/GreatHallItems/Table Writting/Candle Right/CandleFlame" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Writting/Candle Left/Snuff candle" to="GreatHall/GreatHallItems/Table Writting/Candle Left/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Writting/Candle Left/Light candle" to="GreatHall/GreatHallItems/Table Writting/Candle Left/CandleFlame" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Lord/Candelabra/Snuff candle" to="GreatHall/GreatHallItems/Table Lord/Candelabra/CandleFlame" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Lord/Candelabra/Light candle" to="GreatHall/GreatHallItems/Table Lord/Candelabra/CandleFlame" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Lord/Candelabra/Snuff candle 2" to="GreatHall/GreatHallItems/Table Lord/Candelabra/CandleFlame2" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Lord/Candelabra/Light candle2" to="GreatHall/GreatHallItems/Table Lord/Candelabra/CandleFlame2" method="show"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Lord/Candelabra/Snuff candle 3" to="GreatHall/GreatHallItems/Table Lord/Candelabra/CandleFlame3" method="hide"]
+[connection signal="interaction_succeeded" from="GreatHall/GreatHallItems/Table Lord/Candelabra/Light candle3" to="GreatHall/GreatHallItems/Table Lord/Candelabra/CandleFlame3" method="show"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Salad" to="GreatHall/GreatHallItems/Table Serving/Salad/Salad" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Soup" to="GreatHall/GreatHallItems/Table Serving/Soup/Soup" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Cheese" to="GreatHall/GreatHallItems/Table Food/Cheese" method="hide"]
@@ -1255,4 +1440,12 @@ anchors_preset = 0
 [connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGAttackPlayer" to="Lord/Character" method="attack_player"]
 [connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGRingBell" to="QuestTracker" method="ring_bell"]
 
+[editable path="GreatHall/GreatHallItems/Lights/Sconce 1"]
+[editable path="GreatHall/GreatHallItems/Lights/Sconce 2"]
+[editable path="GreatHall/GreatHallItems/Lights/Sconce 3"]
+[editable path="GreatHall/GreatHallItems/Lights/Sconce 4"]
+[editable path="GreatHall/GreatHallItems/Table Vanity/Candle"]
+[editable path="GreatHall/GreatHallItems/Table Writting/Candle Right"]
+[editable path="GreatHall/GreatHallItems/Table Writting/Candle Left"]
+[editable path="GreatHall/GreatHallItems/Table Lord/Candelabra"]
 [editable path="Lord/Character"]

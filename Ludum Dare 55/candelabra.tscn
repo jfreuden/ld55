@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://uhf23irwb08g"]
+[gd_scene load_steps=4 format=3 uid="uid://de6pcdjsufyy1"]
 
 [ext_resource type="Texture2D" uid="uid://bh6fq3wnd2wm1" path="res://assets/items/Candelabra.png" id="1_lnl24"]
 [ext_resource type="Texture2D" uid="uid://c47247o3xgtw3" path="res://assets/flame_particle.png" id="2_lirwd"]
@@ -17,17 +17,14 @@ gravity = Vector3(0, -100, 0)
 scale_min = 0.2
 scale_max = 0.4
 
-[node name="Candelabra" type="Node2D"]
-y_sort_enabled = true
-scale = Vector2(0.2, 0.2)
-
-[node name="Candelabra" type="Sprite2D" parent="."]
+[node name="Candelabra" type="Sprite2D"]
 texture_filter = 4
-position = Vector2(-4.76837e-07, 270)
+position = Vector2(138, 1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_lnl24")
 offset = Vector2(4.76837e-07, -270)
 
-[node name="CandleFlame" type="GPUParticles2D" parent="Candelabra"]
+[node name="CandleFlame" type="GPUParticles2D" parent="."]
 texture_filter = 4
 position = Vector2(-165, -581.831)
 scale = Vector2(2.8169, 2.8169)
@@ -38,7 +35,7 @@ visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 local_coords = true
 draw_order = 2
 
-[node name="CandleFlame2" type="GPUParticles2D" parent="Candelabra"]
+[node name="CandleFlame2" type="GPUParticles2D" parent="."]
 texture_filter = 4
 position = Vector2(-1.61988, -610)
 scale = Vector2(2.8169, 2.8169)
@@ -49,7 +46,7 @@ visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 local_coords = true
 draw_order = 2
 
-[node name="CandleFlame3" type="GPUParticles2D" parent="Candelabra"]
+[node name="CandleFlame3" type="GPUParticles2D" parent="."]
 texture_filter = 4
 position = Vector2(158.943, -590.282)
 scale = Vector2(2.8169, 2.8169)

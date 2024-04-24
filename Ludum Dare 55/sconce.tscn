@@ -14,14 +14,11 @@ flatness = 0.011
 initial_velocity_max = 100.0
 gravity = Vector3(0, -100, 0)
 
-[node name="Sconce" type="Node2D"]
-scale = Vector2(0.15, 0.15)
-
-[node name="Sconce" type="Sprite2D" parent="."]
+[node name="Sconce" type="Sprite2D"]
 texture_filter = 4
 texture = ExtResource("1_g5lh0")
 
-[node name="CandleFlame" type="GPUParticles2D" parent="Sconce"]
+[node name="CandleFlame" type="GPUParticles2D" parent="."]
 y_sort_enabled = true
 texture_filter = 4
 position = Vector2(20, -275)

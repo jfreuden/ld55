@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://v06r3woq4e45"]
+[gd_scene load_steps=4 format=3 uid="uid://c15wuypm623w1"]
 
 [ext_resource type="Texture2D" uid="uid://bhnl36u27m7iq" path="res://assets/items/Candle.png" id="1_fginq"]
 [ext_resource type="Texture2D" uid="uid://c47247o3xgtw3" path="res://assets/flame_particle.png" id="2_oatbx"]
@@ -17,14 +17,13 @@ gravity = Vector3(0, -100, 0)
 scale_min = 0.2
 scale_max = 0.4
 
-[node name="Candle" type="Node2D"]
-scale = Vector2(0.2, 0.2)
-
-[node name="Candle" type="Sprite2D" parent="."]
+[node name="Candle" type="Sprite2D"]
 texture_filter = 4
+position = Vector2(120, -1.00006)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_fginq")
 
-[node name="CandleFlame" type="GPUParticles2D" parent="Candle"]
+[node name="CandleFlame" type="GPUParticles2D" parent="."]
 texture_filter = 4
 position = Vector2(-16.9014, -135.211)
 scale = Vector2(2.8169, 2.8169)
