@@ -15,6 +15,7 @@ var completed_tasks : int = 0
 @export var quest_complete_barks : Array[AudioStreamMP3] = []
 @export var delay_low : float = 25.0
 @export var delay_high : float = 50.0
+@export var max_quest_count : int = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +38,9 @@ func ring_bell():
     var attempts : int = 0
 
     if get_child_count() <= 0:
+        return
+        
+    if len(active_tasks) >= max_quest_count:
         return
 
     while picked_start == null || disabled_starts.has(picked_start):
