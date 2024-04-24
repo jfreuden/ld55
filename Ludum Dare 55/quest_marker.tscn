@@ -21,14 +21,12 @@ script = ExtResource("1_gh1nk")
 [node name="TaskClock" type="Timer" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="."]
-visible = false
 
 [node name="InteractionCollisionShape" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_a5lnw")
 debug_color = Color(0, 0.647059, 0.207843, 0.419608)
 
 [node name="InteractionPanel" type="Panel" parent="."]
-visible = false
 material = SubResource("CanvasItemMaterial_sjnmf")
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 8
