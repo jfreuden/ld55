@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://51u4ddsi2068"]
+[gd_scene load_steps=6 format=3 uid="uid://51u4ddsi2068"]
 
 [ext_resource type="Texture2D" uid="uid://c47247o3xgtw3" path="res://assets/flame_particle.png" id="1_14oms"]
+[ext_resource type="Script" path="res://candle_flame.gd" id="2_52nma"]
+[ext_resource type="Texture2D" uid="uid://bm4cabeud3bqs" path="res://assets/interaction-circle.png" id="2_wqklt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3pbmb"]
 blend_mode = 1
@@ -28,3 +30,28 @@ texture = ExtResource("1_14oms")
 visibility_rect = Rect2(-107.59, -212.002, 208.817, 280.834)
 local_coords = true
 draw_order = 2
+script = ExtResource("2_52nma")
+
+[node name="Glow1" type="PointLight2D" parent="."]
+color = Color(1, 0.584314, 0.360784, 1)
+energy = 0.1
+texture = ExtResource("2_wqklt")
+texture_scale = 5.0
+
+[node name="Glow2" type="PointLight2D" parent="."]
+color = Color(1, 0.584314, 0.360784, 1)
+energy = 0.1
+texture = ExtResource("2_wqklt")
+texture_scale = 4.0
+
+[node name="Glow3" type="PointLight2D" parent="."]
+color = Color(1, 0.584314, 0.360784, 1)
+energy = 0.1
+texture = ExtResource("2_wqklt")
+texture_scale = 3.0
+
+[node name="Glow4" type="PointLight2D" parent="."]
+color = Color(1, 0.584314, 0.360784, 1)
+energy = 0.1
+texture = ExtResource("2_wqklt")
+texture_scale = 2.0
