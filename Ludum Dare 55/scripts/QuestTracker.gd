@@ -39,7 +39,7 @@ func ring_bell():
 
     if get_child_count() <= 0:
         return
-        
+
     if len(active_tasks) >= max_quest_count:
         return
 
