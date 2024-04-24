@@ -13,8 +13,8 @@ var completed_tasks : int = 0
 @export var quest_accept_barks : Array[AudioStreamMP3] = []
 @export var quest_progress_barks : Array[AudioStreamMP3] = []
 @export var quest_complete_barks : Array[AudioStreamMP3] = []
-@export var delay_low : float = 15.0
-@export var delay_high : float = 35.0
+@export var delay_low : float = 25.0
+@export var delay_high : float = 50.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

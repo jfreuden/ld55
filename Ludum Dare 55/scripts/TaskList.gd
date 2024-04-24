@@ -7,6 +7,6 @@ func _process(delta: float) -> void:
     var text = ""
     for quest_marker in quest_markers:
         var timer: Timer = quest_marker.task_clock
-        text += quest_marker.name + ": " + quest_marker.quest_string + " - " + str(timer.time_left).pad_decimals(2) + "\n"
+        text += quest_marker.quest_string + " - " + str(timer.time_left).pad_decimals(2) + "\n"
     label.text = text
 

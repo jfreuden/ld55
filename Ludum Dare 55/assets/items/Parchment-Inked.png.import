@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dggoqgrvnopih"
-path="res://.godot/imported/Parchment.png-13f3a0b6ad10638b3fd365bac874ff44.ctex"
+uid="uid://d3tpxqfeksceu"
+path="res://.godot/imported/Parchment-Inked.png-5517ea97053601796d48bbc40d96f8e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Parchment.png"
-dest_files=["res://.godot/imported/Parchment.png-13f3a0b6ad10638b3fd365bac874ff44.ctex"]
+source_file="res://assets/items/Parchment-Inked.png"
+dest_files=["res://.godot/imported/Parchment-Inked.png-5517ea97053601796d48bbc40d96f8e2.ctex"]
 
 [params]
 
