@@ -1282,7 +1282,7 @@ position = Vector2(0, -1)
 quest_string = "Go away I'm enjoying my tea now!"
 quest_task_type = 5
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Teaset/Take Away Teaset")
-quest_time = 1.0
+quest_time = 75.0
 interaction_radius = 75.0
 
 [node name="Deliver Strawberries" parent="Lord" instance=ExtResource("4_d27h0")]
@@ -1617,7 +1617,6 @@ anchors_preset = 0
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Salad" to="GreatHall/GreatHallItems/Table Serving/Salad/Salad" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Soup" to="GreatHall/GreatHallItems/Table Serving/Soup/Soup" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Cheese" to="GreatHall/GreatHallItems/Table Food/Cheese" method="hide"]
-[connection signal="interaction_succeeded" from="Lord/Wait Teatime" to="GreatHall/GreatHallItems/Table Food/Cheese" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Hungry for Apples/Wait Eat Apple" to="GreatHall/GreatHallItems/Table Lord/Apple Core" method="show"]
 [connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGAttackPlayer" to="Lord/Character" method="attack_player"]
 [connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGRingBell" to="QuestTracker" method="ring_bell"]
