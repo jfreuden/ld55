@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpmyoo2dlicjq"]
+[gd_scene load_steps=7 format=3 uid="uid://bpmyoo2dlicjq"]
 
 [ext_resource type="Script" path="res://scripts/QuestMarker.gd" id="1_gh1nk"]
 [ext_resource type="Texture2D" uid="uid://bm4cabeud3bqs" path="res://assets/interaction-circle.png" id="2_i0eyk"]
+[ext_resource type="Script" path="res://NavMarker.gd" id="3_v072w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5lnw"]
 resource_local_to_scene = true
@@ -60,5 +61,16 @@ text = "Press F to Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="NavMarker" type="Polygon2D" parent="."]
+color = Color(0.905882, 1, 0.360784, 1)
+offset = Vector2(-55, 0)
+polygon = PackedVector2Array(0, 18, 8, 0, 0, -18, 55, 0)
+script = ExtResource("3_v072w")
+
+[node name="NavMarker" type="Polygon2D" parent="NavMarker"]
+color = Color(0.6, 0.611765, 0.94902, 1)
+offset = Vector2(-54, 0)
+polygon = PackedVector2Array(5, 14, 13, 0, 5, -14, 45, 0)
 
 [connection signal="timeout" from="TaskClock" to="." method="_on_Timer_timeout"]
