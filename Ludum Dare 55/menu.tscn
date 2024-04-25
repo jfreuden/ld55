@@ -1,6 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://qsqpkd2ybjt"]
+[gd_scene load_steps=9 format=3 uid="uid://qsqpkd2ybjt"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_e800d"]
+[ext_resource type="Texture2D" uid="uid://d1083bithapo5" path="res://assets/cover_image_servant_game.png" id="2_tkcko"]
+
+[sub_resource type="SystemFont" id="SystemFont_rxd4w"]
+font_names = PackedStringArray("Times New Roman")
+font_italic = true
+font_weight = 700
+generate_mipmaps = true
+multichannel_signed_distance_field = true
+oversampling = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fdrvs"]
+font = SubResource("SystemFont_rxd4w")
+font_size = 64
+
+[sub_resource type="SystemFont" id="SystemFont_a7eon"]
+font_names = PackedStringArray("Fantasy")
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_5e354"]
+line_spacing = 24.0
+font = SubResource("SystemFont_a7eon")
+font_size = 32
+
+[sub_resource type="SystemFont" id="SystemFont_s6p75"]
+font_names = PackedStringArray("Serif")
+multichannel_signed_distance_field = true
+
+[sub_resource type="SystemFont" id="SystemFont_cqyrb"]
+font_names = PackedStringArray("Fantasy")
+multichannel_signed_distance_field = true
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -18,32 +48,36 @@ focus_previous = NodePath("NinePatchRect/VBoxContainer/Play")
 script = ExtResource("1_e800d")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0.239216, 0.239216, 0.239216, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-patch_margin_left = 80
-patch_margin_top = 80
-patch_margin_right = 80
-patch_margin_bottom = 80
+texture = ExtResource("2_tkcko")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -80.0
+offset_left = 215.0
 offset_right = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="Title" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Thanks For Playing!"
+label_settings = SubResource("LabelSettings_fdrvs")
+
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 text = "Servant of Lord Doof"
+label_settings = SubResource("LabelSettings_5e354")
 horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="NinePatchRect/VBoxContainer"]
@@ -52,7 +86,9 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../Settings")
 focus_next = NodePath("../Settings")
 focus_previous = NodePath("../Quit")
-text = "Enter the Manor"
+theme_override_fonts/font = SubResource("SystemFont_s6p75")
+theme_override_font_sizes/font_size = 20
+text = "Re-enter the Manor"
 
 [node name="Settings" type="Button" parent="NinePatchRect/VBoxContainer"]
 visible = false
@@ -69,17 +105,24 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
 focus_next = NodePath("../Play")
 focus_previous = NodePath("../Settings")
+theme_override_fonts/font = SubResource("SystemFont_s6p75")
+theme_override_font_sizes/font_size = 20
 text = "Quit to Desktop"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -247.0
-offset_right = 176.0
+offset_left = 64.11
+offset_top = -488.015
+offset_right = 196.11
+offset_bottom = -243.561
 grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 12
+scale = Vector2(1.86, 1.86)
+theme_override_fonts/normal_font = SubResource("SystemFont_cqyrb")
+theme_override_font_sizes/normal_font_size = 14
 text = "Credits: Team Jakajo
 
 Game Design Lead: kraftbart
@@ -92,7 +135,12 @@ Art: kraftbart
 Art: kallico
 Animation: kraftbart
 SFX: kraftbart
-VFX: rainybyte"
+VFX: rainybyte
+Music: kraftbart
+Writing: kallico
+Writing: rainybyte"
+fit_content = true
+scroll_active = false
 
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Play" to="." method="PlayGame"]
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/Quit" to="." method="QuitGame"]
