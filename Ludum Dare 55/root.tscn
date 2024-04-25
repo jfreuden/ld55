@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=83 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -142,6 +142,11 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6j0fq"]
 radius = 30.0
 height = 120.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_6sx5o"]
+lightmap_size_hint = Vector2i(3707, 228)
+size = Vector2(753.945, 262.795)
+center_offset = Vector3(-11.275, -34.235, 0)
 
 [node name="Root" type="Node2D"]
 y_sort_enabled = true
@@ -665,9 +670,7 @@ next_task_marker = NodePath("../../../Table Lord/WineGobblet/Refill Wine Goblet"
 
 [node name="Table Food" type="Node2D" parent="GreatHall/GreatHallItems"]
 y_sort_enabled = true
-position = Vector2(684, 220)
-
-[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Food" instance=ExtResource("66_1v6wv")]
+position = Vector2(684, 375)
 
 [node name="Apple" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Food"]
 texture_filter = 4
@@ -797,11 +800,26 @@ quest_string = "My tiger is hungry! Go fetch it some him fish"
 quest_task_type = 2
 next_task_marker = NodePath("../../../Rug/Feed Fish")
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="GreatHall/GreatHallItems/Table Food"]
+clip_children = 1
+mesh = SubResource("QuadMesh_6sx5o")
+
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Food/MeshInstance2D" instance=ExtResource("66_1v6wv")]
+
 [node name="Table Vanity" type="Node2D" parent="GreatHall/GreatHallItems"]
 y_sort_enabled = true
-position = Vector2(0, 524)
+position = Vector2(0, 644.19)
 
-[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Vanity" instance=ExtResource("66_we1xn")]
+[node name="Polygon2D" type="Polygon2D" parent="GreatHall/GreatHallItems/Table Vanity"]
+clip_children = 1
+position = Vector2(0, -22.025)
+scale = Vector2(0.8, 0.8)
+offset = Vector2(0, 24.415)
+polygon = PackedVector2Array(-271.25, -203.987, 272.5, -205.237, 250, 156.25, -270, 153.75)
+
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Vanity/Polygon2D" instance=ExtResource("66_we1xn")]
+position = Vector2(0, 5.74)
+scale = Vector2(1, 1)
 
 [node name="Place Mirror" parent="GreatHall/GreatHallItems/Table Vanity" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 position = Vector2(44, 19)
@@ -955,9 +973,18 @@ interaction_radius = 100.0
 
 [node name="Table Writting" type="Node2D" parent="GreatHall/GreatHallItems"]
 y_sort_enabled = true
-position = Vector2(-880, 510)
+position = Vector2(-880, 639.385)
 
-[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("66_we1xn")]
+[node name="Polygon2D" type="Polygon2D" parent="GreatHall/GreatHallItems/Table Writting"]
+clip_children = 1
+position = Vector2(0, -26.12)
+scale = Vector2(0.8, 0.8)
+offset = Vector2(0, -50.26)
+polygon = PackedVector2Array(-315, -113.906, 371.25, -113.906, 371.25, 239.844, -321.25, 241.094)
+
+[node name="Royal Table" parent="GreatHall/GreatHallItems/Table Writting/Polygon2D" instance=ExtResource("66_we1xn")]
+position = Vector2(0, 41.685)
+scale = Vector2(1, 1)
 
 [node name="Candle Right" parent="GreatHall/GreatHallItems/Table Writting" instance=ExtResource("70_utxtm")]
 position = Vector2(136, -6)
@@ -1515,12 +1542,14 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="DEBUGAttackPlayer" type="Button" parent="UIOnCamera/Control/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 text = "Attack Player
 "
 
 [node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 text = "Ring Bell"
