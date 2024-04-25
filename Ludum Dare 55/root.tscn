@@ -1492,15 +1492,6 @@ interaction_radius = 75.0
 scale = Vector2(0.556, 0.556)
 metadata/_edit_group_ = true
 
-[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
-scale = Vector2(1, 1)
-
-[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
-scale = Vector2(0.999998, 0.999998)
-
-[node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
-scale = Vector2(0.999998, 0.999998)
-
 [node name="LordHand" type="Node2D" parent="Lord/Character/Skeleton/hip/belly/shoulder front/arm front" index="0"]
 unique_name_in_owner = true
 position = Vector2(84.09, -1.368)
