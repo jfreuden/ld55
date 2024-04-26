@@ -110,5 +110,5 @@ func reset_all_timers():
     for task: QuestMarker in active_tasks:
         if task.quest_task_type != QuestMarker.TaskType.WAIT:
             task.task_clock.start()
-    pass
+
 
