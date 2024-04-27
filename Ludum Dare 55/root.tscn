@@ -208,7 +208,6 @@ script = ExtResource("8_ctlei")
 quest_accept_barks = Array[AudioStreamMP3]([ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource("11_o3b8h"), ExtResource("12_fuktn"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("15_qqno4"), ExtResource("16_w1vwp"), ExtResource("17_tqfwk"), ExtResource("18_q116p")])
 quest_progress_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")])
 quest_complete_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")])
-delay_high = 20.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="QuestTracker"]
 process_mode = 3
@@ -1302,14 +1301,14 @@ position = Vector2(-880, -8)
 quest_string = "I'm eating my salad, leave me be!"
 quest_task_type = 5
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Fork/Take Fork")
-quest_time = 75.0
+quest_time = 60.0
 interaction_radius = 75.0
 
 [node name="Wait Eat Soup" parent="Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "I'm eating my soup, go away!"
 quest_task_type = 5
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Spoon/Take Spoon")
-quest_time = 75.0
+quest_time = 60.0
 interaction_radius = 75.0
 
 [node name="Wait Eat Cheese" parent="Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
@@ -1317,7 +1316,7 @@ position = Vector2(0, -1)
 quest_string = "I'm eating my cheese, go away!"
 quest_task_type = 5
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Knife/Take Knife")
-quest_time = 75.0
+quest_time = 60.0
 interaction_radius = 75.0
 
 [node name="Wait Teatime" parent="Lord" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
@@ -1325,7 +1324,7 @@ position = Vector2(0, -1)
 quest_string = "Go away I'm enjoying my tea now!"
 quest_task_type = 5
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Teaset/Take Away Teaset")
-quest_time = 75.0
+quest_time = 60.0
 interaction_radius = 75.0
 
 [node name="Deliver Strawberries" parent="Lord" instance=ExtResource("4_d27h0")]
@@ -1424,7 +1423,7 @@ next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Writting/Pl
 interaction_radius = 75.0
 
 [node name="Decree 1" parent="Lord/Ruling Advice" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "BHurry up lad! Show me the decree now!"
+quest_string = "Hurry up lad! Show me the decree now!"
 next_task_marker = NodePath("../Decree 2")
 interaction_radius = 75.0
 
@@ -1494,6 +1493,9 @@ metadata/_edit_group_ = true
 
 [node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
 scale = Vector2(1, 1)
+
+[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999992)

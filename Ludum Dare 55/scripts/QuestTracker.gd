@@ -13,10 +13,10 @@ var completed_tasks : int = 0
 @export var quest_accept_barks : Array[AudioStreamMP3] = []
 @export var quest_progress_barks : Array[AudioStreamMP3] = []
 @export var quest_complete_barks : Array[AudioStreamMP3] = []
-@export var delay_low : float = 25.0
-@export var delay_high : float = 50.0
+@export var delay_low : float = 3.0
+@export var delay_high : float = 10.0
 @export var max_quest_count : int = 5
-@export var patience_factor : float = 1.2
+@export var patience_factor : float = 1.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +32,9 @@ func _exit_tree():
     disabled_starts.clear()
 
 func reset_bell_timer():
-    bell_timer.start(randf_range(delay_low, delay_high))
+    var timer_delay = randf_range(delay_low, delay_high) + 3 * len(active_tasks)
+    print(timer_delay)
+    bell_timer.start(timer_delay)
 
 func ring_bell():
     var picked_start : QuestStart = null
