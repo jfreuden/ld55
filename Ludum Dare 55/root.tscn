@@ -186,7 +186,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_mhivb")]
 unique_name_in_owner = true
-position = Vector2(-727, -520)
+position = Vector2(-764, -548)
 metadata/_edit_group_ = true
 
 [node name="CameraHolder" type="Node2D" parent="Player"]
@@ -305,7 +305,6 @@ quest_string = "The lord is thirsty"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Teaset/Take Teaset")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
-z_index = 2
 y_sort_enabled = true
 metadata/_edit_lock_ = true
 
@@ -357,6 +356,7 @@ next_task_marker = NodePath("../../MooseHead/Admire Moose Head")
 interaction_radius = 100.0
 
 [node name="Lights" type="Node2D" parent="GreatHall/GreatHallItems"]
+y_sort_enabled = true
 
 [node name="Sconce 1" parent="GreatHall/GreatHallItems/Lights" instance=ExtResource("69_o8t2g")]
 position = Vector2(-1138, -836)
@@ -511,9 +511,10 @@ quest_string = "Put the chamberpot back"
 quest_task_type = 3
 
 [node name="Beer Barrel" type="Node2D" parent="GreatHall/GreatHallItems"]
-position = Vector2(1002, -303)
+position = Vector2(1002, -333.79)
 
 [node name="Beer Barrel" parent="GreatHall/GreatHallItems/Beer Barrel" instance=ExtResource("69_p12tg")]
+scale = Vector2(0.73, 0.73)
 metadata/_edit_lock_ = true
 
 [node name="Fill Beer" parent="GreatHall/GreatHallItems/Beer Barrel" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
@@ -1503,6 +1504,9 @@ interaction_radius = 75.0
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 metadata/_edit_group_ = true
+
+[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
+scale = Vector2(1, 1)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999992)
