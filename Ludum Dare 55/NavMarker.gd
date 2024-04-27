@@ -1,7 +1,7 @@
 extends Polygon2D
 
 func _ready():
-    var parent : QuestMarker = get_parent()    
+    var parent : QuestMarker = get_parent()
     if parent and (parent.quest_task_type == QuestMarker.TaskType.DELIVER or parent.quest_task_type == QuestMarker.TaskType.PLACE or parent.name == "Empty Chamberpot"):
         var blink_tween : Tween = create_tween()
         blink_tween.tween_property(self, "modulate", Color.FIREBRICK, 0.45)
@@ -15,7 +15,7 @@ func _process(_delta):
     if parent and parent.visible:
         var target : QuestMarker = get_parent()
         var screen_size = get_viewport_rect().size
-        
+
         var target_pos = target.global_position
         var camera_pos = get_viewport().get_camera_2d().get_screen_center_position()
         var direction_vector: Vector2 = (target_pos - camera_pos)

@@ -16,11 +16,11 @@ func attack_player():
     var bark_player : AudioStreamPlayer2D = get_node("/root/Root/BarkPlayer")
     var death_menu : DeathMenu = %DeathMenu
     bark_player.stream = load("res://audio/characters/lord/ahh2.mp3")
-    
+
     var tween: Tween = create_tween()
-    
+
     tween.tween_property(camera, "global_position", arm.global_position, 0.5)
-    
+
     tween.tween_callback(animation_player.stop)
 
     tween.tween_callback(animation_player.play.bind("stomp"))
@@ -37,18 +37,18 @@ func attack_player():
     tween.tween_property(spear, "global_rotation", (arm.global_position - player_head.global_position).angle(), 0.01)
     tween.tween_callback(self.add_child.bind(spear, false))
     tween.tween_callback(spear.reparent.bind(player))
-    
-    
+
+
     tween.tween_property(spear, "global_position", arm.global_position, 0.01)
     tween.tween_property(spear, "position", head_offset, 0.2)
     tween.parallel().tween_property(camera, "position", Vector2(0, 0), 0.15)
     tween.tween_callback(camera.align)
     tween.tween_callback(death_menu.increment_death_level)
-    
-    
+
+
     tween.tween_interval(0.7 / throw_speed)
     tween.tween_property(animation_player, "speed_scale", 1.0, 0.05)
-    tween.tween_callback(animation_player.stop)    
+    tween.tween_callback(animation_player.stop)
     tween.tween_callback(animation_player.play.bind("idle"))
     tween.tween_callback(%QuestTracker.reset_all_timers)
     tween.play()
