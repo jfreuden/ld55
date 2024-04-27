@@ -175,6 +175,7 @@ visible = false
 polygon = PackedVector2Array(-584, -627, -886, -626, -886, -666, -589, -663)
 
 [node name="Foggy" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = -1
 follow_viewport_enabled = true
 script = ExtResource("5_g8c8t")

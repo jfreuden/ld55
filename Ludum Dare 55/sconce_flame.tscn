@@ -19,6 +19,7 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, -100, 0)
 
 [node name="CandleFlame" type="GPUParticles2D"]
+process_mode = 3
 y_sort_enabled = true
 texture_filter = 4
 material = SubResource("CanvasItemMaterial_6u0na")

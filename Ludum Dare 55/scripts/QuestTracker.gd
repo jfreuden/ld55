@@ -16,6 +16,7 @@ var completed_tasks : int = 0
 @export var delay_low : float = 25.0
 @export var delay_high : float = 50.0
 @export var max_quest_count : int = 5
+@export var patience_factor : float = 1.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,21 +63,28 @@ func ring_bell():
     picked_start.enable_interaction()
     reset_bell_timer()
 
+func isnt_start(node: Node):
+    print(node)
+    return not node is QuestStart
+
 func next_task(finished_task: QuestMarker):
     completed_tasks += 1
-    var next_task: QuestMarker = finished_task.next_task_marker
+    var next: QuestMarker = finished_task.next_task_marker
 
     finished_task.disable_interaction()
     active_tasks.erase(finished_task)
     if is_ancestor_of(finished_task) and not (finished_task as QuestStart).repeatable:
         remove_child(finished_task)
+        disabled_starts.erase(finished_task)
 
-    if next_task == null:
+    add_patience()
+
+    if next == null:
         var audio_stream_player_2d = get_node("/root/Root/BarkPlayer") as AudioStreamPlayer2D
         audio_stream_player_2d.stop()
         audio_stream_player_2d.stream = quest_complete_barks[randi() % quest_complete_barks.size()]
         audio_stream_player_2d.play()
-
+        print(disabled_starts)
         for start in disabled_starts:
             var ptr = start
             var attempts : int = 0
@@ -92,7 +100,8 @@ func next_task(finished_task: QuestMarker):
                         start.reparent(self)
                     return
                 ptr = ptr.next_task_marker
-
+        if get_child_count() == 0 or get_children().all(isnt_start):
+            get_tree().change_scene_to_file("res://menu.tscn")
         return
     else:
         var audio_stream_player_2d = get_node("/root/Root/BarkPlayer") as AudioStreamPlayer2D
@@ -103,12 +112,19 @@ func next_task(finished_task: QuestMarker):
             audio_stream_player_2d.stream = quest_progress_barks[randi() % quest_progress_barks.size()]
         audio_stream_player_2d.play()
 
-    active_tasks.append(next_task)
-    next_task.enable_interaction()
+    active_tasks.append(next)
+    next.enable_interaction()
 
 func reset_all_timers():
     for task: QuestMarker in active_tasks:
         if task.quest_task_type != QuestMarker.TaskType.WAIT:
-            task.task_clock.start()
+            task.task_clock.start(task.quest_time)
+
+func add_patience():
+    for task: QuestMarker in active_tasks:
+        if task.quest_task_type != QuestMarker.TaskType.WAIT:
+            # Adds 20% to whatever remaining time there is, up to the quest time.
+            var reset_time = minf(task.task_clock.time_left * patience_factor, task.quest_time)
+            task.task_clock.start(reset_time)
 
 

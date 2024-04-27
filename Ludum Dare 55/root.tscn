@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cloqedpwjuuck"]
+[gd_scene load_steps=84 format=3 uid="uid://cloqedpwjuuck"]
 
 [ext_resource type="PackedScene" uid="uid://d3kfj8bhi0wu8" path="res://assets/player.tscn" id="1_mhivb"]
 [ext_resource type="PackedScene" uid="uid://fb6qwh0jo32" path="res://assets/great_hall.tscn" id="2_8pfmp"]
@@ -77,6 +77,7 @@
 [ext_resource type="PackedScene" uid="uid://chujrsl84ckv3" path="res://beer_barrel.tscn" id="69_p12tg"]
 [ext_resource type="PackedScene" uid="uid://c15wuypm623w1" path="res://candle.tscn" id="70_utxtm"]
 [ext_resource type="PackedScene" uid="uid://de6pcdjsufyy1" path="res://candelabra.tscn" id="71_w61il"]
+[ext_resource type="Script" path="res://PauseMenu.gd" id="72_67hix"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6j0fq"]
 radius = 30.0
@@ -234,47 +235,38 @@ quest_string = "Your lord has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Writting/Ruling For Dunces/Take Book")
 
 [node name="Wine Refill" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "My wine goblet is empty!!"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Wine Bottle/Take Wine Bottle")
 
 [node name="Beer Refill" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "My beer tankard is empty"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/BeerKeg/Take Beer")
 
 [node name="Hunter" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "My hunting trophies look dirty!!!"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Snake/Dust Snake")
 
 [node name="Board game" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "Your lord is bored."
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Vanity/Board Game/Take Board Game")
 
 [node name="Chamber Pot" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "The chamber pot is stinking up my great hall!"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Chamber Pot/ChamberPot/Take Chamber Pot")
 
 [node name="Laught at Skull" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "Your lord is bored and needs something to laugh at."
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Skull/Make fun of Skull")
 
 [node name="Lights!" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "Its too bright in here!!"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Lights/Sconce 1/Snuff sconce")
 
 [node name="Vanity" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "Your lord has a task for you."
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Vanity/Ivory Comb/Take Comb")
 
 [node name="Teatime" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-repeatable = true
 quest_string = "The lord wants his tea!"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Teaset/Take Teaset")
 
@@ -1513,6 +1505,48 @@ grow_vertical = 2
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
+[node name="PauseMenu" type="ColorRect" parent="UIOnCamera/Control"]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.803922, 0.419608, 0.266667, 0.388235)
+
+[node name="PauseMenu" type="VBoxContainer" parent="UIOnCamera/Control/PauseMenu"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -50.5
+offset_right = 65.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("72_67hix")
+
+[node name="Continue" type="Button" parent="UIOnCamera/Control/PauseMenu/PauseMenu"]
+process_mode = 2
+layout_mode = 2
+text = "Return to Game"
+
+[node name="Menu" type="Button" parent="UIOnCamera/Control/PauseMenu/PauseMenu"]
+process_mode = 2
+layout_mode = 2
+text = "Quit to Menu"
+
+[node name="Quit" type="Button" parent="UIOnCamera/Control/PauseMenu/PauseMenu"]
+process_mode = 2
+layout_mode = 2
+text = "Quit to Desktop"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="UIOnCamera/Control"]
 layout_mode = 1
 anchors_preset = 3
@@ -1532,49 +1566,9 @@ text = "Attack Player
 "
 
 [node name="DEBUGRingBell" type="Button" parent="UIOnCamera/Control/HBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 text = "Ring Bell"
-
-[node name="PauseMenu" type="Control" parent="UIOnCamera/Control"]
-process_mode = 2
-top_level = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UIOnCamera/Control/PauseMenu"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = -50.5
-offset_right = 65.5
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Continue" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
-layout_mode = 2
-text = "Return to Game"
-
-[node name="Menu" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
-layout_mode = 2
-text = "Quit to Menu"
-
-[node name="Quit" type="Button" parent="UIOnCamera/Control/PauseMenu/VBoxContainer"]
-layout_mode = 2
-text = "Quit to Desktop"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UIOnCamera/Control"]
 layout_mode = 1
@@ -1650,6 +1644,9 @@ libraries = {
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Soup" to="GreatHall/GreatHallItems/Table Serving/Soup/Soup" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Wait Eat Cheese" to="GreatHall/GreatHallItems/Table Food/Cheese" method="hide"]
 [connection signal="interaction_succeeded" from="Lord/Hungry for Apples/Wait Eat Apple" to="GreatHall/GreatHallItems/Table Lord/Apple Core" method="show"]
+[connection signal="pressed" from="UIOnCamera/Control/PauseMenu/PauseMenu/Continue" to="UIOnCamera/Control/PauseMenu/PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="UIOnCamera/Control/PauseMenu/PauseMenu/Menu" to="UIOnCamera/Control/PauseMenu/PauseMenu" method="_on_menu_pressed"]
+[connection signal="pressed" from="UIOnCamera/Control/PauseMenu/PauseMenu/Quit" to="UIOnCamera/Control/PauseMenu/PauseMenu" method="_on_quit_pressed"]
 [connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGAttackPlayer" to="Lord/Character" method="attack_player"]
 [connection signal="pressed" from="UIOnCamera/Control/HBoxContainer/DEBUGRingBell" to="QuestTracker" method="ring_bell"]
 
