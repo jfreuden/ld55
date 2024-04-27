@@ -1505,12 +1505,6 @@ interaction_radius = 75.0
 scale = Vector2(0.556, 0.556)
 metadata/_edit_group_ = true
 
-[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
-scale = Vector2(1, 1)
-
-[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
-scale = Vector2(0.999998, 0.999998)
-
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999992)
 
@@ -1642,23 +1636,6 @@ process_mode = 2
 layout_mode = 2
 text = "Quit to Desktop"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UIOnCamera"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 294.0
-grow_horizontal = 0
-horizontal_scroll_mode = 0
-
-[node name="TaskList" type="VBoxContainer" parent="UIOnCamera/ScrollContainer"]
-layout_mode = 2
-script = ExtResource("54_she2a")
-
-[node name="Label" type="Label" parent="UIOnCamera/ScrollContainer/TaskList"]
-layout_mode = 2
-horizontal_alignment = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="UIOnCamera"]
 anchors_preset = 3
 anchor_left = 1.0
@@ -1704,6 +1681,28 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UIOnCamera/BellHolder/Bell"]
+
+[node name="MarginContainer" type="MarginContainer" parent="UIOnCamera"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 8
+
+[node name="TaskList" type="VBoxContainer" parent="UIOnCamera/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("54_she2a")
+
+[node name="Label" type="Label" parent="UIOnCamera/MarginContainer/TaskList"]
+layout_mode = 2
+text = "Test Text - 34.02"
+horizontal_alignment = 2
 
 [node name="BarkPlayer" type="AudioStreamPlayer2D" parent="."]
 
