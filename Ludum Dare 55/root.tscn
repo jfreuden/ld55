@@ -1629,6 +1629,7 @@ layout_mode = 2
 text = "Quit to Desktop"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIOnCamera"]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
