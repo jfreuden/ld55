@@ -50,5 +50,6 @@ func attack_player():
     tween.tween_property(animation_player, "speed_scale", 1.0, 0.05)
     tween.tween_callback(animation_player.stop)    
     tween.tween_callback(animation_player.play.bind("idle"))
+    tween.tween_callback(%QuestTracker.reset_all_timers)
     tween.play()
 
