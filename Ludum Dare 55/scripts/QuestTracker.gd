@@ -16,7 +16,7 @@ var completed_tasks : int = 0
 @export var delay_low : float = 5.0
 @export var delay_high : float = 12.0
 @export var max_quest_count : int = 5
-@export var patience_factor : float = 1.1
+@export var patience_factor : float = 1.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

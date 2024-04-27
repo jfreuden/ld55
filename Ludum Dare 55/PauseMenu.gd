@@ -3,6 +3,8 @@ extends VBoxContainer
 func _ready():
     if OS.is_debug_build():
         get_node("../../../HBoxContainer").visible = true
+    if OS.has_feature("web"):
+        get_node("Quit").visible = false
 
 func _process(delta):
     if Input.is_action_just_pressed("ui_cancel"):
