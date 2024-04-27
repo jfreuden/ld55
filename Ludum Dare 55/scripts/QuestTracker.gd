@@ -13,8 +13,8 @@ var completed_tasks : int = 0
 @export var quest_accept_barks : Array[AudioStreamMP3] = []
 @export var quest_progress_barks : Array[AudioStreamMP3] = []
 @export var quest_complete_barks : Array[AudioStreamMP3] = []
-@export var delay_low : float = 3.0
-@export var delay_high : float = 10.0
+@export var delay_low : float = 5.0
+@export var delay_high : float = 12.0
 @export var max_quest_count : int = 5
 @export var patience_factor : float = 1.1
 
@@ -32,7 +32,7 @@ func _exit_tree():
     disabled_starts.clear()
 
 func reset_bell_timer():
-    var timer_delay = randf_range(delay_low, delay_high) + 3 * len(active_tasks)
+    var timer_delay = randf_range(delay_low, delay_high) + 3 * (len(active_tasks) - 1)
     print(timer_delay)
     bell_timer.start(timer_delay)
 

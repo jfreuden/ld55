@@ -952,13 +952,13 @@ quest_time = 10.0
 
 [node name="Fox and Geese 9" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(6.66667, 6.66667)
-quest_string = "Attempt to sorround the fox, but don't get too smart about it (like the last guy)"
+quest_string = "Attempt to capture the fox, but don't get too smart about it (like the last guy)"
 next_task_marker = NodePath("../Fox and Geese 10")
 quest_time = 10.0
 
 [node name="Fox and Geese 10" parent="GreatHall/GreatHallItems/Table Vanity/Board Game" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(6.66667, 6.66667)
-quest_string = "Hurrah lad! I've got you now!"
+quest_string = "Hurrah lad! I've eaten all your geese now!"
 quest_task_type = 5
 next_task_marker = NodePath("../Take Away Board Game")
 quest_time = 10.0
@@ -1693,6 +1693,11 @@ script = ExtResource("54_she2a")
 
 [node name="Label" type="Label" parent="UIOnCamera/MarginContainer/TaskList"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 18
 text = "Test Text - 34.02"
 horizontal_alignment = 2
 
