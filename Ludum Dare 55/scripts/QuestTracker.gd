@@ -78,6 +78,12 @@ func next_task(finished_task: QuestMarker):
         disabled_starts.erase(finished_task)
 
     add_patience()
+    var tasks_tween : Tween = create_tween()
+    tasks_tween.set_ease(Tween.EASE_IN_OUT)
+    tasks_tween.set_trans(Tween.TRANS_ELASTIC)
+    tasks_tween.tween_property(%TaskList, "scale", Vector2(1.2, 1.2), 1)
+    tasks_tween.tween_property(%TaskList, "scale", Vector2(1.0, 1.0), 1)
+    tasks_tween.play()
 
     if next == null:
         var audio_stream_player_2d = get_node("/root/Root/BarkPlayer") as AudioStreamPlayer2D
@@ -101,7 +107,14 @@ func next_task(finished_task: QuestMarker):
                     return
                 ptr = ptr.next_task_marker
         if get_child_count() == 0 or get_children().all(isnt_start):
-            get_tree().change_scene_to_file("res://menu.tscn")
+            get_tree().paused = true
+            %PauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
+            var page_tween : Tween = create_tween()
+            page_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+            page_tween.tween_interval(2)
+            page_tween.tween_callback(get_tree().change_scene_to_file.bind("res://menu.tscn"))
+            page_tween.tween_property(get_tree(), "paused", false, 0.00001)
+            page_tween.play()
         return
     else:
         var audio_stream_player_2d = get_node("/root/Root/BarkPlayer") as AudioStreamPlayer2D
