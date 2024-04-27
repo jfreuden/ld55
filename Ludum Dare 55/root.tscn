@@ -296,13 +296,13 @@ next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Skull/Mak
 quest_string = "Your lord needs something"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Lights/Sconce 1/Snuff sconce")
 
-[node name="Vanity" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "Your lord has a task for you"
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Vanity/Ivory Comb/Take Comb")
-
 [node name="Teatime" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "The lord is thirsty"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Teaset/Take Teaset")
+
+[node name="Vanity" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "Your lord has a task for you"
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Vanity/Hand Mirror/Take Mirror")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
 z_index = 2
@@ -834,17 +834,11 @@ polygon = PackedVector2Array(-271.25, -203.987, 272.5, -205.237, 250, 156.25, -2
 position = Vector2(0, 5.74)
 scale = Vector2(1, 1)
 
-[node name="Place Mirror" parent="GreatHall/GreatHallItems/Table Vanity" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-position = Vector2(44, 19)
-quest_string = "Now go put that mirror back! EXACTLY how you found it!"
-quest_task_type = 3
-next_task_marker = NodePath("../Ivory Comb/Take Away Comb")
-
 [node name="Place Comb" parent="GreatHall/GreatHallItems/Table Vanity" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 position = Vector2(110, 41)
-quest_string = "Put that comb down! Careful, that's real ivory you know!"
+quest_string = "Put that comb away! Careful, that's real ivory you know!"
 quest_task_type = 3
-next_task_marker = NodePath("../../../../Lord/Vanity Quest/Vanity Praise")
+next_task_marker = NodePath("../Hand Mirror/Take Away Mirror")
 
 [node name="Place Board Game" parent="GreatHall/GreatHallItems/Table Vanity" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 position = Vector2(-82, 31)
@@ -852,18 +846,32 @@ quest_string = "Put the board game down. That was close. You almost won that tim
 quest_task_type = 3
 next_task_marker = NodePath("../../../../Lord/Board Game Praise")
 
+[node name="Place Mirror" parent="GreatHall/GreatHallItems/Table Vanity" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+position = Vector2(17, 17.81)
+quest_string = "Now go put that mirror back! EXACTLY how you found it!"
+quest_task_type = 3
+next_task_marker = NodePath("../../../../Lord/Vanity Quest/Vanity Praise")
+
 [node name="Hand Mirror" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Vanity"]
 texture_filter = 4
-position = Vector2(44, 19)
+position = Vector2(17, 17.81)
+rotation = 3.14159
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("22_a182i")
-offset = Vector2(-6.66666, 73.3333)
 
 [node name="Take Mirror" parent="GreatHall/GreatHallItems/Table Vanity/Hand Mirror" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+rotation = 3.14159
 scale = Vector2(6.66667, 6.66667)
-quest_string = "Now go get me that mirror!"
+quest_string = "Get get that mirror!"
 quest_task_type = 2
-next_task_marker = NodePath("../../../../../Lord/Vanity Quest/Mirror 1")
+next_task_marker = NodePath("../../../../../Lord/Character/Skeleton/hip/belly/shoulder front/arm front/LordHand/Hand Container/Give Mirror")
+
+[node name="Take Away Mirror" parent="GreatHall/GreatHallItems/Table Vanity/Hand Mirror" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+rotation = 3.14159
+scale = Vector2(6.66667, 6.66667)
+quest_string = "And this mirror too!"
+quest_task_type = 2
+next_task_marker = NodePath("../../Place Mirror")
 
 [node name="Ivory Comb" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Vanity"]
 texture_filter = 4
@@ -874,15 +882,9 @@ offset = Vector2(6.66669, 40)
 
 [node name="Take Comb" parent="GreatHall/GreatHallItems/Table Vanity/Ivory Comb" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 scale = Vector2(6.66667, 6.66667)
-quest_string = "I'm a lord and I've got to look my best! Go fetch me that comb."
+quest_string = "Oh my!! Go get that comb!"
 quest_task_type = 2
-next_task_marker = NodePath("../../../../../Lord/Vanity Quest/Brush Lord")
-
-[node name="Take Away Comb" parent="GreatHall/GreatHallItems/Table Vanity/Ivory Comb" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-scale = Vector2(6.66667, 6.66667)
-quest_string = "Now come back and take this comb away!"
-quest_task_type = 2
-next_task_marker = NodePath("../../Place Comb")
+next_task_marker = NodePath("../../../../../Lord/Vanity Quest/Comb 1")
 
 [node name="Board Game" type="Sprite2D" parent="GreatHall/GreatHallItems/Table Vanity"]
 texture_filter = 4
@@ -1471,29 +1473,14 @@ interaction_radius = 75.0
 
 [node name="Vanity Quest" type="Node2D" parent="Lord"]
 
-[node name="Brush Lord" parent="Lord/Vanity Quest" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+[node name="Comb 1" parent="Lord/Vanity Quest" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
 quest_string = "Now hurry here and comb my hair!"
-next_task_marker = NodePath("../../Character/Skeleton/hip/belly/shoulder front/arm front/LordHand/Comb Place/Give Comb")
-quest_time = 10.0
+next_task_marker = NodePath("../Comb 2")
 interaction_radius = 75.0
 
-[node name="Mirror 1" parent="Lord/Vanity Quest" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "Now come here and hold that mirror!"
-next_task_marker = NodePath("../Mirror 2")
-quest_time = 10.0
-interaction_radius = 75.0
-
-[node name="Mirror 2" parent="Lord/Vanity Quest" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "Hold it steady lad!"
-quest_task_type = 5
-next_task_marker = NodePath("../Mirror 3")
-quest_time = 5.0
-interaction_radius = 75.0
-
-[node name="Mirror 3" parent="Lord/Vanity Quest" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "Now this is how its done!"
-next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Vanity/Place Mirror")
-quest_time = 5.0
+[node name="Comb 2" parent="Lord/Vanity Quest" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+quest_string = "Have you never used a comb before! Do it right!"
+next_task_marker = NodePath("../../../GreatHall/GreatHallItems/Table Vanity/Place Comb")
 interaction_radius = 75.0
 
 [node name="Vanity Praise" parent="Lord/Vanity Quest" instance=ExtResource("4_d27h0")]
@@ -1503,6 +1490,12 @@ interaction_radius = 75.0
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 metadata/_edit_group_ = true
+
+[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
+scale = Vector2(1, 1)
+
+[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999992)
@@ -1514,14 +1507,14 @@ rotation = -0.520108
 scale = Vector2(1.11338, 0.988227)
 skew = 0.18326
 
-[node name="Comb Place" type="Node2D" parent="Lord/Character/Skeleton/hip/belly/shoulder front/arm front/LordHand"]
+[node name="Hand Container" type="Node2D" parent="Lord/Character/Skeleton/hip/belly/shoulder front/arm front/LordHand"]
 scale = Vector2(1.89179, 1.66394)
 skew = -0.0125058
 
-[node name="Give Comb" parent="Lord/Character/Skeleton/hip/belly/shoulder front/arm front/LordHand/Comb Place" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
-quest_string = "No no no! You are doing it all wrong! Give that here!"
+[node name="Give Mirror" parent="Lord/Character/Skeleton/hip/belly/shoulder front/arm front/LordHand/Hand Container" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("4_d27h0")]
+quest_string = "Hurry it up lad! I've got to look good!"
 quest_task_type = 3
-next_task_marker = NodePath("../../../../../../../../../../GreatHall/GreatHallItems/Table Vanity/Hand Mirror/Take Mirror")
+next_task_marker = NodePath("../../../../../../../../../../GreatHall/GreatHallItems/Table Vanity/Ivory Comb/Take Comb")
 
 [node name="UIOnCamera" type="CanvasLayer" parent="."]
 

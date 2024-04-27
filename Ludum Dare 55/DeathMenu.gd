@@ -14,7 +14,7 @@ func increment_death_level():
 func decrement_death_level():
     current_death_level = current_death_level - 1
     set_death_level(current_death_level)
-    
+
 func set_death_level(level: int):
     if level < 1:
         get_node("DeathLevel1").visible = false
@@ -48,4 +48,4 @@ func display_screen():
     get_node("/root/Root/GreatHall/LevelStaticBody").visible = false
     get_node("/root/Root/GreatHall/GreatHallItems").visible = false
     get_node("/root/Root/Lord").visible = false
-    
+
