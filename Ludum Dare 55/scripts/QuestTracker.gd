@@ -108,7 +108,7 @@ func next_task(finished_task: QuestMarker):
                         start.reparent(self)
                     return
                 ptr = ptr.next_task_marker
-        if get_child_count() == 0 or get_children().all(isnt_start):
+        if (get_child_count() == 0 or get_children().all(isnt_start)) and len(active_tasks) == 0:
             get_tree().paused = true
             %PauseMenu.process_mode = Node.PROCESS_MODE_DISABLED
             var page_tween : Tween = create_tween()
