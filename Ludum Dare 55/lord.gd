@@ -14,6 +14,7 @@ func attack_player():
     var camera: Camera2D = get_viewport().get_camera_2d()
     var spear: Polygon2D = attached_spear.duplicate()
     var bark_player : AudioStreamPlayer2D = get_node("/root/Root/BarkPlayer")
+    var death_menu : DeathMenu = %DeathMenu
     bark_player.stream = load("res://audio/characters/lord/ahh2.mp3")
     
     var tween: Tween = create_tween()
@@ -42,6 +43,7 @@ func attack_player():
     tween.tween_property(spear, "position", head_offset, 0.2)
     tween.parallel().tween_property(camera, "position", Vector2(0, 0), 0.15)
     tween.tween_callback(camera.align)
+    tween.tween_callback(death_menu.increment_death_level)
     
     
     tween.tween_interval(0.7 / throw_speed)
