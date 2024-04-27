@@ -24,27 +24,6 @@ y_sort_enabled = true
 position = Vector2(-7, -109.505)
 scale = Vector2(0.57, 0.57)
 
-[node name="Polygon" parent="Character" index="0"]
-y_sort_enabled = true
-
-[node name="Polygon head" parent="Character/Polygon" index="0"]
-y_sort_enabled = true
-
-[node name="Polygon chest" parent="Character/Polygon" index="1"]
-y_sort_enabled = true
-
-[node name="Polygon arm front" parent="Character/Polygon" index="2"]
-y_sort_enabled = true
-
-[node name="Polygon arm back" parent="Character/Polygon" index="3"]
-y_sort_enabled = true
-
-[node name="Polygon leg front" parent="Character/Polygon" index="4"]
-y_sort_enabled = true
-
-[node name="Polygon leg back" parent="Character/Polygon" index="5"]
-y_sort_enabled = true
-
 [node name="Skeleton" parent="Character" index="1"]
 y_sort_enabled = true
 
@@ -62,15 +41,12 @@ y_sort_enabled = true
 
 [node name="arm back" parent="Character/Skeleton/hip/belly/shoulder back" index="0"]
 y_sort_enabled = true
-scale = Vector2(1, 1)
 
 [node name="shoulder front" parent="Character/Skeleton/hip/belly" index="2"]
 y_sort_enabled = true
-scale = Vector2(0.999998, 0.999998)
 
 [node name="arm front" parent="Character/Skeleton/hip/belly/shoulder front" index="0"]
 y_sort_enabled = true
-scale = Vector2(0.999998, 0.999998)
 
 [node name="PlayerHand" type="Node2D" parent="Character/Skeleton/hip/belly/shoulder front/arm front" index="0"]
 unique_name_in_owner = true
