@@ -208,7 +208,6 @@ script = ExtResource("8_ctlei")
 quest_accept_barks = Array[AudioStreamMP3]([ExtResource("9_xnyxj"), ExtResource("10_5cw2j"), ExtResource("11_o3b8h"), ExtResource("12_fuktn"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("15_qqno4"), ExtResource("16_w1vwp"), ExtResource("17_tqfwk"), ExtResource("18_q116p")])
 quest_progress_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("13_5jooh"), ExtResource("14_3roim"), ExtResource("22_stdwd"), ExtResource("23_16vaq"), ExtResource("24_fd8qx"), ExtResource("25_yr4fo"), ExtResource("17_tqfwk"), ExtResource("17_tqfwk")])
 quest_complete_barks = Array[AudioStreamMP3]([ExtResource("19_7cq88"), ExtResource("20_qo0hp"), ExtResource("21_4luu0"), ExtResource("26_2qyke"), ExtResource("27_fj5fv")])
-delay_high = 20.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="QuestTracker"]
 process_mode = 3
@@ -1495,6 +1494,9 @@ metadata/_edit_group_ = true
 [node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
 scale = Vector2(1, 1)
 
+[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
+
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999992)
 
@@ -1627,6 +1629,7 @@ layout_mode = 2
 text = "Quit to Desktop"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIOnCamera"]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
