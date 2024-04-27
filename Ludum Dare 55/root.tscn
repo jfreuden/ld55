@@ -228,32 +228,32 @@ next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Soup/T
 quest_string = "The lord is hungry"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Cheese/Take Cheese")
 
-[node name="Hungry for Apple" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "The lord is hungry"
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Apple/Take Apple")
-
-[node name="Hungry for Strawberries" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "The lord is hungry"
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Strawberries/Take Strawberries")
-
-[node name="Hungry for Grapes" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "The lord is hungry"
-next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Grape/Take Grape")
-
 [node name="Hungry for Sausages" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "The lord is hungry"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Sausage/Take Sausage")
+
+[node name="Hungry for Apple" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord wants something sweet"
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Apple/Take Apple")
+
+[node name="Hungry for Strawberries" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord wants something sweet"
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Strawberries/Take Strawberries")
+
+[node name="Hungry for Grapes" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
+quest_string = "The lord wants something sweet"
+next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Grape/Take Grape")
 
 [node name="Hungry for Tart" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
 quest_string = "The lord wants something sweet"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Tart/Take Tart")
 
 [node name="Bedtime" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "Get me some honey'd milk"
+quest_string = "The lord has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Food/Honeycomb/Take Honeycomb")
 
 [node name="Ex Wifes Coat" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "The Lord has a task for you"
+quest_string = "Your employer has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Coat Quest/FurCoat/Shake 1")
 
 [node name="Feed the Tiger" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
@@ -261,7 +261,7 @@ quest_string = "Your lord has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Rug/Pet the Tiger")
 
 [node name="Polish Armour" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "My knight's armour looks tarnished!"
+quest_string = "The lord has a job for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Armour/Polish Armour")
 
 [node name="Advice for Ruling" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
@@ -269,39 +269,39 @@ quest_string = "Your lord has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Writting/Ruling For Dunces/Take Book")
 
 [node name="Wine Refill" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "My wine goblet is empty!!"
+quest_string = "The lord has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Wine Bottle/Take Wine Bottle")
 
 [node name="Beer Refill" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "My beer tankard is empty"
+quest_string = "The lord has a task for you."
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/BeerKeg/Take Beer")
 
 [node name="Hunter" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "My hunting trophies look dirty!!!"
+quest_string = "Your lord has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Snake/Dust Snake")
 
 [node name="Board game" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "Your lord is bored."
+quest_string = "Your lord is bored"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Vanity/Board Game/Take Board Game")
 
 [node name="Chamber Pot" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "The chamber pot is stinking up my great hall!"
+quest_string = "Your gracious lord has a task to complete"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Chamber Pot/ChamberPot/Take Chamber Pot")
 
 [node name="Laught at Skull" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "Your lord is bored and needs something to laugh at."
+quest_string = "Your lord is bored"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Lord/Skull/Make fun of Skull")
 
 [node name="Lights!" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "Its too bright in here!!"
+quest_string = "Your lord needs something"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Lights/Sconce 1/Snuff sconce")
 
 [node name="Vanity" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "Your lord has a task for you."
+quest_string = "Your lord has a task for you"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Vanity/Ivory Comb/Take Comb")
 
 [node name="Teatime" parent="QuestTracker" node_paths=PackedStringArray("next_task_marker") instance=ExtResource("6_sdruh")]
-quest_string = "The lord wants his tea!"
+quest_string = "The lord is thirsty"
 next_task_marker = NodePath("../../GreatHall/GreatHallItems/Table Serving/Teaset/Take Teaset")
 
 [node name="GreatHall" parent="." instance=ExtResource("2_8pfmp")]
@@ -1504,6 +1504,12 @@ interaction_radius = 75.0
 [node name="Character" parent="Lord" instance=ExtResource("53_005yn")]
 scale = Vector2(0.556, 0.556)
 metadata/_edit_group_ = true
+
+[node name="arm back" parent="Lord/Character/Skeleton/hip/belly/shoulder back" index="0"]
+scale = Vector2(1, 1)
+
+[node name="shoulder front" parent="Lord/Character/Skeleton/hip/belly" index="2"]
+scale = Vector2(0.999998, 0.999998)
 
 [node name="arm front" parent="Lord/Character/Skeleton/hip/belly/shoulder front" index="0"]
 scale = Vector2(0.999998, 0.999992)
